@@ -1,2 +1,2 @@
-# fix1099
+# Fix1099
 1099 Fix Service - Automated IRS Form Correction &amp; Tax Compliance Platform.  

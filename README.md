@@ -35,7 +35,7 @@
   <div class="price popular">
     <h2 style="color: #fff;">Annual Guardian</h2>
     <p style="color: rgba(255,255,255,0.9);">Unlimited fixes + priority support (Most Popular)</p >
-    <button id="annual" style="background: #fff; color: #635bff;">Pay $99.99/year → Buy Now</button>
+    <button id="annual" style="background: #fff; color: #635bff;">Pay $149.99/year → Buy Now</button>
   </div>
 
   <p class="coming-soon">2026 tax season ready • Deployed on Vercel • Test mode active</p >

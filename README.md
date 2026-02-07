@@ -54,7 +54,7 @@
       if (error) alert(error.message);
     });
     
-    // $99.99 年付 - 真实Price ID  
+    // $149.99 年付 - 真实Price ID  
     document.getElementById('annual').addEventListener('click', async () => {
       const {error} = await stripe.redirectToCheckout({
         lineItems: [{price: 'price_1SwQcCFU4CCHBdZVYIdLuosw', quantity: 1}],

@@ -29,13 +29,13 @@
   <div class="price">
     <h2>Single 1099 Fix</h2>
     <p>1 × IRS 1099 correction + compliance check</p >
-    <button id="single-fix">Pay $99 → Buy Now</button>
+    <button id="single-fix">Pay $49.99 → Buy Now</button>
   </div>
 
   <div class="price popular">
     <h2 style="color: #fff;">Annual Guardian</h2>
     <p style="color: rgba(255,255,255,0.9);">Unlimited fixes + priority support (Most Popular)</p >
-    <button id="annual" style="background: #fff; color: #635bff;">Pay $299/year → Buy Now</button>
+    <button id="annual" style="background: #fff; color: #635bff;">Pay $99.99/year → Buy Now</button>
   </div>
 
   <p class="coming-soon">2026 tax season ready • Deployed on Vercel • Test mode active</p >
@@ -43,7 +43,7 @@
   <script>
     const stripe = Stripe('pk_test_51SwQBtFU4CCHBdZV5vPi5rcoj6agIceuCbhfH2Ti3zXYoov8TQ4UVormy5harfbr6uYrWcDvormCVZxwytxHtJvF00ecfskUnD');
     
-    // $99 单次支付 - 真实Price ID
+    // $49.99 单次支付 - 真实Price ID
     document.getElementById('single-fix').addEventListener('click', async () => {
       const {error} = await stripe.redirectToCheckout({
         lineItems: [{price: 'price_1SwQYCFU4CCHBdZVpLvfVEVF', quantity: 1}],
@@ -54,7 +54,7 @@
       if (error) alert(error.message);
     });
     
-    // $299 年付 - 真实Price ID  
+    // $99.99 年付 - 真实Price ID  
     document.getElementById('annual').addEventListener('click', async () => {
       const {error} = await stripe.redirectToCheckout({
         lineItems: [{price: 'price_1SwQcCFU4CCHBdZVYIdLuosw', quantity: 1}],

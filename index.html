@@ -126,4 +126,180 @@
         
         /* 底部说明 */
         .explainer { 
-            max-width: 800px;
+            max-width: 800px; 
+            margin: 60px auto 40px; 
+            padding: 32px; 
+            background: white; 
+            border-radius: 16px; 
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .explainer h3 { 
+            font-size: 20px; 
+            color: #1a202c; 
+            margin-bottom: 16px;
+        }
+        .explainer p { 
+            font-size: 16px; 
+            color: #4a5568; 
+            line-height: 1.8;
+        }
+        
+        /* 法律声明 */
+        .legal { 
+            max-width: 900px; 
+            margin: 40px auto 60px; 
+            padding: 24px 32px; 
+            background: #edf2f7; 
+            border-radius: 12px;
+            font-size: 13px;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+        .legal h4 { 
+            font-size: 14px; 
+            font-weight: 600; 
+            margin-bottom: 12px;
+            color: #2d3748;
+        }
+        .legal ul { 
+            list-style: disc; 
+            margin-left: 20px;
+        }
+        .legal li { 
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        .footer { 
+            text-align: center; 
+            padding: 40px 20px; 
+            background: #1a202c; 
+            color: #a0aec0;
+        }
+        .footer a { 
+            color: #3b82f6; 
+            text-decoration: none;
+        }
+        .footer a:hover { 
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .pricing-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>1099 申报，一次搞定</h1>
+        <p class="subtitle">
+            不需要懂税表号码<br>
+            我们自动匹配正确的 IRS 税表并提交
+        </p>
+        <a href="#pricing" class="btn-hero">查看价格</a>
+        <div class="trust-badges">
+            <span>✓ 电子提交 IRS</span>
+            <span>✓ 自动生成 Recipient Copy</span>
+            <span>✓ 提交回执保存</span>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div class="pricing-section" id="pricing">
+        <div class="pricing-header">
+            <h2>简单、透明、没有隐藏费用</h2>
+            <p>只为帮你把 1099 一次性做对</p>
+        </div>
+
+        <div class="pricing-cards">
+            <!-- Annual Plan (Featured) -->
+            <div class="pricing-card featured">
+                <span class="badge">MOST POPULAR ⭐</span>
+                <div class="card-header">
+                    <h3>Annual Plan</h3>
+                    <p>适合需要全年安心的个人与小商家</p>
+                </div>
+                <div class="price">
+                    <span class="amount">$199.99</span>
+                    <span class="period">/ year</span>
+                </div>
+                <div class="features">
+                    <ul>
+                        <li>不限次数 1099 申报（NEC / MISC）</li>
+                        <li>W-9 自动收集与管理</li>
+                        <li>自动匹配正确 IRS 税表</li>
+                        <li>电子提交 IRS</li>
+                        <li>更正 / 重提不额外收费</li>
+                        <li>提交回执全年保存</li>
+                        <li>州级申报需求提醒（如适用）</li>
+                    </ul>
+                </div>
+                <a href="https://buy.stripe.com/test_3cIfZhftf9ryewcgt98bS03" class="btn-pricing">Get Started</a>
+                <div class="fine-print">
+                    Cancel anytime. Subscription remains active until the end of the billing period. No refunds for fees already paid.
+                </div>
+            </div>
+
+            <!-- Single Filing -->
+            <div class="pricing-card">
+                <div class="card-header">
+                    <h3>Single Filing</h3>
+                    <p>适合只需申报一次的用户</p>
+                </div>
+                <div class="price">
+                    <span class="amount">$59.99</span>
+                    <span class="period">/ one-time</span>
+                </div>
+                <div class="features">
+                    <ul>
+                        <li>单次 1099 申报</li>
+                        <li>W-9 收集（本次）</li>
+                        <li>自动匹配正确 IRS 税表</li>
+                        <li>电子提交 IRS</li>
+                        <li>Recipient Copy 下载</li>
+                        <li>提交回执</li>
+                    </ul>
+                </div>
+                <a href="https://buy.stripe.com/test_3cIfZhftf9ryewcgt98bS03" class="btn-pricing">File Once</a>
+                <div class="fine-print">
+                    仅限一次申报批次。更正或追加申报需再次付费。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Explainer -->
+    <div class="explainer">
+        <h3>你无需了解税表号码</h3>
+        <p>
+            我们会根据你的付款情况，自动匹配正确的 IRS 税表并提交。<br>
+            无需选择或了解税表类型。
+        </p>
+    </div>
+
+    <!-- Legal -->
+    <div class="legal">
+        <h4>重要说明</h4>
+        <ul>
+            <li>本服务为信息申报服务（Information Return Filing）</li>
+            <li>不提供个人报税、退税或税务建议</li>
+            <li>税务文件一经生成或提交，即视为服务已履行</li>
+            <li>所有费用均不可退款</li>
+        </ul>
+        <p style="margin-top: 16px;">
+            <strong>Still not sure?</strong> If you have complex or business compliance needs, <a href="mailto:support@fix1099.com">contact us</a>.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 Fix1099. All rights reserved.</p>
+        <p style="margin-top: 8px;">
+            <a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a>
+        </p>
+    </div>
+</body>
+</html>

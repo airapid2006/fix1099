@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fix1099 - 1099 Tax Filing Made Simple</title>
+    <title>Fix1099 - One Click to IRS Filing</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,14 +46,20 @@
             flex-direction: column;
             justify-content: center;
         }
-        .hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; margin-bottom: 24px; }
+        .hero h1 { 
+            font-size: clamp(40px, 6vw, 64px); 
+            font-weight: 700; 
+            margin-bottom: 24px; 
+            line-height: 1.2;
+        }
         .hero .subtitle { 
             font-size: clamp(18px, 3vw, 24px); 
             opacity: 0.95; 
             margin-bottom: 48px; 
-            max-width: 700px; 
+            max-width: 800px; 
             margin-left: auto; 
             margin-right: auto; 
+            line-height: 1.5;
         }
         
         .btn-hero { 
@@ -131,16 +137,16 @@
     </div>
 
     <div class="hero">
-        <h1 id="hero-title">1099 Filing Made Simple</h1>
+        <h1 id="hero-title">One Click to IRS Filing</h1>
         <p class="subtitle" id="hero-subtitle">
-            No need to understand tax form numbers<br>
-            We automatically match and submit the correct IRS forms
+            Avoid penalty up to $660 per form<br>
+            The system matches the form for you
         </p>
-        <a href="start.html" class="btn-hero" id="hero-cta">Get Started</a>
+        <a href="start.html" class="btn-hero" id="hero-cta">Start Now</a>
         <div class="trust-badges">
-            <span id="badge-1">✓ Electronic IRS filing</span>
-            <span id="badge-2">✓ Auto-generate Recipient Copy</span>
-            <span id="badge-3">✓ Filing receipt saved</span>
+            <span id="badge-1">✓ Direct IRS submission</span>
+            <span id="badge-2">✓ Auto-match correct forms</span>
+            <span id="badge-3">✓ Filing confirmation</span>
         </div>
     </div>
 
@@ -154,28 +160,28 @@
     <script>
         const translations = {
             en: {
-                heroTitle: "1099 Filing Made Simple",
-                heroSubtitle: "No need to understand tax form numbers<br>We automatically match and submit the correct IRS forms",
-                heroCta: "Get Started",
-                badge1: "✓ Electronic IRS filing",
-                badge2: "✓ Auto-generate Recipient Copy",
-                badge3: "✓ Filing receipt saved"
+                heroTitle: "One Click to IRS Filing",
+                heroSubtitle: "Avoid penalty up to $660 per form<br>The system matches the form for you",
+                heroCta: "Start Now",
+                badge1: "✓ Direct IRS submission",
+                badge2: "✓ Auto-match correct forms",
+                badge3: "✓ Filing confirmation"
             },
             zh: {
-                heroTitle: "1099 申报，一次搞定",
-                heroSubtitle: "不需要懂税表号码<br>我们自动匹配正确的 IRS 税表并提交",
+                heroTitle: "一键直达 IRS 申报",
+                heroSubtitle: "避免每张表最高 $660 罚款<br>系统自动为你匹配正确税表",
                 heroCta: "立即开始",
-                badge1: "✓ 电子提交 IRS",
-                badge2: "✓ 自动生成 Recipient Copy",
-                badge3: "✓ 提交回执保存"
+                badge1: "✓ 直接提交 IRS",
+                badge2: "✓ 自动匹配正确税表",
+                badge3: "✓ 申报确认"
             },
             es: {
-                heroTitle: "Declaración 1099 Simplificada",
-                heroSubtitle: "No necesitas entender los números de formularios fiscales<br>Emparejamos y enviamos automáticamente los formularios IRS correctos",
-                heroCta: "Comenzar",
-                badge1: "✓ Presentación electrónica IRS",
-                badge2: "✓ Copia para destinatario generada automáticamente",
-                badge3: "✓ Recibo de presentación guardado"
+                heroTitle: "Un Clic para Presentar al IRS",
+                heroSubtitle: "Evite multas de hasta $660 por formulario<br>El sistema empareja el formulario por usted",
+                heroCta: "Comenzar Ahora",
+                badge1: "✓ Envío directo al IRS",
+                badge2: "✓ Emparejamiento automático de formularios correctos",
+                badge3: "✓ Confirmación de presentación"
             }
         };
 
@@ -187,7 +193,7 @@
             });
             document.getElementById('btn-' + lang).classList.add('active');
             
-            document.getElementById('hero-title').innerHTML = t.heroTitle;
+            document.getElementById('hero-title').textContent = t.heroTitle;
             document.getElementById('hero-subtitle').innerHTML = t.heroSubtitle;
             document.getElementById('hero-cta').textContent = t.heroCta;
             document.getElementById('badge-1').textContent = t.badge1;

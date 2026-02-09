@@ -345,3 +345,158 @@
                     "我们会自动判断应使用的税表类型",
                     "你无需了解或选择任何税表编号"
                 ],
+                infoTitle2: "接下来我们会问你什么",
+                infoText: "整个流程只会询问以下三类信息：",
+                infoList2: [
+                    "你付钱给谁（个人 / 公司 / 平台）",
+                    "你为什么付这笔钱（服务费、租金、奖励等）",
+                    "这笔钱是怎么支付的（银行转账、支票或第三方平台）"
+                ],
+                formTitle: "现在开始",
+                importantNote: "以下问题只涉及你<strong>付出去的钱</strong>，不包括你自己收到的收入。",
+                labelQ1: "1. 你付钱给谁？",
+                opt11: "个人 / 自由职业者",
+                opt12: "公司 / 企业",
+                opt13: "平台（Upwork、Fiverr 等）",
+                opt14: "其他（如不确定，请选择此项）",
+                labelQ2: "2. 你为什么付钱给他们？",
+                opt21: "咨询 / 专业服务",
+                opt22: "设计 / 开发",
+                opt23: "租金",
+                opt24: "奖励 / 奖金",
+                opt25: "其他（如不确定，请选择此项）",
+                labelQ3: "3. 你怎么付款的？",
+                opt31: "银行转账 / 电汇",
+                opt32: "支票",
+                opt33: "PayPal / Venmo / Zelle",
+                opt34: "其他（如不确定，请选择此项）",
+                btnContinue: "继续",
+                timeEstimate: "大多数用户可在 5-10 分钟内完成"
+            },
+            es: {
+                stepInfo: "Paso 1 de 3",
+                stepTitle: "Confirmar Detalles de Pago",
+                pageTitle: "Comienza tu Declaración 1099",
+                pageSubtitle: "Solo toma unos minutos. Emparejaremos y enviaremos automáticamente los formularios IRS correctos según tus detalles de pago.<br>No necesitas elegir ni entender los tipos de formularios.",
+                infoTitle1: "Lo que estás haciendo ahora",
+                infoList1: [
+                    "Generando declaración IRS 1099 para la información de pago de este año",
+                    "Seleccionaremos automáticamente el tipo de formulario correcto",
+                    "No necesitas entender ni elegir ningún número de formulario"
+                ],
+                infoTitle2: "Lo que te preguntaremos",
+                infoText: "Solo preguntaremos 3 tipos de información:",
+                infoList2: [
+                    "A quién pagaste (individual / empresa / plataforma)",
+                    "Por qué pagaste (tarifa de servicio, alquiler, premio, etc.)",
+                    "Cómo pagaste (transferencia bancaria, cheque, plataforma de terceros)"
+                ],
+                formTitle: "Comencemos",
+                importantNote: "Las siguientes preguntas se refieren al dinero que <strong>pagaste</strong>, no a los ingresos que recibiste.",
+                labelQ1: "1. ¿A quién pagaste?",
+                opt11: "Individual / Freelancer",
+                opt12: "Empresa / Negocio",
+                opt13: "Plataforma (Upwork, Fiverr, etc.)",
+                opt14: "Otro (selecciona si no estás seguro)",
+                labelQ2: "2. ¿Por qué les pagaste?",
+                opt21: "Consultoría / Servicios Profesionales",
+                opt22: "Diseño / Desarrollo",
+                opt23: "Alquiler",
+                opt24: "Premio / Recompensa",
+                opt25: "Otro (selecciona si no estás seguro)",
+                labelQ3: "3. ¿Cómo les pagaste?",
+                opt31: "Transferencia Bancaria / Wire",
+                opt32: "Cheque",
+                opt33: "PayPal / Venmo / Zelle",
+                opt34: "Otro (selecciona si no estás seguro)",
+                btnContinue: "Continuar",
+                timeEstimate: "La mayoría de los usuarios completan esto en 5-10 minutos"
+            }
+        };
+
+        function switchLanguage(lang) {
+            const t = translations[lang];
+            
+            document.querySelectorAll('.language-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            document.getElementById('step-info').textContent = t.stepInfo;
+            document.getElementById('step-title').textContent = t.stepTitle;
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('page-subtitle').innerHTML = t.pageSubtitle;
+            document.getElementById('info-title-1').textContent = t.infoTitle1;
+            document.getElementById('info-title-2').textContent = t.infoTitle2;
+            document.getElementById('info-text').textContent = t.infoText;
+            document.getElementById('form-title').textContent = t.formTitle;
+            document.getElementById('important-note').innerHTML = t.importantNote;
+            document.getElementById('label-q1').textContent = t.labelQ1;
+            document.getElementById('label-q2').textContent = t.labelQ2;
+            document.getElementById('label-q3').textContent = t.labelQ3;
+            document.getElementById('opt1-1').textContent = t.opt11;
+            document.getElementById('opt1-2').textContent = t.opt12;
+            document.getElementById('opt1-3').textContent = t.opt13;
+            document.getElementById('opt1-4').textContent = t.opt14;
+            document.getElementById('opt2-1').textContent = t.opt21;
+            document.getElementById('opt2-2').textContent = t.opt22;
+            document.getElementById('opt2-3').textContent = t.opt23;
+            document.getElementById('opt2-4').textContent = t.opt24;
+            document.getElementById('opt2-5').textContent = t.opt25;
+            document.getElementById('opt3-1').textContent = t.opt31;
+            document.getElementById('opt3-2').textContent = t.opt32;
+            document.getElementById('opt3-3').textContent = t.opt33;
+            document.getElementById('opt3-4').textContent = t.opt34;
+            document.getElementById('btn-continue').textContent = t.btnContinue;
+            document.getElementById('time-estimate').textContent = t.timeEstimate;
+            
+            const list1 = document.getElementById('info-list-1');
+            list1.innerHTML = '';
+            t.infoList1.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                list1.appendChild(li);
+            });
+            
+            const list2 = document.getElementById('info-list-2');
+            list2.innerHTML = '';
+            t.infoList2.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                list2.appendChild(li);
+            });
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        function checkForm() {
+            const q1 = document.getElementById('q1').value;
+            const q2 = document.getElementById('q2').value;
+            const q3 = document.getElementById('q3').value;
+            
+            const btn = document.getElementById('btn-continue');
+            if (q1 && q2 && q3) {
+                btn.disabled = false;
+            } else {
+                btn.disabled = true;
+            }
+        }
+
+        function goToPayment() {
+            const q1 = document.getElementById('q1').value;
+            const q2 = document.getElementById('q2').value;
+            const q3 = document.getElementById('q3').value;
+            
+            localStorage.setItem('filingData', JSON.stringify({ q1, q2, q3 }));
+            window.location.href = 'payment.html';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && translations[savedLang]) {
+                switchLanguage(savedLang);
+            }
+        });
+    </script>
+</body>
+</html>

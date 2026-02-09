@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Filing - Fix1099</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #2d3748; background: #f7fafc; }
+        
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .language-switcher button {
+            background: none;
+            border: none;
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin: 0 5px;
+            transition: color 0.3s;
+        }
+        .language-switcher button:hover { color: #3b82f6; }
+        .language-switcher button.active {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 80px auto 60px;
+            padding: 0 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .header h1 {
+            font-size: 36px;
+            color: #1a202c;
+            margin-bottom: 24px;
+        }
+        
+        .confirmation-box {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 48px;
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+        }
+        .confirmation-box h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .confirmation-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .confirmation-box li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        .confirmation-box li::before {
+            content: "✓";
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 20px;
+        }
+        
+        .pricing-section {
+            margin-bottom: 48px;
+        }
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .pricing-header h2 {
+            font-size: 28px;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            border-color: #3b82f6;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #3b82f6;
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+        }
+        .pricing-card.featured .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 6px 24px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .card-header h3 {
+            font-size: 24px;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+        .card-header p {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 24px;
+        }
+        
+        .price {
+            margin-bottom: 24px;
+        }
+        .price .amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1e40af;
+        }
+        .price .period {
+            font-size: 16px;
+            color: #718096;
+        }
+        
+        .features {
+            margin-bottom: 32px;
+        }
+        .features ul {
+            list-style: none;
+        }
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: #4a5568;
+            display: flex;
+            align-items: flex-start;
+        }
+        .features li:last-child {
+            border-bottom: none;
+        }
+        .features li::before {
+            content: "✓";
+            color: #3b82f6;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        
+        .btn-pricing {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        .btn-pricing:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        
+        .fine-print {
+            margin-top: 16px;
+            font-size: 12px;
+            color: #a0aec0;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                margin: 60px auto 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="switchLanguage('en')" id="btn-en" class="active">English</button>
+        <button onclick="switchLanguage('zh')" id="btn-zh">中文</button>
+        <button onclick="switchLanguage('es')" id="btn-es">Español</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1 id="page-title">Almost Done - Complete Your 1099 Filing</h1>
+        </div>
+
+        <div class="confirmation-box">
+            <h2 id="confirm-title">Great! Here's what we've confirmed:</h2>
+            <ul id="confirm-list">
+                <li>Payment recipient type identified</li>
+                <li>System has matched the correct IRS form</li>
+                <li>Receipt and Recipient Copy will be generated upon submission</li>
+            </ul>
+        </div>
+
+        <div class="pricing-section">
+            <div class="pricing-header">
+                <h2 id="pricing-title">Choose Your Plan to Complete Filing</h2>
+            </div>
+
+            <div class="pricing-cards">
+                <!-- Annual Plan -->
+                <div class="pricing-card featured">
+                    <span class="badge" id="popular-badge">MOST POPULAR ⭐</span>
+                    <div class="card-header">
+                        <h3 id="annual-title">Annual Plan</h3>
+                        <p id="annual-desc">For individuals and small businesses who need year-round peace of mind</p>
+                    </div>
+                    <div class="price">
+                        <span class="amount">$199.99</span>
+                        <span class="period">/ year</span>
+                    </div>
+                    <div class="features">
+                        <ul id="annual-features">
+                            <li>Unlimited 1099 filings (NEC / MISC)</li>
+                            <li>Automated W-9 collection & management</li>
+                            <li>Auto-match correct IRS forms</li>
+                            <li>Electronic IRS filing</li>
+                            <li>Corrections / re-filings at no extra cost</li>
+                            <li>Filing receipts saved all year</li>
+                            <li>State filing reminders (if applicable)</li>
+                        </ul>
+                    </div>
+                    <a href="https://buy.stripe.com/test_3cIfZhftf9ryewcgt98bS03" class="btn-pricing" id="annual-cta">Get Started</a>
+                    <div class="fine-print" id="annual-policy">
+                        Cancel anytime. Subscription remains active until the end of the billing period. No refunds for fees already paid.
+                    </div>
+                </div>
+
+                <!-- Single Filing -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3 id="single-title">Single Filing</h3>
+                        <p id="single-desc">For users who only need to file once</p>
+                    </div>
+                    <div class="price">
+                        <span class="amount">$59.99</span>
+                        <span class="period">/ one-time</span>
+                    </div>
+                    <div class="features">
+                        <ul id="single-features">
+                            <li>Single 1099 filing</li>
+                            <li>W-9 collection (this filing only)</li>
+                            <li>Auto-match correct IRS forms</li>
+                            <li>Electronic IRS filing</li>
+                            <li>Recipient Copy download</li>
+                            <li>Filing receipt</li>
+                        </ul>
+                    </div>
+                    <a href="https://buy.stripe.com/test_3cIfZhftf9ryewcgt98bS03" class="btn-pricing" id="single-cta">File Once</a>
+                    <div class="fine-print" id="single-policy">
+                        Limited to one filing batch. Corrections or additional filings require new payment.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                pageTitle: "Almost Done - Complete Your 1099 Filing",
+                confirmTitle: "Great! Here's what we've confirmed:",
+                confirmList: [
+                    "Payment recipient type identified",
+                    "System has matched the correct IRS form",
+                    "Receipt and Recipient Copy will be generated upon submission"
+                ],
+                pricingTitle: "Choose Your Plan to Complete Filing",
+                popularBadge: "MOST POPULAR ⭐",
+                annualTitle: "Annual Plan",
+                annualDesc: "For individuals and small businesses who need year-round peace of mind",
+                annualFeatures: [
+                    "Unlimited 1099 filings (NEC / MISC)",
+                    "Automated W-9 collection & management",
+                    "Auto-match correct IRS forms",
+                    "Electronic IRS filing",
+                    "Corrections / re-filings at no extra cost",
+                    "Filing receipts saved all year",
+                    "State filing reminders (if applicable)"
+                ],
+                annualCta: "Get Started",
+                annualPolicy: "Cancel anytime. Subscription remains active until the end of the billing period. No refunds for fees already paid.",
+                singleTitle: "Single Filing",
+                singleDesc: "For users who only need to file once",
+                singleFeatures: [
+                    "Single 1099 filing",
+                    "W-9 collection (this filing only)",
+                    "Auto-match correct IRS forms",
+                    "Electronic IRS filing",
+                    "Recipient Copy download",
+                    "Filing receipt"
+                ],
+                singleCta: "File Once",
+                singlePolicy: "Limited to one filing batch. Corrections or additional filings require new payment."
+            },
+            zh: {
+                pageTitle: "即将完成 - 完成你的 1099 申报",
+                confirmTitle: "太好了！以下是我们已确认的信息：",
+                confirmList: [
+                    "已确认收款人类型",
+                    "系统已匹配正确的 IRS 税表",
+                    "提交后将生成回执和 Recipient Copy"
+                ],
+                pricingTitle: "选择套餐完成申报",
+                popularBadge: "最受欢迎 ⭐",
+                annualTitle: "年费计划",
+                annualDesc: "适合需要全年安心的个人与小商家",
+                annualFeatures: [
+                    "不限次数 1099 申报（NEC / MISC）",
+                    "W-9 自动收集与管理",
+                    "自动匹配正确 IRS 税表",
+                    "电子提交 IRS",
+                    "更正 / 重提不额外收费",
+                    "提交回执全年保存",
+                    "州级申报需求提醒（如适用）"
+                ],
+                annualCta: "立即开始",
+                annualPolicy: "可随时取消。订阅将持续到当前计费周期结束。已支付费用不退款。",
+                singleTitle: "单次申报",
+                singleDesc: "适合只需申报一次的用户",
+                singleFeatures: [
+                    "单次 1099 申报",
+                    "W-9 收集（本次）",
+                    "自动匹配正确 IRS 税表",
+                    "电子提交 IRS",
+                    "Recipient Copy 下载",
+                    "提交回执"
+                ],
+                singleCta: "单次申报",
+                singlePolicy: "仅限一次申报批次。更正或追加申报需再次付费。"
+            },
+            es: {
+                pageTitle: "Casi Listo - Completa tu Declaración 1099",
+                confirmTitle: "¡Excelente! Esto es lo que hemos confirmado:",
+                confirmList: [
+                    "Tipo de destinatario de pago identificado",
+                    "El sistema ha emparejado el formulario IRS correcto",
+                    "El recibo y la copia para el destinatario se generarán al enviar"
+                ],
+                pricingTitle: "Elige Tu Plan para Completar la Declaración",
+                popularBadge: "MÁS POPULAR ⭐",
+                annualTitle: "Plan Anual",
+                annualDesc: "Para individuos y pequeñas empresas que necesitan tranquilidad durante todo el año",
+                annualFeatures: [
+                    "Presentaciones 1099 ilimitadas (NEC / MISC)",
+                    "Recopilación y gestión automática de W-9",
+                    "Emparejamiento automático de formularios IRS correctos",
+                    "Presentación electrónica IRS",
+                    "Correcciones / re-presentaciones sin costo adicional",
+                    "Recibos de presentación guardados todo el año",
+                    "Recordatorios de presentación estatal (si aplica)"
+                ],
+                annualCta: "Comenzar",
+                annualPolicy: "Cancelar en cualquier momento. La suscripción permanece activa hasta el final del período de facturación. No hay reembolsos por tarifas ya pagadas.",
+                singleTitle: "Presentación Única",
+                singleDesc: "Para usuarios que solo necesitan presentar una vez",
+                singleFeatures: [
+                    "Presentación única de 1099",
+                    "Recopilación de W-9 (solo esta presentación)",
+                    "Emparejamiento automático de formularios IRS correctos",
+                    "Presentación electrónica IRS",
+                    "Descarga de copia para destinatario",
+                    "Recibo de presentación"
+                ],
+                singleCta: "Presentar Una Vez",
+                singlePolicy: "Limitado a un lote de presentación. Correcciones o presentaciones adicionales requieren un nuevo pago."
+            }
+        };
+
+        function switchLanguage(lang) {
+            const t = translations[lang];
+            
+            document.querySelectorAll('.language-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('confirm-title').textContent = t.confirmTitle;
+            document.getElementById('pricing-title').textContent = t.pricingTitle;
+            document.getElementById('popular-badge').textContent = t.popularBadge;
+            document.getElementById('annual-title').textContent = t.annualTitle;
+            document.getElementById('annual-desc').textContent = t.annualDesc;
+            document.getElementById('annual-cta').textContent = t.annualCta;
+            document.getElementById('annual-policy').textContent = t.annualPolicy;
+            document.getElementById('single-title').textContent = t.singleTitle;
+            document.getElementById('single-desc').textContent = t.singleDesc;
+            document.getElementById('single-cta').textContent = t.singleCta;
+            document.getElementById('single-policy').textContent = t.singlePolicy;
+            
+            const confirmList = document.getElementById('confirm-list');
+            confirmList.innerHTML = '';
+            t.confirmList.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                confirmList.appendChild(li);
+            });
+            
+            const annualList = document.getElementById('annual-features');
+            annualList.innerHTML = '';
+            t.annualFeatures.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                annualList.appendChild(li);
+            });
+            
+            const singleList = document.getElementById('single-features');
+            singleList.innerHTML = '';
+            t.singleFeatures.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                singleList.appendChild(li);
+            });
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && translations[savedLang]) {
+                switchLanguage(savedLang);
+            }
+        });
+    </script>
+</body>
+</html>

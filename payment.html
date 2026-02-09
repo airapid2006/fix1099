@@ -49,7 +49,11 @@
         .header h1 {
             font-size: 36px;
             color: #1a202c;
-            margin-bottom: 24px;
+            margin-bottom: 12px;
+        }
+        .header .subtitle {
+            font-size: 18px;
+            color: #4a5568;
         }
         
         .confirmation-box {
@@ -79,14 +83,34 @@
             margin-right: 12px;
             font-size: 20px;
         }
-        .confirmation-box .form-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 18px;
-            margin-left: 8px;
+        
+        .next-steps {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        .next-steps h3 {
+            font-size: 20px;
+            color: #1a202c;
+            margin-bottom: 16px;
+        }
+        .next-steps ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        .next-steps li {
+            padding: 8px 0;
+            color: #4a5568;
+        }
+        .next-steps .consent {
+            font-size: 14px;
+            color: #718096;
+            background: #f7fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 3px solid #3b82f6;
         }
         
         .pricing-section {
@@ -235,24 +259,34 @@
 
     <div class="container">
         <div class="header">
-            <h1 id="page-title">Almost Done - Complete Your 1099 Filing</h1>
+            <h1 id="page-title">One click to IRS filing</h1>
+            <p class="subtitle" id="page-subtitle">Avoid up to $660+ late filing penalty per form</p>
         </div>
 
         <div class="confirmation-box">
-            <h2 id="confirm-title">Great! Here's what we've confirmed:</h2>
+            <h2 id="confirm-title">✓ Ready to file:</h2>
             <ul>
-                <li id="confirm-1">Payment recipient type identified</li>
-                <li id="confirm-2">
-                    <span id="confirm-2-text">System has matched the correct IRS form:</span>
-                    <span class="form-badge" id="form-type-display">1099-NEC</span>
-                </li>
-                <li id="confirm-3">Receipt and Recipient Copy will be generated upon submission</li>
+                <li id="confirm-1">Payment qualifies for IRS reporting</li>
+                <li id="confirm-2">System matched the correct filing process</li>
+                <li id="confirm-3">Direct submission to IRS</li>
             </ul>
+        </div>
+
+        <div class="next-steps">
+            <h3 id="steps-title">After payment:</h3>
+            <ol id="steps-list">
+                <li>Enter recipient details</li>
+                <li>Submit to IRS with one click</li>
+                <li>Receive filing confirmation</li>
+            </ol>
+            <div class="consent" id="consent-text">
+                By continuing, you agree we may send filing reminders and deadline alerts to help you stay compliant.
+            </div>
         </div>
 
         <div class="pricing-section">
             <div class="pricing-header">
-                <h2 id="pricing-title">Choose Your Plan to Complete Filing</h2>
+                <h2 id="pricing-title">Choose Your Plan</h2>
             </div>
 
             <div class="pricing-cards">
@@ -314,21 +348,22 @@
     </div>
 
     <script>
-        // 读取系统判断的税表类型
-        const filingData = JSON.parse(localStorage.getItem('filingData') || '{}');
-        const formType = filingData.formType || '1099-NEC';
-        
-        // 显示判断结果
-        document.getElementById('form-type-display').textContent = formType;
-
         const translations = {
             en: {
-                pageTitle: "Almost Done - Complete Your 1099 Filing",
-                confirmTitle: "Great! Here's what we've confirmed:",
-                confirm1: "Payment recipient type identified",
-                confirm2Text: "System has matched the correct IRS form:",
-                confirm3: "Receipt and Recipient Copy will be generated upon submission",
-                pricingTitle: "Choose Your Plan to Complete Filing",
+                pageTitle: "One click to IRS filing",
+                pageSubtitle: "Avoid up to $660+ late filing penalty per form",
+                confirmTitle: "✓ Ready to file:",
+                confirm1: "Payment qualifies for IRS reporting",
+                confirm2: "System matched the correct filing process",
+                confirm3: "Direct submission to IRS",
+                stepsTitle: "After payment:",
+                stepsList: [
+                    "Enter recipient details",
+                    "Submit to IRS with one click",
+                    "Receive filing confirmation"
+                ],
+                consentText: "By continuing, you agree we may send filing reminders and deadline alerts to help you stay compliant.",
+                pricingTitle: "Choose Your Plan",
                 popularBadge: "MOST POPULAR ⭐",
                 annualTitle: "Annual Plan",
                 annualDesc: "For individuals and small businesses who need year-round peace of mind",
@@ -357,12 +392,20 @@
                 singlePolicy: "Limited to one filing batch. Corrections or additional filings require new payment."
             },
             zh: {
-                pageTitle: "即将完成 - 完成你的 1099 申报",
-                confirmTitle: "太好了！以下是我们已确认的信息：",
-                confirm1: "已确认收款人类型",
-                confirm2Text: "系统已匹配正确的 IRS 税表：",
-                confirm3: "提交后将生成回执和 Recipient Copy",
-                pricingTitle: "选择套餐完成申报",
+                pageTitle: "一键直达 IRS 申报",
+                pageSubtitle: "避免每张表最高 $660+ 延迟申报罚款",
+                confirmTitle: "✓ 准备申报：",
+                confirm1: "付款符合 IRS 申报要求",
+                confirm2: "系统已匹配正确申报流程",
+                confirm3: "直接提交至 IRS",
+                stepsTitle: "付款后：",
+                stepsList: [
+                    "输入收款人信息",
+                    "一键提交至 IRS",
+                    "收到申报确认"
+                ],
+                consentText: "继续操作即表示你同意我们发送申报提醒和截止日期提醒，帮助你保持合规。",
+                pricingTitle: "选择套餐",
                 popularBadge: "最受欢迎 ⭐",
                 annualTitle: "年费计划",
                 annualDesc: "适合需要全年安心的个人与小商家",
@@ -391,12 +434,20 @@
                 singlePolicy: "仅限一次申报批次。更正或追加申报需再次付费。"
             },
             es: {
-                pageTitle: "Casi Listo - Completa tu Declaración 1099",
-                confirmTitle: "¡Excelente! Esto es lo que hemos confirmado:",
-                confirm1: "Tipo de destinatario de pago identificado",
-                confirm2Text: "El sistema ha emparejado el formulario IRS correcto:",
-                confirm3: "El recibo y la copia para el destinatario se generarán al enviar",
-                pricingTitle: "Elige Tu Plan para Completar la Declaración",
+                pageTitle: "Un clic para presentar al IRS",
+                pageSubtitle: "Evite multas de hasta $660+ por presentación tardía por formulario",
+                confirmTitle: "✓ Listo para presentar:",
+                confirm1: "El pago califica para la declaración del IRS",
+                confirm2: "El sistema ha emparejado el proceso de presentación correcto",
+                confirm3: "Envío directo al IRS",
+                stepsTitle: "Después del pago:",
+                stepsList: [
+                    "Ingrese los detalles del destinatario",
+                    "Envíe al IRS con un clic",
+                    "Reciba confirmación de presentación"
+                ],
+                consentText: "Al continuar, usted acepta que podemos enviar recordatorios de presentación y alertas de fecha límite para ayudarlo a cumplir.",
+                pricingTitle: "Elija Su Plan",
                 popularBadge: "MÁS POPULAR ⭐",
                 annualTitle: "Plan Anual",
                 annualDesc: "Para individuos y pequeñas empresas que necesitan tranquilidad durante todo el año",
@@ -435,10 +486,13 @@
             document.getElementById('btn-' + lang).classList.add('active');
             
             document.getElementById('page-title').textContent = t.pageTitle;
+            document.getElementById('page-subtitle').textContent = t.pageSubtitle;
             document.getElementById('confirm-title').textContent = t.confirmTitle;
             document.getElementById('confirm-1').textContent = t.confirm1;
-            document.getElementById('confirm-2-text').textContent = t.confirm2Text;
+            document.getElementById('confirm-2').textContent = t.confirm2;
             document.getElementById('confirm-3').textContent = t.confirm3;
+            document.getElementById('steps-title').textContent = t.stepsTitle;
+            document.getElementById('consent-text').textContent = t.consentText;
             document.getElementById('pricing-title').textContent = t.pricingTitle;
             document.getElementById('popular-badge').textContent = t.popularBadge;
             document.getElementById('annual-title').textContent = t.annualTitle;
@@ -449,6 +503,14 @@
             document.getElementById('single-desc').textContent = t.singleDesc;
             document.getElementById('single-cta').textContent = t.singleCta;
             document.getElementById('single-policy').textContent = t.singlePolicy;
+            
+            const stepsList = document.getElementById('steps-list');
+            stepsList.innerHTML = '';
+            t.stepsList.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                stepsList.appendChild(li);
+            });
             
             const annualList = document.getElementById('annual-features');
             annualList.innerHTML = '';

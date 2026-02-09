@@ -42,6 +42,25 @@
             padding: 0 20px;
         }
         
+        /* 进度条 */
+        .progress-bar {
+            background: white;
+            padding: 20px 32px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 32px;
+        }
+        .progress-bar .step-info {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 8px;
+        }
+        .progress-bar .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a202c;
+        }
+        
         .header {
             text-align: center;
             margin-bottom: 48px;
@@ -98,6 +117,21 @@
             font-size: 24px;
             color: #1a202c;
             margin-bottom: 24px;
+        }
+        
+        /* 重要提示框 */
+        .important-note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            border-radius: 8px;
+        }
+        .important-note p {
+            color: #92400e;
+            font-size: 15px;
+            font-weight: 500;
+            margin: 0;
         }
         
         .question {
@@ -177,6 +211,12 @@
     </div>
 
     <div class="container">
+        <!-- 进度条 -->
+        <div class="progress-bar">
+            <div class="step-info" id="step-info">Step 1 of 3</div>
+            <div class="step-title" id="step-title">Confirm Payment Details</div>
+        </div>
+
         <div class="header">
             <h1 id="page-title">Start Your 1099 Filing</h1>
             <p id="page-subtitle">
@@ -207,6 +247,11 @@
         <div class="form-section">
             <h3 id="form-title">Let's get started</h3>
             
+            <!-- 重要提示 -->
+            <div class="important-note">
+                <p id="important-note">The following questions relate to money you <strong>paid out</strong>, not income you received.</p>
+            </div>
+            
             <div class="question">
                 <label for="q1" id="label-q1">1. Who did you pay?</label>
                 <select id="q1" onchange="checkForm()">
@@ -214,6 +259,7 @@
                     <option value="individual" id="opt1-1">Individual / Freelancer</option>
                     <option value="company" id="opt1-2">Company / Business</option>
                     <option value="platform" id="opt1-3">Platform (Upwork, Fiverr, etc.)</option>
+                    <option value="other" id="opt1-4">Other (select if unsure)</option>
                 </select>
             </div>
 
@@ -225,7 +271,7 @@
                     <option value="design" id="opt2-2">Design / Development</option>
                     <option value="rent" id="opt2-3">Rent</option>
                     <option value="award" id="opt2-4">Award / Prize</option>
-                    <option value="other" id="opt2-5">Other</option>
+                    <option value="other" id="opt2-5">Other (select if unsure)</option>
                 </select>
             </div>
 
@@ -236,7 +282,7 @@
                     <option value="bank" id="opt3-1">Bank Transfer / Wire</option>
                     <option value="check" id="opt3-2">Check</option>
                     <option value="paypal" id="opt3-3">PayPal / Venmo / Zelle</option>
-                    <option value="other" id="opt3-4">Other</option>
+                    <option value="other" id="opt3-4">Other (select if unsure)</option>
                 </select>
             </div>
 
@@ -250,6 +296,8 @@
     <script>
         const translations = {
             en: {
+                stepInfo: "Step 1 of 3",
+                stepTitle: "Confirm Payment Details",
                 pageTitle: "Start Your 1099 Filing",
                 pageSubtitle: "It only takes a few minutes. We'll automatically match and submit the correct IRS forms based on your payment details.<br>You don't need to choose or understand form types.",
                 infoTitle1: "What you're doing now",
@@ -266,25 +314,29 @@
                     "How did you pay (bank transfer, check, third-party platform)"
                 ],
                 formTitle: "Let's get started",
+                importantNote: "The following questions relate to money you <strong>paid out</strong>, not income you received.",
                 labelQ1: "1. Who did you pay?",
                 opt11: "Individual / Freelancer",
                 opt12: "Company / Business",
                 opt13: "Platform (Upwork, Fiverr, etc.)",
+                opt14: "Other (select if unsure)",
                 labelQ2: "2. Why did you pay them?",
                 opt21: "Consulting / Professional Services",
                 opt22: "Design / Development",
                 opt23: "Rent",
                 opt24: "Award / Prize",
-                opt25: "Other",
+                opt25: "Other (select if unsure)",
                 labelQ3: "3. How did you pay them?",
                 opt31: "Bank Transfer / Wire",
                 opt32: "Check",
                 opt33: "PayPal / Venmo / Zelle",
-                opt34: "Other",
+                opt34: "Other (select if unsure)",
                 btnContinue: "Continue",
                 timeEstimate: "Most users complete this in 5-10 minutes"
             },
             zh: {
+                stepInfo: "第 1 步（共 3 步）",
+                stepTitle: "确认付款情况",
                 pageTitle: "开始你的 1099 申报",
                 pageSubtitle: "只需几分钟。我们会根据你的付款情况，自动匹配并提交正确的 IRS 税表。<br>你无需选择或了解税表类型。",
                 infoTitle1: "你现在正在做什么",
@@ -293,151 +345,3 @@
                     "我们会自动判断应使用的税表类型",
                     "你无需了解或选择任何税表编号"
                 ],
-                infoTitle2: "接下来我们会问你什么",
-                infoText: "整个流程只会询问以下三类信息：",
-                infoList2: [
-                    "你付钱给谁（个人 / 公司 / 平台）",
-                    "你为什么付这笔钱（服务费、租金、奖励等）",
-                    "这笔钱是怎么支付的（银行转账、支票或第三方平台）"
-                ],
-                formTitle: "现在开始",
-                labelQ1: "1. 你付钱给谁？",
-                opt11: "个人 / 自由职业者",
-                opt12: "公司 / 企业",
-                opt13: "平台（Upwork、Fiverr 等）",
-                labelQ2: "2. 你为什么付钱给他们？",
-                opt21: "咨询 / 专业服务",
-                opt22: "设计 / 开发",
-                opt23: "租金",
-                opt24: "奖励 / 奖金",
-                opt25: "其他",
-                labelQ3: "3. 你怎么付款的？",
-                opt31: "银行转账 / 电汇",
-                opt32: "支票",
-                opt33: "PayPal / Venmo / Zelle",
-                opt34: "其他",
-                btnContinue: "继续",
-                timeEstimate: "大多数用户可在 5-10 分钟内完成"
-            },
-            es: {
-                pageTitle: "Comienza tu Declaración 1099",
-                pageSubtitle: "Solo toma unos minutos. Emparejaremos y enviaremos automáticamente los formularios IRS correctos según tus detalles de pago.<br>No necesitas elegir ni entender los tipos de formularios.",
-                infoTitle1: "Lo que estás haciendo ahora",
-                infoList1: [
-                    "Generando declaración IRS 1099 para la información de pago de este año",
-                    "Seleccionaremos automáticamente el tipo de formulario correcto",
-                    "No necesitas entender ni elegir ningún número de formulario"
-                ],
-                infoTitle2: "Lo que te preguntaremos",
-                infoText: "Solo preguntaremos 3 tipos de información:",
-                infoList2: [
-                    "A quién pagaste (individual / empresa / plataforma)",
-                    "Por qué pagaste (tarifa de servicio, alquiler, premio, etc.)",
-                    "Cómo pagaste (transferencia bancaria, cheque, plataforma de terceros)"
-                ],
-                formTitle: "Comencemos",
-                labelQ1: "1. ¿A quién pagaste?",
-                opt11: "Individual / Freelancer",
-                opt12: "Empresa / Negocio",
-                opt13: "Plataforma (Upwork, Fiverr, etc.)",
-                labelQ2: "2. ¿Por qué les pagaste?",
-                opt21: "Consultoría / Servicios Profesionales",
-                opt22: "Diseño / Desarrollo",
-                opt23: "Alquiler",
-                opt24: "Premio / Recompensa",
-                opt25: "Otro",
-                labelQ3: "3. ¿Cómo les pagaste?",
-                opt31: "Transferencia Bancaria / Wire",
-                opt32: "Cheque",
-                opt33: "PayPal / Venmo / Zelle",
-                opt34: "Otro",
-                btnContinue: "Continuar",
-                timeEstimate: "La mayoría de los usuarios completan esto en 5-10 minutos"
-            }
-        };
-
-        function switchLanguage(lang) {
-            const t = translations[lang];
-            
-            document.querySelectorAll('.language-switcher button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.getElementById('btn-' + lang).classList.add('active');
-            
-            document.getElementById('page-title').textContent = t.pageTitle;
-            document.getElementById('page-subtitle').innerHTML = t.pageSubtitle;
-            document.getElementById('info-title-1').textContent = t.infoTitle1;
-            document.getElementById('info-title-2').textContent = t.infoTitle2;
-            document.getElementById('info-text').textContent = t.infoText;
-            document.getElementById('form-title').textContent = t.formTitle;
-            document.getElementById('label-q1').textContent = t.labelQ1;
-            document.getElementById('label-q2').textContent = t.labelQ2;
-            document.getElementById('label-q3').textContent = t.labelQ3;
-            document.getElementById('opt1-1').textContent = t.opt11;
-            document.getElementById('opt1-2').textContent = t.opt12;
-            document.getElementById('opt1-3').textContent = t.opt13;
-            document.getElementById('opt2-1').textContent = t.opt21;
-            document.getElementById('opt2-2').textContent = t.opt22;
-            document.getElementById('opt2-3').textContent = t.opt23;
-            document.getElementById('opt2-4').textContent = t.opt24;
-            document.getElementById('opt2-5').textContent = t.opt25;
-            document.getElementById('opt3-1').textContent = t.opt31;
-            document.getElementById('opt3-2').textContent = t.opt32;
-            document.getElementById('opt3-3').textContent = t.opt33;
-            document.getElementById('opt3-4').textContent = t.opt34;
-            document.getElementById('btn-continue').textContent = t.btnContinue;
-            document.getElementById('time-estimate').textContent = t.timeEstimate;
-            
-            const list1 = document.getElementById('info-list-1');
-            list1.innerHTML = '';
-            t.infoList1.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                list1.appendChild(li);
-            });
-            
-            const list2 = document.getElementById('info-list-2');
-            list2.innerHTML = '';
-            t.infoList2.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                list2.appendChild(li);
-            });
-            
-            localStorage.setItem('preferredLanguage', lang);
-        }
-
-        function checkForm() {
-            const q1 = document.getElementById('q1').value;
-            const q2 = document.getElementById('q2').value;
-            const q3 = document.getElementById('q3').value;
-            
-            const btn = document.getElementById('btn-continue');
-            if (q1 && q2 && q3) {
-                btn.disabled = false;
-            } else {
-                btn.disabled = true;
-            }
-        }
-
-        function goToPayment() {
-            const q1 = document.getElementById('q1').value;
-            const q2 = document.getElementById('q2').value;
-            const q3 = document.getElementById('q3').value;
-            
-            // 保存用户选择到 localStorage
-            localStorage.setItem('filingData', JSON.stringify({ q1, q2, q3 }));
-            
-            // 跳转到付费页面
-            window.location.href = 'payment.html';
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferredLanguage');
-            if (savedLang && translations[savedLang]) {
-                switchLanguage(savedLang);
-            }
-        });
-    </script>
-</body>
-</html>

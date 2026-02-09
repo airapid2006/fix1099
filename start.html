@@ -69,11 +69,6 @@
             color: #1a202c;
             margin-bottom: 16px;
         }
-        .header p {
-            font-size: 18px;
-            color: #4a5568;
-            line-height: 1.8;
-        }
         
         .info-section {
             background: white;
@@ -98,11 +93,11 @@
             align-items: flex-start;
         }
         .info-section li::before {
-            content: "•";
+            content: "✔";
             color: #3b82f6;
             font-weight: bold;
             margin-right: 12px;
-            font-size: 20px;
+            font-size: 18px;
         }
         
         .form-section {
@@ -181,13 +176,6 @@
             transform: none;
         }
         
-        .time-estimate {
-            text-align: center;
-            color: #718096;
-            font-size: 14px;
-            margin-top: 16px;
-        }
-        
         @media (max-width: 768px) {
             .container {
                 margin: 60px auto 40px;
@@ -215,29 +203,14 @@
         </div>
 
         <div class="header">
-            <h1 id="page-title">Start Your 1099 Filing</h1>
-            <p id="page-subtitle">
-                It only takes a few minutes. We'll automatically match and submit the correct IRS forms based on your payment details.<br>
-                You don't need to choose or understand form types.
-            </p>
+            <h1 id="page-title">Proceed with Filing Preparation</h1>
         </div>
 
         <div class="info-section">
-            <h3 id="info-title-1">What you're doing now</h3>
-            <ul id="info-list-1">
-                <li>Generating IRS 1099 filing for this year's payment information</li>
-                <li>We'll automatically select the correct form type</li>
-                <li>You don't need to understand or choose any form numbers</li>
-            </ul>
-        </div>
-
-        <div class="info-section">
-            <h3 id="info-title-2">What we'll ask you</h3>
-            <p style="color: #4a5568; margin-bottom: 16px;" id="info-text">We'll only ask 3 types of information:</p>
-            <ul id="info-list-2">
-                <li>Who did you pay (individual / company / platform)</li>
-                <li>Why did you pay (service fee, rent, award, etc.)</li>
-                <li>How did you pay (bank transfer, check, third-party platform)</li>
+            <h3 id="info-title">What the system is doing in the background</h3>
+            <ul id="info-list">
+                <li>Verifying the correct compliance filing workflow for your situation</li>
+                <li>Checking IRS submission rules and reporting thresholds</li>
             </ul>
         </div>
 
@@ -285,7 +258,6 @@
             <button class="btn-continue" id="btn-continue" onclick="goToPayment()" disabled>
                 Continue
             </button>
-            <p class="time-estimate" id="time-estimate">Most users complete this in 5-10 minutes</p>
         </div>
     </div>
 
@@ -294,80 +266,50 @@
             en: {
                 stepInfo: "Step 1 of 3",
                 stepTitle: "Confirm Payment Details",
-                pageTitle: "Start Your 1099 Filing",
-                pageSubtitle: "It only takes a few minutes. We'll automatically match and submit the correct IRS forms based on your payment details.<br>You don't need to choose or understand form types.",
-                infoTitle1: "What you're doing now",
-                infoList1: [
-                    "Generating IRS 1099 filing for this year's payment information",
-                    "We'll automatically select the correct form type",
-                    "You don't need to understand or choose any form numbers"
-                ],
-                infoTitle2: "What we'll ask you",
-                infoText: "We'll only ask 3 types of information:",
-                infoList2: [
-                    "Who did you pay (individual / company / platform)",
-                    "Why did you pay (service fee, rent, award, etc.)",
-                    "How did you pay (bank transfer, check, third-party platform)"
+                pageTitle: "Proceed with Filing Preparation",
+                infoTitle: "What the system is doing in the background",
+                infoList: [
+                    "Verifying the correct compliance filing workflow for your situation",
+                    "Checking IRS submission rules and reporting thresholds"
                 ],
                 formTitle: "Let's get started",
                 importantNote: "The following questions relate to money you <strong>paid out</strong>, not income you received.",
                 labelQ1: "1. Who did you pay?",
                 labelQ2: "2. Why did you pay them?",
                 labelQ3: "3. How did you pay them?",
-                btnContinue: "Continue",
-                timeEstimate: "Most users complete this in 5-10 minutes"
+                btnContinue: "Continue"
             },
             zh: {
                 stepInfo: "第 1 步（共 3 步）",
                 stepTitle: "确认付款情况",
-                pageTitle: "开始你的 1099 申报",
-                pageSubtitle: "只需几分钟。我们会根据你的付款情况，自动匹配并提交正确的 IRS 税表。<br>你无需选择或了解税表类型。",
-                infoTitle1: "你现在正在做什么",
-                infoList1: [
-                    "为今年的付款信息生成 IRS 1099 申报",
-                    "我们会自动判断应使用的税表类型",
-                    "你无需了解或选择任何税表编号"
-                ],
-                infoTitle2: "接下来我们会问你什么",
-                infoText: "整个流程只会询问以下三类信息：",
-                infoList2: [
-                    "你付钱给谁（个人 / 公司 / 平台）",
-                    "你为什么付这笔钱（服务费、租金、奖励等）",
-                    "这笔钱是怎么支付的（银行转账、支票或第三方平台）"
+                pageTitle: "开始准备申报",
+                infoTitle: "系统正在后台执行",
+                infoList: [
+                    "验证适合你情况的合规申报流程",
+                    "检查 IRS 提交规则和申报门槛"
                 ],
                 formTitle: "现在开始",
                 importantNote: "以下问题只涉及你<strong>付出去的钱</strong>，不包括你自己收到的收入。",
                 labelQ1: "1. 你付钱给谁？",
                 labelQ2: "2. 你为什么付钱给他们？",
                 labelQ3: "3. 你怎么付款的？",
-                btnContinue: "继续",
-                timeEstimate: "大多数用户可在 5-10 分钟内完成"
+                btnContinue: "继续"
             },
             es: {
                 stepInfo: "Paso 1 de 3",
                 stepTitle: "Confirmar Detalles de Pago",
-                pageTitle: "Comienza tu Declaración 1099",
-                pageSubtitle: "Solo toma unos minutos. Emparejaremos y enviaremos automáticamente los formularios IRS correctos según tus detalles de pago.<br>No necesitas elegir ni entender los tipos de formularios.",
-                infoTitle1: "Lo que estás haciendo ahora",
-                infoList1: [
-                    "Generando declaración IRS 1099 para la información de pago de este año",
-                    "Seleccionaremos automáticamente el tipo de formulario correcto",
-                    "No necesitas entender ni elegir ningún número de formulario"
-                ],
-                infoTitle2: "Lo que te preguntaremos",
-                infoText: "Solo preguntaremos 3 tipos de información:",
-                infoList2: [
-                    "A quién pagaste (individual / empresa / plataforma)",
-                    "Por qué pagaste (tarifa de servicio, alquiler, premio, etc.)",
-                    "Cómo pagaste (transferencia bancaria, cheque, plataforma de terceros)"
+                pageTitle: "Continuar con la Preparación de la Presentación",
+                infoTitle: "Lo que el sistema está haciendo en segundo plano",
+                infoList: [
+                    "Verificando el flujo de trabajo de presentación de cumplimiento correcto para su situación",
+                    "Verificando las reglas de presentación del IRS y los umbrales de informes"
                 ],
                 formTitle: "Comencemos",
                 importantNote: "Las siguientes preguntas se refieren al dinero que <strong>pagaste</strong>, no a los ingresos que recibiste.",
                 labelQ1: "1. ¿A quién pagaste?",
                 labelQ2: "2. ¿Por qué les pagaste?",
                 labelQ3: "3. ¿Cómo les pagaste?",
-                btnContinue: "Continuar",
-                timeEstimate: "La mayoría de los usuarios completan esto en 5-10 minutos"
+                btnContinue: "Continuar"
             }
         };
 
@@ -382,32 +324,20 @@
             document.getElementById('step-info').textContent = t.stepInfo;
             document.getElementById('step-title').textContent = t.stepTitle;
             document.getElementById('page-title').textContent = t.pageTitle;
-            document.getElementById('page-subtitle').innerHTML = t.pageSubtitle;
-            document.getElementById('info-title-1').textContent = t.infoTitle1;
-            document.getElementById('info-title-2').textContent = t.infoTitle2;
-            document.getElementById('info-text').textContent = t.infoText;
+            document.getElementById('info-title').textContent = t.infoTitle;
             document.getElementById('form-title').textContent = t.formTitle;
             document.getElementById('important-note').innerHTML = t.importantNote;
             document.getElementById('label-q1').textContent = t.labelQ1;
             document.getElementById('label-q2').textContent = t.labelQ2;
             document.getElementById('label-q3').textContent = t.labelQ3;
             document.getElementById('btn-continue').textContent = t.btnContinue;
-            document.getElementById('time-estimate').textContent = t.timeEstimate;
             
-            const list1 = document.getElementById('info-list-1');
-            list1.innerHTML = '';
-            t.infoList1.forEach(item => {
+            const list = document.getElementById('info-list');
+            list.innerHTML = '';
+            t.infoList.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = item;
-                list1.appendChild(li);
-            });
-            
-            const list2 = document.getElementById('info-list-2');
-            list2.innerHTML = '';
-            t.infoList2.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                list2.appendChild(li);
+                list.appendChild(li);
             });
             
             localStorage.setItem('preferredLanguage', lang);
@@ -431,34 +361,27 @@
             const q2 = document.getElementById('q2').value;
             const q3 = document.getElementById('q3').value;
             
-            // 🎯 自动判断逻辑
             let formType = "";
             let needsForm = true;
             
-            // 规则 1：付给公司或平台 → 不需要报 1099
             if (q1 === "company" || q1 === "platform") {
                 needsForm = false;
                 formType = "No 1099 needed";
             }
-            // 规则 2：付给个人 + 租金 → 1099-MISC
             else if (q1 === "individual" && q2 === "rent") {
                 formType = "1099-MISC";
             }
-            // 规则 3：付给个人 + 其他 → 1099-NEC（默认）
             else if (q1 === "individual") {
                 formType = "1099-NEC";
             }
-            // 兜底
             else {
                 formType = "1099-NEC";
             }
             
-            // 保存数据
             localStorage.setItem('filingData', JSON.stringify({ 
                 q1, q2, q3, formType, needsForm 
             }));
             
-            // 跳转到付费页面
             window.location.href = 'payment.html';
         }
 

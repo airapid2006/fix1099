@@ -9,7 +9,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #2d3748; background: #f7fafc; }
         
-        /* 语言切换器 */
         .language-switcher {
             position: fixed;
             top: 20px;
@@ -31,28 +30,36 @@
             margin: 0 5px;
             transition: color 0.3s;
         }
-        .language-switcher button:hover {
-            color: #3b82f6;
-        }
+        .language-switcher button:hover { color: #3b82f6; }
         .language-switcher button.active {
             color: #3b82f6;
             border-bottom: 2px solid #3b82f6;
         }
         
-        /* Hero 区域 */
         .hero { 
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%); 
             color: white; 
             text-align: center; 
-            padding: 80px 20px 60px; 
+            padding: 120px 20px 100px; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 700; margin-bottom: 16px; }
-        .hero .subtitle { font-size: clamp(16px, 3vw, 22px); opacity: 0.95; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero h1 { font-size: clamp(40px, 6vw, 64px); font-weight: 700; margin-bottom: 24px; }
+        .hero .subtitle { 
+            font-size: clamp(18px, 3vw, 24px); 
+            opacity: 0.95; 
+            margin-bottom: 48px; 
+            max-width: 700px; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
         
         .btn-hero { 
             display: inline-block; 
-            padding: 18px 60px; 
-            font-size: 20px; 
+            padding: 20px 80px; 
+            font-size: 22px; 
             font-weight: 600; 
             background: white; 
             color: #1e40af; 
@@ -62,6 +69,7 @@
             cursor: pointer; 
             transition: all 0.3s ease; 
             text-decoration: none;
+            margin-bottom: 40px;
         }
         .btn-hero:hover { 
             transform: translateY(-3px); 
@@ -69,132 +77,14 @@
             background: #f0f9ff;
         }
         
-        .trust-badges { margin-top: 30px; font-size: 14px; opacity: 0.95; }
-        .trust-badges span { margin: 0 15px; display: inline-block; }
-        
-        /* Pricing 区域 */
-        .pricing-section { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
-        .pricing-header { text-align: center; margin-bottom: 48px; }
-        .pricing-header h2 { font-size: 36px; color: #1a202c; margin-bottom: 12px; }
-        .pricing-header p { font-size: 18px; color: #718096; }
-        
-        .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px; }
-        
-        .pricing-card { 
-            background: white; 
-            padding: 40px 32px; 
-            border-radius: 16px; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
-            position: relative;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-        .pricing-card:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            border-color: #3b82f6;
-        }
-        
-        .pricing-card.featured { 
-            border: 2px solid #3b82f6;
-            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
-        }
-        .pricing-card.featured .badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            color: white;
-            padding: 6px 24px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        .card-header h3 { font-size: 24px; color: #1a202c; margin-bottom: 8px; }
-        .card-header p { font-size: 14px; color: #718096; margin-bottom: 24px; }
-        
-        .price { margin-bottom: 24px; }
-        .price .amount { font-size: 48px; font-weight: 700; color: #1e40af; }
-        .price .period { font-size: 16px; color: #718096; }
-        
-        .features { margin-bottom: 32px; }
-        .features ul { list-style: none; }
-        .features li { padding: 12px 0; border-bottom: 1px solid #e2e8f0; color: #4a5568; display: flex; align-items: flex-start; }
-        .features li:last-child { border-bottom: none; }
-        .features li::before { content: "✓"; color: #3b82f6; font-weight: bold; margin-right: 12px; font-size: 18px; }
-        
-        .btn-pricing { 
-            display: block; 
-            width: 100%; 
-            padding: 16px; 
+        .trust-badges { 
+            margin-top: 20px; 
             font-size: 16px; 
-            font-weight: 600; 
-            background: #3b82f6; 
-            color: white; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
+            opacity: 0.95; 
         }
-        .btn-pricing:hover { 
-            background: #2563eb; 
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-        }
-        
-        .fine-print { 
-            margin-top: 16px; 
-            font-size: 12px; 
-            color: #a0aec0; 
-            line-height: 1.5;
-        }
-        
-        .explainer { 
-            max-width: 800px; 
-            margin: 60px auto 40px; 
-            padding: 32px; 
-            background: white; 
-            border-radius: 16px; 
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-        }
-        .explainer h3 { 
-            font-size: 20px; 
-            color: #1a202c; 
-            margin-bottom: 16px;
-        }
-        .explainer p { 
-            font-size: 16px; 
-            color: #4a5568; 
-            line-height: 1.8;
-        }
-        
-        .legal { 
-            max-width: 900px; 
-            margin: 40px auto 60px; 
-            padding: 24px 32px; 
-            background: #edf2f7; 
-            border-radius: 12px;
-            font-size: 13px;
-            color: #4a5568;
-            line-height: 1.8;
-        }
-        .legal h4 { 
-            font-size: 14px; 
-            font-weight: 600; 
-            margin-bottom: 12px;
-            color: #2d3748;
-        }
-        .legal ul { 
-            list-style: disc; 
-            margin-left: 20px;
-        }
-        .legal li { 
-            margin-bottom: 8px;
+        .trust-badges span { 
+            margin: 0 20px; 
+            display: inline-block; 
         }
         
         .footer { 
@@ -212,7 +102,6 @@
         }
 
         @media (max-width: 768px) {
-            .pricing-cards { grid-template-columns: 1fr; }
             .language-switcher {
                 top: 10px;
                 right: 10px;
@@ -223,25 +112,31 @@
                 padding: 4px 6px;
                 margin: 0 3px;
             }
+            .btn-hero {
+                padding: 16px 50px;
+                font-size: 18px;
+            }
+            .trust-badges span {
+                display: block;
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 语言切换器 -->
     <div class="language-switcher">
         <button onclick="switchLanguage('en')" id="btn-en" class="active">English</button>
         <button onclick="switchLanguage('zh')" id="btn-zh">中文</button>
         <button onclick="switchLanguage('es')" id="btn-es">Español</button>
     </div>
 
-    <!-- Hero Section -->
     <div class="hero">
         <h1 id="hero-title">1099 Filing Made Simple</h1>
         <p class="subtitle" id="hero-subtitle">
             No need to understand tax form numbers<br>
             We automatically match and submit the correct IRS forms
         </p>
-        <a href="#pricing" class="btn-hero" id="hero-cta">View Pricing</a>
+        <a href="start.html" class="btn-hero" id="hero-cta">Get Started</a>
         <div class="trust-badges">
             <span id="badge-1">✓ Electronic IRS filing</span>
             <span id="badge-2">✓ Auto-generate Recipient Copy</span>
@@ -249,94 +144,6 @@
         </div>
     </div>
 
-    <!-- Pricing Section -->
-    <div class="pricing-section" id="pricing">
-        <div class="pricing-header">
-            <h2 id="pricing-title">Simple, Transparent, No Hidden Fees</h2>
-            <p id="pricing-subtitle">Just to help you get 1099 done right, once and for all</p>
-        </div>
-
-        <div class="pricing-cards">
-            <!-- Annual Plan -->
-            <div class="pricing-card featured">
-                <span class="badge" id="popular-badge">MOST POPULAR ⭐</span>
-                <div class="card-header">
-                    <h3 id="annual-title">Annual Plan</h3>
-                    <p id="annual-desc">For individuals and small businesses who need year-round peace of mind</p>
-                </div>
-                <div class="price">
-                    <span class="amount">$199.99</span>
-                    <span class="period">/ year</span>
-                </div>
-                <div class="features">
-                    <ul id="annual-features">
-                        <li>Unlimited 1099 filings (NEC / MISC)</li>
-                        <li>Automated W-9 collection & management</li>
-                        <li>Auto-match correct IRS forms</li>
-                        <li>Electronic IRS filing</li>
-                        <li>Corrections / re-filings at no extra cost</li>
-                        <li>Filing receipts saved all year</li>
-                        <li>State filing reminders (if applicable)</li>
-                    </ul>
-                </div>
-                <a href="https://buy.stripe.com/test_3cIfZhftf9ryewcgt98bS03" class="btn-pricing" id="annual-cta">Get Started</a>
-                <div class="fine-print" id="annual-policy">
-                    Cancel anytime. Subscription remains active until the end of the billing period. No refunds for fees already paid.
-                </div>
-            </div>
-
-            <!-- Single Filing -->
-            <div class="pricing-card">
-                <div class="card-header">
-                    <h3 id="single-title">Single Filing</h3>
-                    <p id="single-desc">For users who only need to file once</p>
-                </div>
-                <div class="price">
-                    <span class="amount">$59.99</span>
-                    <span class="period">/ one-time</span>
-                </div>
-                <div class="features">
-                    <ul id="single-features">
-                        <li>Single 1099 filing</li>
-                        <li>W-9 collection (this filing only)</li>
-                        <li>Auto-match correct IRS forms</li>
-                        <li>Electronic IRS filing</li>
-                        <li>Recipient Copy download</li>
-                        <li>Filing receipt</li>
-                    </ul>
-                </div>
-                <a href="https://buy.stripe.com/test_3cIfZhftf9ryewcgt98bS03" class="btn-pricing" id="single-cta">File Once</a>
-                <div class="fine-print" id="single-policy">
-                    Limited to one filing batch. Corrections or additional filings require new payment.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Explainer -->
-    <div class="explainer">
-        <h3 id="explainer-title">You don't need to understand tax form numbers</h3>
-        <p id="explainer-text">
-            We'll automatically match and submit the correct IRS forms based on your payment details.<br>
-            No need to choose or understand form types.
-        </p>
-    </div>
-
-    <!-- Legal -->
-    <div class="legal">
-        <h4 id="legal-title">Important Information</h4>
-        <ul id="legal-list">
-            <li>This is an Information Return Filing service</li>
-            <li>Does not provide personal tax filing, refunds, or tax advice</li>
-            <li>Tax documents are considered delivered once generated or filed</li>
-            <li>All fees are non-refundable</li>
-        </ul>
-        <p style="margin-top: 16px;" id="legal-contact">
-            <strong>Still not sure?</strong> If you have complex or business compliance needs, <a href="mailto:support@fix1099.com">contact us</a>.
-        </p>
-    </div>
-
-    <!-- Footer -->
     <div class="footer">
         <p>© 2025 Fix1099. All rights reserved.</p>
         <p style="margin-top: 8px;">
@@ -345,211 +152,51 @@
     </div>
 
     <script>
-        // 翻译内容
         const translations = {
             en: {
                 heroTitle: "1099 Filing Made Simple",
                 heroSubtitle: "No need to understand tax form numbers<br>We automatically match and submit the correct IRS forms",
-                heroCta: "View Pricing",
+                heroCta: "Get Started",
                 badge1: "✓ Electronic IRS filing",
                 badge2: "✓ Auto-generate Recipient Copy",
-                badge3: "✓ Filing receipt saved",
-                pricingTitle: "Simple, Transparent, No Hidden Fees",
-                pricingSubtitle: "Just to help you get 1099 done right, once and for all",
-                popularBadge: "MOST POPULAR ⭐",
-                annualTitle: "Annual Plan",
-                annualDesc: "For individuals and small businesses who need year-round peace of mind",
-                annualFeatures: [
-                    "Unlimited 1099 filings (NEC / MISC)",
-                    "Automated W-9 collection & management",
-                    "Auto-match correct IRS forms",
-                    "Electronic IRS filing",
-                    "Corrections / re-filings at no extra cost",
-                    "Filing receipts saved all year",
-                    "State filing reminders (if applicable)"
-                ],
-                annualCta: "Get Started",
-                annualPolicy: "Cancel anytime. Subscription remains active until the end of the billing period. No refunds for fees already paid.",
-                singleTitle: "Single Filing",
-                singleDesc: "For users who only need to file once",
-                singleFeatures: [
-                    "Single 1099 filing",
-                    "W-9 collection (this filing only)",
-                    "Auto-match correct IRS forms",
-                    "Electronic IRS filing",
-                    "Recipient Copy download",
-                    "Filing receipt"
-                ],
-                singleCta: "File Once",
-                singlePolicy: "Limited to one filing batch. Corrections or additional filings require new payment.",
-                explainerTitle: "You don't need to understand tax form numbers",
-                explainerText: "We'll automatically match and submit the correct IRS forms based on your payment details.<br>No need to choose or understand form types.",
-                legalTitle: "Important Information",
-                legalList: [
-                    "This is an Information Return Filing service",
-                    "Does not provide personal tax filing, refunds, or tax advice",
-                    "Tax documents are considered delivered once generated or filed",
-                    "All fees are non-refundable"
-                ],
-                legalContact: '<strong>Still not sure?</strong> If you have complex or business compliance needs, <a href="mailto:support@fix1099.com">contact us</a>.'
+                badge3: "✓ Filing receipt saved"
             },
             zh: {
                 heroTitle: "1099 申报，一次搞定",
                 heroSubtitle: "不需要懂税表号码<br>我们自动匹配正确的 IRS 税表并提交",
-                heroCta: "查看价格",
+                heroCta: "立即开始",
                 badge1: "✓ 电子提交 IRS",
                 badge2: "✓ 自动生成 Recipient Copy",
-                badge3: "✓ 提交回执保存",
-                pricingTitle: "简单、透明、没有隐藏费用",
-                pricingSubtitle: "只为帮你把 1099 一次性做对",
-                popularBadge: "最受欢迎 ⭐",
-                annualTitle: "年费计划",
-                annualDesc: "适合需要全年安心的个人与小商家",
-                annualFeatures: [
-                    "不限次数 1099 申报（NEC / MISC）",
-                    "W-9 自动收集与管理",
-                    "自动匹配正确 IRS 税表",
-                    "电子提交 IRS",
-                    "更正 / 重提不额外收费",
-                    "提交回执全年保存",
-                    "州级申报需求提醒（如适用）"
-                ],
-                annualCta: "立即开始",
-                annualPolicy: "可随时取消。订阅将持续到当前计费周期结束。已支付费用不退款。",
-                singleTitle: "单次申报",
-                singleDesc: "适合只需申报一次的用户",
-                singleFeatures: [
-                    "单次 1099 申报",
-                    "W-9 收集（本次）",
-                    "自动匹配正确 IRS 税表",
-                    "电子提交 IRS",
-                    "Recipient Copy 下载",
-                    "提交回执"
-                ],
-                singleCta: "单次申报",
-                singlePolicy: "仅限一次申报批次。更正或追加申报需再次付费。",
-                explainerTitle: "你无需了解税表号码",
-                explainerText: "我们会根据你的付款情况，自动匹配正确的 IRS 税表并提交。<br>无需选择或了解税表类型。",
-                legalTitle: "重要说明",
-                legalList: [
-                    "本服务为信息申报服务（Information Return Filing）",
-                    "不提供个人报税、退税或税务建议",
-                    "税务文件一经生成或提交，即视为服务已履行",
-                    "所有费用均不可退款"
-                ],
-                legalContact: '<strong>还不确定？</strong>如有复杂或企业合规需求，<a href="mailto:support@fix1099.com">联系我们</a>。'
+                badge3: "✓ 提交回执保存"
             },
             es: {
                 heroTitle: "Declaración 1099 Simplificada",
                 heroSubtitle: "No necesitas entender los números de formularios fiscales<br>Emparejamos y enviamos automáticamente los formularios IRS correctos",
-                heroCta: "Ver Precios",
+                heroCta: "Comenzar",
                 badge1: "✓ Presentación electrónica IRS",
                 badge2: "✓ Copia para destinatario generada automáticamente",
-                badge3: "✓ Recibo de presentación guardado",
-                pricingTitle: "Simple, Transparente, Sin Tarifas Ocultas",
-                pricingSubtitle: "Solo para ayudarte a hacer el 1099 correctamente, de una vez",
-                popularBadge: "MÁS POPULAR ⭐",
-                annualTitle: "Plan Anual",
-                annualDesc: "Para individuos y pequeñas empresas que necesitan tranquilidad durante todo el año",
-                annualFeatures: [
-                    "Presentaciones 1099 ilimitadas (NEC / MISC)",
-                    "Recopilación y gestión automática de W-9",
-                    "Emparejamiento automático de formularios IRS correctos",
-                    "Presentación electrónica IRS",
-                    "Correcciones / re-presentaciones sin costo adicional",
-                    "Recibos de presentación guardados todo el año",
-                    "Recordatorios de presentación estatal (si aplica)"
-                ],
-                annualCta: "Comenzar",
-                annualPolicy: "Cancelar en cualquier momento. La suscripción permanece activa hasta el final del período de facturación. No hay reembolsos por tarifas ya pagadas.",
-                singleTitle: "Presentación Única",
-                singleDesc: "Para usuarios que solo necesitan presentar una vez",
-                singleFeatures: [
-                    "Presentación única de 1099",
-                    "Recopilación de W-9 (solo esta presentación)",
-                    "Emparejamiento automático de formularios IRS correctos",
-                    "Presentación electrónica IRS",
-                    "Descarga de copia para destinatario",
-                    "Recibo de presentación"
-                ],
-                singleCta: "Presentar Una Vez",
-                singlePolicy: "Limitado a un lote de presentación. Correcciones o presentaciones adicionales requieren un nuevo pago.",
-                explainerTitle: "No necesitas entender los números de formularios fiscales",
-                explainerText: "Emparejaremos y enviaremos automáticamente los formularios IRS correctos según tus detalles de pago.<br>No necesitas elegir ni entender los tipos de formularios.",
-                legalTitle: "Información Importante",
-                legalList: [
-                    "Este es un servicio de presentación de declaración informativa",
-                    "No proporciona declaración de impuestos personal, reembolsos o asesoramiento fiscal",
-                    "Los documentos fiscales se consideran entregados una vez generados o presentados",
-                    "Todas las tarifas no son reembolsables"
-                ],
-                legalContact: '<strong>¿Aún no estás seguro?</strong> Si tienes necesidades complejas o de cumplimiento empresarial, <a href="mailto:support@fix1099.com">contáctanos</a>.'
+                badge3: "✓ Recibo de presentación guardado"
             }
         };
 
-        // 切换语言函数
         function switchLanguage(lang) {
             const t = translations[lang];
             
-            // 更新按钮状态
             document.querySelectorAll('.language-switcher button').forEach(btn => {
                 btn.classList.remove('active');
             });
             document.getElementById('btn-' + lang).classList.add('active');
             
-            // 更新内容
             document.getElementById('hero-title').innerHTML = t.heroTitle;
             document.getElementById('hero-subtitle').innerHTML = t.heroSubtitle;
             document.getElementById('hero-cta').textContent = t.heroCta;
             document.getElementById('badge-1').textContent = t.badge1;
             document.getElementById('badge-2').textContent = t.badge2;
             document.getElementById('badge-3').textContent = t.badge3;
-            document.getElementById('pricing-title').textContent = t.pricingTitle;
-            document.getElementById('pricing-subtitle').textContent = t.pricingSubtitle;
-            document.getElementById('popular-badge').textContent = t.popularBadge;
-            document.getElementById('annual-title').textContent = t.annualTitle;
-            document.getElementById('annual-desc').textContent = t.annualDesc;
-            document.getElementById('annual-cta').textContent = t.annualCta;
-            document.getElementById('annual-policy').textContent = t.annualPolicy;
-            document.getElementById('single-title').textContent = t.singleTitle;
-            document.getElementById('single-desc').textContent = t.singleDesc;
-            document.getElementById('single-cta').textContent = t.singleCta;
-            document.getElementById('single-policy').textContent = t.singlePolicy;
-            document.getElementById('explainer-title').textContent = t.explainerTitle;
-            document.getElementById('explainer-text').innerHTML = t.explainerText;
-            document.getElementById('legal-title').textContent = t.legalTitle;
-            document.getElementById('legal-contact').innerHTML = t.legalContact;
             
-            // 更新列表
-            const annualList = document.getElementById('annual-features');
-            annualList.innerHTML = '';
-            t.annualFeatures.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                annualList.appendChild(li);
-            });
-            
-            const singleList = document.getElementById('single-features');
-            singleList.innerHTML = '';
-            t.singleFeatures.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                singleList.appendChild(li);
-            });
-            
-            const legalList = document.getElementById('legal-list');
-            legalList.innerHTML = '';
-            t.legalList.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                legalList.appendChild(li);
-            });
-            
-            // 保存语言偏好
             localStorage.setItem('preferredLanguage', lang);
         }
 
-        // 页面加载时检查语言偏好
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferredLanguage');
             if (savedLang && translations[savedLang]) {

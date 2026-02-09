@@ -79,6 +79,15 @@
             margin-right: 12px;
             font-size: 20px;
         }
+        .confirmation-box .form-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 18px;
+            margin-left: 8px;
+        }
         
         .pricing-section {
             margin-bottom: 48px;
@@ -231,10 +240,13 @@
 
         <div class="confirmation-box">
             <h2 id="confirm-title">Great! Here's what we've confirmed:</h2>
-            <ul id="confirm-list">
-                <li>Payment recipient type identified</li>
-                <li>System has matched the correct IRS form</li>
-                <li>Receipt and Recipient Copy will be generated upon submission</li>
+            <ul>
+                <li id="confirm-1">Payment recipient type identified</li>
+                <li id="confirm-2">
+                    <span id="confirm-2-text">System has matched the correct IRS form:</span>
+                    <span class="form-badge" id="form-type-display">1099-NEC</span>
+                </li>
+                <li id="confirm-3">Receipt and Recipient Copy will be generated upon submission</li>
             </ul>
         </div>
 
@@ -302,15 +314,20 @@
     </div>
 
     <script>
+        // 读取系统判断的税表类型
+        const filingData = JSON.parse(localStorage.getItem('filingData') || '{}');
+        const formType = filingData.formType || '1099-NEC';
+        
+        // 显示判断结果
+        document.getElementById('form-type-display').textContent = formType;
+
         const translations = {
             en: {
                 pageTitle: "Almost Done - Complete Your 1099 Filing",
                 confirmTitle: "Great! Here's what we've confirmed:",
-                confirmList: [
-                    "Payment recipient type identified",
-                    "System has matched the correct IRS form",
-                    "Receipt and Recipient Copy will be generated upon submission"
-                ],
+                confirm1: "Payment recipient type identified",
+                confirm2Text: "System has matched the correct IRS form:",
+                confirm3: "Receipt and Recipient Copy will be generated upon submission",
                 pricingTitle: "Choose Your Plan to Complete Filing",
                 popularBadge: "MOST POPULAR ⭐",
                 annualTitle: "Annual Plan",
@@ -342,11 +359,9 @@
             zh: {
                 pageTitle: "即将完成 - 完成你的 1099 申报",
                 confirmTitle: "太好了！以下是我们已确认的信息：",
-                confirmList: [
-                    "已确认收款人类型",
-                    "系统已匹配正确的 IRS 税表",
-                    "提交后将生成回执和 Recipient Copy"
-                ],
+                confirm1: "已确认收款人类型",
+                confirm2Text: "系统已匹配正确的 IRS 税表：",
+                confirm3: "提交后将生成回执和 Recipient Copy",
                 pricingTitle: "选择套餐完成申报",
                 popularBadge: "最受欢迎 ⭐",
                 annualTitle: "年费计划",
@@ -378,11 +393,9 @@
             es: {
                 pageTitle: "Casi Listo - Completa tu Declaración 1099",
                 confirmTitle: "¡Excelente! Esto es lo que hemos confirmado:",
-                confirmList: [
-                    "Tipo de destinatario de pago identificado",
-                    "El sistema ha emparejado el formulario IRS correcto",
-                    "El recibo y la copia para el destinatario se generarán al enviar"
-                ],
+                confirm1: "Tipo de destinatario de pago identificado",
+                confirm2Text: "El sistema ha emparejado el formulario IRS correcto:",
+                confirm3: "El recibo y la copia para el destinatario se generarán al enviar",
                 pricingTitle: "Elige Tu Plan para Completar la Declaración",
                 popularBadge: "MÁS POPULAR ⭐",
                 annualTitle: "Plan Anual",
@@ -423,6 +436,9 @@
             
             document.getElementById('page-title').textContent = t.pageTitle;
             document.getElementById('confirm-title').textContent = t.confirmTitle;
+            document.getElementById('confirm-1').textContent = t.confirm1;
+            document.getElementById('confirm-2-text').textContent = t.confirm2Text;
+            document.getElementById('confirm-3').textContent = t.confirm3;
             document.getElementById('pricing-title').textContent = t.pricingTitle;
             document.getElementById('popular-badge').textContent = t.popularBadge;
             document.getElementById('annual-title').textContent = t.annualTitle;
@@ -433,14 +449,6 @@
             document.getElementById('single-desc').textContent = t.singleDesc;
             document.getElementById('single-cta').textContent = t.singleCta;
             document.getElementById('single-policy').textContent = t.singlePolicy;
-            
-            const confirmList = document.getElementById('confirm-list');
-            confirmList.innerHTML = '';
-            t.confirmList.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = item;
-                confirmList.appendChild(li);
-            });
             
             const annualList = document.getElementById('annual-features');
             annualList.innerHTML = '';

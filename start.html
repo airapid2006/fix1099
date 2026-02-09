@@ -42,24 +42,6 @@
             padding: 0 20px;
         }
         
-        .progress-bar {
-            background: white;
-            padding: 20px 32px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            margin-bottom: 32px;
-        }
-        .progress-bar .step-info {
-            font-size: 14px;
-            color: #718096;
-            margin-bottom: 8px;
-        }
-        .progress-bar .step-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1a202c;
-        }
-        
         .header {
             text-align: center;
             margin-bottom: 48px;
@@ -197,11 +179,6 @@
     </div>
 
     <div class="container">
-        <div class="progress-bar">
-            <div class="step-info" id="step-info">Step 1 of 3</div>
-            <div class="step-title" id="step-title">Confirm Payment Details</div>
-        </div>
-
         <div class="header">
             <h1 id="page-title">Proceed with Filing Preparation</h1>
         </div>
@@ -264,8 +241,6 @@
     <script>
         const translations = {
             en: {
-                stepInfo: "Step 1 of 3",
-                stepTitle: "Confirm Payment Details",
                 pageTitle: "Proceed with Filing Preparation",
                 infoTitle: "What the system is doing in the background",
                 infoList: [
@@ -280,8 +255,6 @@
                 btnContinue: "Continue"
             },
             zh: {
-                stepInfo: "第 1 步（共 3 步）",
-                stepTitle: "确认付款情况",
                 pageTitle: "开始准备申报",
                 infoTitle: "系统正在后台执行",
                 infoList: [
@@ -296,8 +269,6 @@
                 btnContinue: "继续"
             },
             es: {
-                stepInfo: "Paso 1 de 3",
-                stepTitle: "Confirmar Detalles de Pago",
                 pageTitle: "Continuar con la Preparación de la Presentación",
                 infoTitle: "Lo que el sistema está haciendo en segundo plano",
                 infoList: [
@@ -321,8 +292,6 @@
             });
             document.getElementById('btn-' + lang).classList.add('active');
             
-            document.getElementById('step-info').textContent = t.stepInfo;
-            document.getElementById('step-title').textContent = t.stepTitle;
             document.getElementById('page-title').textContent = t.pageTitle;
             document.getElementById('info-title').textContent = t.infoTitle;
             document.getElementById('form-title').textContent = t.formTitle;

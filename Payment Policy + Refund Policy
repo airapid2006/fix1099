@@ -1,0 +1,23 @@
+<section id="fix1099-policies" style="margin:28px 0;">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+    <img src="/logo.svg" alt="Fix1099" style="width:140px;height:auto;max-height:40px;object-fit:contain;">
+    <span style="font-size:12px;color:#64748b;">Logo placeholder (recommended: 140×40 SVG/PNG)</span>
+  </div>
+
+  <details style="background:#0f172a;color:#cbd5e1;border-radius:12px;padding:14px 16px;margin-bottom:10px;">
+    <summary style="cursor:pointer;font-weight:800;color:#e2e8f0;">Payment Policy</summary>
+    <div style="margin-top:10px;line-height:1.6;font-size:13px;">
+      Payments are processed securely at checkout. Charges follow the plan shown on the pricing page (annual subscription or one-time filing).
+      After payment, we begin the filing workflow and generate your filing outputs (e-file submission steps, recipient copy, and filing receipt).
+    </div>
+  </details>
+
+  <details style="background:#0f172a;color:#cbd5e1;border-radius:12px;padding:14px 16px;">
+    <summary style="cursor:pointer;font-weight:800;color:#e2e8f0;">Refund Policy</summary>
+    <div style="margin-top:10px;line-height:1.6;font-size:13px;">
+      If a filing has already been generated or submitted, the service is considered delivered and fees are non-refundable.
+      If we cannot complete the workflow due to a verified system issue before submission, we will provide a remedy (retry/re-file) and may offer a refund where applicable.
+      Contact support with your order details.
+    </div>
+  </details>
+</section>

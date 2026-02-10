@@ -24,14 +24,17 @@ app.post('/api/evaluate', async (req, res) => {
   }
 });
 
+// 统一错误处理中间件
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
   res.status(500).json({ code: 500, message: 'Unhandled server error' });
 });
 
+// 启动端口
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
 module.exports = app;
+

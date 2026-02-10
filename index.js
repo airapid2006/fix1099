@@ -6,7 +6,6 @@ const { getPolicyEngine } = require('./policies');
 const app = express();
 app.use(express.json());
 
-// 请求示例：{ "userId": "...", "payload": { ... } }
 app.post('/api/evaluate', async (req, res) => {
   try {
     const { userId, payload } = req.body;
@@ -14,7 +13,7 @@ app.post('/api/evaluate', async (req, res) => {
       return res.status(400).json({ code: 400, message: 'Missing userId or payload' });
     }
 
-    const policyEngine = getPolicyEngine(); // 组装策略引擎
+    const policyEngine = getPolicyEngine();
     const result = await evaluate1099(payload, policyEngine);
 
     return res.json({ code: 200, data: result });
@@ -25,13 +24,11 @@ app.post('/api/evaluate', async (req, res) => {
   }
 });
 
-// 统一错误处理（可选增强）
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
   res.status(500).json({ code: 500, message: 'Unhandled server error' });
 });
 
-// 启动端口
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

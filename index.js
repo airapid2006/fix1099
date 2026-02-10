@@ -5,15 +5,14 @@ const { getPolicyEngine } = require('./policies');
 
 const app = express();
 
-app.use(express.json());
+app.use(express.static('public'));
 
 // 提供静态文件服务（HTML, CSS, JS, images）
 app.use(express.static('.'));
 
 // 根路径返回 index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+ res.sendFile(path.join(__dirname, 'public', 'index.html'));
 
 // API 端点
 app.post('/api/evaluate', async (req, res) => {

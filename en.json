@@ -1,0 +1,12 @@
+{
+  "fix1099.system.background.title": "What the system is doing in the background",
+  "fix1099.system.background.item1": "Verifying the correct compliance filing workflow for your situation",
+  "fix1099.system.background.item2": "Checking IRS submission rules and reporting thresholds",
+  "fix1099.summary.title": "Summary",
+  "fix1099.summary.handle": "We’ll handle: Form type + IRS box + e-file prep",
+  "fix1099.summary.provide": "You provide: confirm payee + amount + address/tax info",
+  "fix1099.summary.next": "Next: after payment → upload/collect recipient details → review → submit",
+  "fix1099.lowConfidence.msg": "We need one quick step: upload/collect recipient info and we’ll auto-match everything. You won’t need to choose any forms or IRS boxes.",
+  "fix1099.policy.payment.title": "Payment Policy",
+  "fix1099.policy.refund.title": "Refund Policy"
+}

@@ -1,3 +1,11 @@
+<script src="/js/judge.js"></script>
+<script>
+  fix1099BindJudgeFromSelects({
+    payeeSelectId: "q1",
+    reasonSelectId: "q2",
+    methodSelectId: "q3"
+  });
+</script>
 import express from "express";
 import path from "path";
 import judge1099Router from "./routes/judge1099";

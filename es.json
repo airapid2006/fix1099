@@ -1,0 +1,12 @@
+{
+  "fix1099.system.background.title": "Lo que el sistema está haciendo en segundo plano",
+  "fix1099.system.background.item1": "Verificando el flujo de cumplimiento correcto para tu situación",
+  "fix1099.system.background.item2": "Revisando reglas de envío del IRS y umbrales de reporte",
+  "fix1099.summary.title": "Resumen",
+  "fix1099.summary.handle": "Nosotros manejamos: tipo de formulario + casilla IRS + preparación de e-file",
+  "fix1099.summary.provide": "Tú proporcionas: confirmar destinatario + monto + dirección/ID fiscal",
+  "fix1099.summary.next": "Siguiente: después del pago → subir/recopilar datos → revisar → enviar",
+  "fix1099.lowConfidence.msg": "Necesitamos un paso rápido: sube/recopila la info del destinatario y lo emparejaremos automáticamente. No tendrás que elegir formularios ni casillas del IRS.",
+  "fix1099.policy.payment.title": "Política de Pago",
+  "fix1099.policy.refund.title": "Política de Reembolso"
+}

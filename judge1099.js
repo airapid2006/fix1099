@@ -1,26 +1,20 @@
-Owner avatar
-index.js
-Public
-Start coding with Codespaces
-Add a README file and start coding in a secure, configurable, and dedicated development environment.
+// judge1099.js
+async function evaluatePayload(payload, policyEngine) {
+  if (!payload) {
+    throw new Error('Payload is required');
+  }
 
-Add collaborators to this repository
-Search for people using their GitHub username or email address.
+  const score = await policyEngine.scorePayload(payload);
+  const threshold = policyEngine.threshold ?? 0;
+  const isEligible = score >= threshold;
 
-Quick setup — if you’ve done this kind of thing before
-or	
-https://github.com/airapid2006/index.js.git
-Get started by creating a new file or uploading an existing file. We recommend every repository include a README, LICENSE, and .gitignore.
+  const reasons = policyEngine.determineReasons(payload, score);
+  return { isEligible, score, reasons };
+}
 
-…or create a new repository on the command line
-echo "# index.js" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/airapid2006/index.js.git
-git push -u origin main
-…or push an existing repository from the command line
-git remote add origin https://github.com/airapid2006/index.js.git
-git branch -M main
-git push -u origin main
+async function evaluate1099(payload, policyEngine) {
+  return evaluatePayload(payload, policyEngine);
+}
+
+module.exports = { evaluate1099 };
+

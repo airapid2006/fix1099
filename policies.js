@@ -21,9 +21,8 @@ function createPolicyEngine(options) {
     scorePayload: defaultScore,
     determineReasons: defaultReasons,
   };
-  // 未来可扩展：addPolicy、注入更多策略
   engine.addPolicy = function() {
-    // 占位
+    // 占位：未来扩展
   };
   return engine;
 }

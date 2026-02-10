@@ -17,4 +17,3 @@ async function evaluate1099(payload, policyEngine) {
 }
 
 module.exports = { evaluate1099 };
-

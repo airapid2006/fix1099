@@ -1,21 +1,29 @@
-// index.js
 const express = require('express');
+const path = require('path');
 const { evaluate1099 } = require('./judge1099');
 const { getPolicyEngine } = require('./policies');
 
 const app = express();
+
 app.use(express.json());
 
+// 提供静态文件服务（HTML, CSS, JS, images）
+app.use(express.static('.'));
+
+// 根路径返回 index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// API 端点
 app.post('/api/evaluate', async (req, res) => {
   try {
     const { userId, payload } = req.body;
     if (!userId || !payload) {
       return res.status(400).json({ code: 400, message: 'Missing userId or payload' });
     }
-
     const policyEngine = getPolicyEngine();
     const result = await evaluate1099(payload, policyEngine);
-
     return res.json({ code: 200, data: result });
   } catch (err) {
     const status = err?.statusCode ?? 500;
@@ -37,4 +45,3 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
-

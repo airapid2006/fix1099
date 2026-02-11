@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fix1099</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:#ffffff;
+    color:#1a1a1a;
+}
+
+/* Header */
+.header{
+    background:#ffffff;
+    border-bottom:1px solid #e5e7eb;
+    padding:18px 0;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+.header-content{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.logo{
+    font-size:28px;
+    font-weight:800;
+    color:#673de6;
+}
+
+/* Language Buttons */
+.lang-switch button{
+    background:white;
+    border:1px solid #e5e7eb;
+    padding:8px 14px;
+    margin-left:8px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+.lang-switch button.active{
+    background:#673de6;
+    color:white;
+}
+
+/* Hero */
+.hero{
+    background:linear-gradient(135deg,#f0f4ff 0%,#e0e7ff 100%);
+    padding:120px 20px 100px;
+    text-align:center;
+}
+.hero h1{
+    font-size:clamp(36px,5vw,60px);
+    font-weight:800;
+    line-height:1.2;
+    margin-bottom:30px;
+}
+.hero h1 span{
+    display:block;
+    font-weight:600;
+}
+.btn-primary{
+    display:inline-block;
+    padding:16px 40px;
+    font-size:18px;
+    font-weight:700;
+    background:#673de6;
+    color:#ffffff;
+    border-radius:12px;
+    text-decoration:none;
+    transition:all 0.25s ease;
+    box-shadow:0 8px 20px rgba(103,61,230,0.25);
+}
+.btn-primary:hover{
+    background:#5b2cd3;
+    transform:translateY(-2px);
+}
+
+.trust{
+    margin-top:28px;
+    font-size:14px;
+    color:#6b7280;
+}
+.trust span{
+    margin:0 16px;
+    display:inline-block;
+}
+
+.lang-section{
+    display:none;
+}
+.lang-section.active{
+    display:block;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <div class="logo">Fix1099</div>
+    <div class="lang-switch">
+      <button onclick="setLang('en')" id="btn-en" class="active">EN</button>
+      <button onclick="setLang('zh')" id="btn-zh">中文</button>
+      <button onclick="setLang('es')" id="btn-es">ES</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+
+<!-- English -->
+<div id="en" class="lang-section active">
+  <h1>
+    Smart Filing. Built for Compliance.
+    <span>Secure IRS Submission.</span>
+  </h1>
+  Enter Filing Details
+  <div class="trust">
+    <span>IRS-Authorized E-File</span>
+    <span>Multi-State Compliance</span>
+    <span>Secure Data Encryption</span>
+  </div>
+</div>
+
+<!-- Chinese -->
+<div id="zh" class="lang-section">
+  <h1>
+    智能报税 · 合规提交
+    <span>安全直达 IRS</span>
+  </h1>
+  填写报税资料
+  <div class="trust">
+    <span>IRS 授权电子申报</span>
+    <span>支持多州合规</span>
+    <span>数据加密保护</span>
+  </div>
+</div>
+
+<!-- Spanish -->
+<div id="es" class="lang-section">
+  <h1>
+    Declaración Inteligente. Cumplimiento Garantizado.
+    <span>Envío Seguro al IRS.</span>
+  </h1>
+  Ingresar Datos
+  <div class="trust">
+    <span>Presentación Electrónica Autorizada por IRS</span>
+    <span>Cumplimiento Multiestatal</span>
+    <span>Datos Encriptados y Seguros</span>
+  </div>
+</div>
+
+</section>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('.lang-section').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.lang-switch button').forEach(btn => btn.classList.remove('active'));
+  document.getElementById(lang).classList.add('active');
+  document.getElementById('btn-'+lang).classList.add('active');
+}
+</script>
+
+</body>
+</html>

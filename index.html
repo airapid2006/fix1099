@@ -5,295 +5,272 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fix1099 - Smart 1099 Filing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
-            line-height: 1.6; 
-            color: #1a1a1a; 
-            background: #0b0b1a;
-            height: 100%;
-            overflow: hidden;
-        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.5; color: #1a1a1a; background: #ffffff; overflow-x: hidden; }
 
-        /* ── Header ── */
-        .header {
-            background: #0b0b1a;
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-        }
-        .logo span {
-            color: #7c5cfc;
-        }
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-        .header-nav a {
-            color: #9ca3af;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .header-nav a:hover {
-            color: #ffffff;
-        }
+        /* Header */
+        .header { background: white; border-bottom: 1px solid #e5e7eb; padding: 10px 0; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: 800; color: #673de6; }
+
+        /* Language Switcher - Round */
+        .lang-switcher { display: flex; gap: 6px; }
         .lang-switcher button {
-            background: transparent;
-            border: 1.5px solid rgba(255,255,255,0.15);
-            color: #9ca3af;
-            padding: 6px 14px;
-            margin: 0 3px;
-            border-radius: 8px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            color: #6b7280;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
+            font-weight: 700;
+            font-size: 11px;
             transition: all 0.3s;
-        }
-        .lang-switcher button:hover {
-            border-color: #7c5cfc;
-            color: #7c5cfc;
-        }
-        .lang-switcher button.active {
-            background: #7c5cfc;
-            color: white;
-            border-color: #7c5cfc;
-        }
-
-        /* ── Hero ── */
-        .hero {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            height: calc(100vh - 62px);
-            padding: 0 20px;
-            background: radial-gradient(ellipse at 50% 0%, rgba(124,92,252,0.12) 0%, transparent 60%),
-                        #0b0b1a;
-            position: relative;
-            overflow: hidden;
+            padding: 0;
         }
+        .lang-switcher button:hover { border-color: #673de6; color: #673de6; }
+        .lang-switcher button.active { background: #673de6; color: white; border-color: #673de6; }
 
-        /* Subtle grid bg */
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-        }
+        /* Hero - Compact */
+        .hero { background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%); padding: 28px 20px 22px; text-align: center; }
+        .hero h1 { font-size: clamp(22px, 3.5vw, 36px); font-weight: 800; color: #1a1a1a; margin-bottom: 8px; line-height: 1.2; }
+        .hero h1 .highlight { color: #673de6; }
+        .hero .subtitle { font-size: clamp(13px, 1.8vw, 16px); color: #6b7280; margin-bottom: 16px; max-width: 600px; margin-left: auto; margin-right: auto; }
 
-        .hero-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 720px;
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-size: clamp(30px, 4.5vw, 52px);
-            font-weight: 800;
-            color: #ffffff;
-            line-height: 1.15;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-        .hero h1 .line2 {
-            display: block;
-            background: linear-gradient(90deg, #7c5cfc, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero .subheadline {
-            font-size: clamp(15px, 2vw, 18px);
-            color: #9ca3af;
-            margin-bottom: 32px;
-            font-weight: 400;
-        }
-
-        /* ── Input + CTA Row ── */
+        /* Input Row */
         .input-row {
             display: flex;
             align-items: center;
-            gap: 0;
-            max-width: 520px;
-            margin: 0 auto 32px;
-            background: rgba(255,255,255,0.06);
-            border: 1.5px solid rgba(255,255,255,0.1);
-            border-radius: 14px;
-            padding: 5px 5px 5px 20px;
+            max-width: 480px;
+            margin: 0 auto 14px;
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 4px 4px 4px 16px;
             transition: border-color 0.3s;
         }
-        .input-row:focus-within {
-            border-color: #7c5cfc;
-            background: rgba(124,92,252,0.06);
-        }
+        .input-row:focus-within { border-color: #673de6; }
         .input-row input {
             flex: 1;
             background: transparent;
             border: none;
             outline: none;
-            color: #ffffff;
-            font-size: 15px;
+            color: #1a1a1a;
+            font-size: 14px;
             font-family: 'Inter', sans-serif;
-            padding: 14px 0;
+            padding: 10px 0;
         }
-        .input-row input::placeholder {
-            color: #6b7280;
-        }
+        .input-row input::placeholder { color: #9ca3af; }
+
         .btn-hero {
-            padding: 14px 32px;
-            font-size: 15px;
+            padding: 10px 28px;
+            font-size: 14px;
             font-weight: 700;
-            background: #7c5cfc;
+            background: #673de6;
             color: white;
             border: none;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
-            box-shadow: 0 4px 16px rgba(124,92,252,0.35);
+            box-shadow: 0 3px 10px rgba(103,61,230,0.3);
         }
-        .btn-hero:hover {
-            background: #6a4ce0;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 24px rgba(124,92,252,0.45);
+        .btn-hero:hover { background: #5528d4; transform: translateY(-1px); box-shadow: 0 5px 16px rgba(103,61,230,0.4); }
+
+        .trust-badges { margin-top: 14px; display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+        .trust-badge { display: flex; align-items: center; gap: 6px; color: #6b7280; font-size: 12px; font-weight: 600; }
+        .trust-badge .icon { font-size: 16px; }
+
+        /* Pricing Section - Compact */
+        .pricing-section { max-width: 900px; margin: 20px auto 0; padding: 0 20px; }
+        .pricing-header { text-align: center; margin-bottom: 18px; }
+        .pricing-header h2 { font-size: 24px; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
+        .pricing-header p { font-size: 13px; color: #6b7280; line-height: 1.5; }
+
+        .pricing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 760px; margin: 0 auto; }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 22px 20px 18px;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .pricing-card:hover { border-color: #673de6; box-shadow: 0 8px 28px rgba(103,61,230,0.12); transform: translateY(-2px); }
+
+        .pricing-card.featured {
+            border-color: #673de6;
+            background: linear-gradient(135deg, #f9f7ff 0%, #f0f4ff 100%);
+            box-shadow: 0 6px 24px rgba(103,61,230,0.15);
+        }
+        .pricing-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -11px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #673de6;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        /* ── Trust Badges ── */
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 36px;
-            flex-wrap: wrap;
+        .plan-badge { display: inline-block; background: #ede9fe; color: #673de6; padding: 3px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+        .plan-name { font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
+        .price { font-size: 36px; font-weight: 800; color: #673de6; margin: 10px 0 4px; line-height: 1; }
+        .price-period { color: #9ca3af; font-size: 12px; margin-bottom: 12px; }
+
+        .plan-description { color: #6b7280; font-size: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6; line-height: 1.5; }
+
+        .features-list { list-style: none; margin: 10px 0; }
+        .features-list li { padding: 5px 0; padding-left: 24px; position: relative; font-size: 12px; color: #374151; line-height: 1.5; }
+        .features-list li:before { content: "✓"; position: absolute; left: 0; color: #10b981; font-weight: bold; font-size: 16px; }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            background: #673de6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 12px;
         }
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #6b7280;
-            font-size: 13px;
-            font-weight: 500;
+        .btn-primary:hover { background: #5528d4; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(103,61,230,0.3); }
+
+        .btn-secondary {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            background: white;
+            color: #673de6;
+            border: 2px solid #673de6;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 12px;
         }
-        .trust-badge .icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(124,92,252,0.1);
-            border-radius: 8px;
-            font-size: 15px;
+        .btn-secondary:hover { background: #f9f7ff; }
+
+        /* Footer - Compact */
+        .footer { background: #1a1a1a; color: #9ca3af; padding: 16px 20px; text-align: center; font-size: 12px; margin-top: 20px; }
+        .footer strong { color: white; }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: row; }
+            .hero h1 { font-size: 22px; }
+            .trust-badges { gap: 14px; }
+            .pricing-cards { grid-template-columns: 1fr; }
+            .pricing-card.featured { order: -1; }
+            body { overflow-y: auto; }
         }
 
-        /* ── Responsive ── */
-        @media (max-width: 640px) {
-            .header {
-                padding: 12px 16px;
-            }
-            .header-nav {
-                gap: 12px;
-            }
-            .header-nav a {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 28px;
-            }
-            .input-row {
-                flex-direction: column;
-                padding: 6px;
-                gap: 0;
-            }
-            .input-row input {
-                padding: 14px 16px;
-                width: 100%;
-                text-align: center;
-            }
-            .btn-hero {
-                width: 100%;
-                border-radius: 10px;
-                padding: 14px;
-            }
-            .trust-badges {
-                flex-direction: column;
-                gap: 14px;
-                align-items: center;
-            }
+        @media (min-width: 769px) {
+            html, body { height: 100%; overflow: hidden; }
+            .page-wrapper { height: 100vh; display: flex; flex-direction: column; }
+            .header { flex-shrink: 0; }
+            .hero { flex-shrink: 0; }
+            .pricing-section { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+            .footer { flex-shrink: 0; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">Fix<span>1099</span></div>
-        <div class="header-nav">
-            <a href="#pricing">Pricing</a>
-            <a href="#how">How It Works</a>
-            <div class="lang-switcher">
-                <button onclick="setLang('en')" class="active" id="btn-en">EN</button>
-                <button onclick="setLang('zh')" id="btn-zh">中文</button>
-                <button onclick="setLang('es')" id="btn-es">ES</button>
+    <div class="page-wrapper">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">Fix1099</div>
+                <div class="lang-switcher">
+                    <button onclick="setLang('en')" class="active" id="btn-en">EN</button>
+                    <button onclick="setLang('zh')" id="btn-zh">中</button>
+                    <button onclick="setLang('es')" id="btn-es">ES</button>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero — single screen, no scroll -->
-    <section class="hero">
-        <div class="hero-inner">
-
-            <!-- H1 -->
-            <h1>
-                Smart Filing. Built for Compliance.
-                <span class="line2">Secure IRS Submission.</span>
-            </h1>
-
-            <!-- Subheadline -->
-            <p class="subheadline">File your 1099-NEC &amp; 1099-MISC in minutes — fully compliant, federally &amp; state.</p>
-
-            <!-- Input + CTA -->
+        <!-- Hero -->
+        <section class="hero">
+            <h1 id="hero-title"><span class="highlight">Smart Filing.</span> Built for Compliance.</h1>
+            <p class="subtitle" id="hero-subtitle">1099 tax filing made simple. No tax knowledge required.</p>
             <div class="input-row">
-                <input type="text" placeholder="Enter filing details" />
-                <button class="btn-hero">Start Filing</button>
+                <input type="text" placeholder="Enter filing details" id="filing-input" />
+                <button class="btn-hero" id="hero-cta">Start Filing</button>
             </div>
-
-            <!-- Trust Badges -->
             <div class="trust-badges">
-                <div class="trust-badge">
-                    <span class="icon">🛡️</span>
-                    <span>IRS-Authorized E-File</span>
+                <div class="trust-badge"><span class="icon">🛡️</span><span id="trust-1">IRS-Authorized E-File</span></div>
+                <div class="trust-badge"><span class="icon">📋</span><span id="trust-2">Multi-State Compliance</span></div>
+                <div class="trust-badge"><span class="icon">🔒</span><span id="trust-3">Secure Data Encryption</span></div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="pricing-section" id="pricing">
+            <div class="pricing-header">
+                <h2 id="pricing-title">Pricing</h2>
+                <p id="pricing-subtitle">Simple, transparent, no hidden fees</p>
+            </div>
+            <div class="pricing-cards">
+                <!-- Annual Plan -->
+                <div class="pricing-card featured">
+                    <span class="plan-badge">BEST VALUE</span>
+                    <div class="plan-name" id="annual-name">Annual Plan</div>
+                    <div class="price">$199.99</div>
+                    <div class="price-period" id="annual-period">per year</div>
+                    <div class="plan-description" id="annual-desc">Unlimited filings for individuals and small businesses</div>
+                    <ul class="features-list">
+                        <li id="annual-f1">Unlimited 1099 filings (NEC / MISC)</li>
+                        <li id="annual-f2">Auto state detection & compliance</li>
+                        <li id="annual-f3">IRS e-file + recipient delivery</li>
+                        <li id="annual-f4">Correction filing included</li>
+                        <li id="annual-f5">Priority email support</li>
+                    </ul>
+                    <a href="#" class="btn-primary" id="annual-btn">Get Annual Plan</a>
                 </div>
-                <div class="trust-badge">
-                    <span class="icon">📋</span>
-                    <span>Multi-State Compliance</span>
-                </div>
-                <div class="trust-badge">
-                    <span class="icon">🔒</span>
-                    <span>Secure Data Encryption</span>
+
+                <!-- One-Time Plan -->
+                <div class="pricing-card">
+                    <span class="plan-badge">SIMPLE</span>
+                    <div class="plan-name" id="onetime-name">One-Time Filing</div>
+                    <div class="price">$59.99</div>
+                    <div class="price-period" id="onetime-period">per filing</div>
+                    <div class="plan-description" id="onetime-desc">Perfect for a single 1099 filing need</div>
+                    <ul class="features-list">
+                        <li id="onetime-f1">Single 1099 filing (NEC or MISC)</li>
+                        <li id="onetime-f2">Federal + state filing</li>
+                        <li id="onetime-f3">IRS e-file included</li>
+                        <li id="onetime-f4">Recipient copy delivery</li>
+                        <li id="onetime-f5">Standard email support</li>
+                    </ul>
+                    <a href="#" class="btn-secondary" id="onetime-btn">File Now — $59.99</a>
                 </div>
             </div>
+        </section>
 
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Fix1099</strong> — IRS-authorized e-file provider. © 2025 All rights reserved.</p>
         </div>
-    </section>
+    </div>
 
     <script>
         function setLang(lang) {
@@ -302,51 +279,90 @@
 
             const text = {
                 en: {
-                    h1a: 'Smart Filing. Built for Compliance.',
-                    h1b: 'Secure IRS Submission.',
-                    sub: 'File your 1099-NEC & 1099-MISC in minutes — fully compliant, federally & state.',
-                    cta: 'Start Filing',
-                    placeholder: 'Enter filing details',
-                    t1: 'IRS-Authorized E-File',
-                    t2: 'Multi-State Compliance',
-                    t3: 'Secure Data Encryption'
+                    heroTitle: '<span class="highlight">Smart Filing.</span> Built for Compliance.',
+                    heroSub: '1099 tax filing made simple. No tax knowledge required.',
+                    heroCta: 'Start Filing',
+                    inputPh: 'Enter filing details',
+                    t1: 'IRS-Authorized E-File', t2: 'Multi-State Compliance', t3: 'Secure Data Encryption',
+                    pricingTitle: 'Pricing', pricingSub: 'Simple, transparent, no hidden fees',
+                    annualName: 'Annual Plan', annualPeriod: 'per year',
+                    annualDesc: 'Unlimited filings for individuals and small businesses',
+                    af1: 'Unlimited 1099 filings (NEC / MISC)', af2: 'Auto state detection & compliance',
+                    af3: 'IRS e-file + recipient delivery', af4: 'Correction filing included', af5: 'Priority email support',
+                    annualBtn: 'Get Annual Plan',
+                    onetimeName: 'One-Time Filing', onetimePeriod: 'per filing',
+                    onetimeDesc: 'Perfect for a single 1099 filing need',
+                    of1: 'Single 1099 filing (NEC or MISC)', of2: 'Federal + state filing',
+                    of3: 'IRS e-file included', of4: 'Recipient copy delivery', of5: 'Standard email support',
+                    onetimeBtn: 'File Now — $59.99'
                 },
                 zh: {
-                    h1a: '智能申报，合规保障。',
-                    h1b: '安全提交至 IRS。',
-                    sub: '几分钟内完成 1099-NEC 和 1099-MISC 申报 — 联邦及州级全面合规。',
-                    cta: '开始申报',
-                    placeholder: '输入申报详情',
-                    t1: 'IRS 授权电子申报',
-                    t2: '多州合规',
-                    t3: '安全数据加密'
+                    heroTitle: '<span class="highlight">智能申报。</span>合规保障。',
+                    heroSub: '1099 税表申报变得简单，无需税务知识。',
+                    heroCta: '开始申报',
+                    inputPh: '输入申报详情',
+                    t1: 'IRS 授权电子申报', t2: '多州合规', t3: '安全数据加密',
+                    pricingTitle: '价格方案', pricingSub: '简单透明，无隐藏费用',
+                    annualName: '年度方案', annualPeriod: '每年',
+                    annualDesc: '适合个人和小型企业的无限申报',
+                    af1: '无限 1099 申报 (NEC / MISC)', af2: '自动州检测与合规',
+                    af3: 'IRS 电子申报 + 收件人递送', af4: '包含更正申报', af5: '优先邮件支持',
+                    annualBtn: '获取年度方案',
+                    onetimeName: '单次申报', onetimePeriod: '每次',
+                    onetimeDesc: '适合单次 1099 申报需求',
+                    of1: '单次 1099 申报 (NEC 或 MISC)', of2: '联邦 + 州申报',
+                    of3: '包含 IRS 电子申报', of4: '收件人副本递送', of5: '标准邮件支持',
+                    onetimeBtn: '立即申报 — $59.99'
                 },
                 es: {
-                    h1a: 'Declaración Inteligente. Cumplimiento Garantizado.',
-                    h1b: 'Envío Seguro al IRS.',
-                    sub: 'Presente su 1099-NEC y 1099-MISC en minutos — cumplimiento federal y estatal.',
-                    cta: 'Comenzar',
-                    placeholder: 'Ingrese los detalles de la declaración',
-                    t1: 'E-File Autorizado por el IRS',
-                    t2: 'Cumplimiento Multi-Estatal',
-                    t3: 'Encriptación de Datos Segura'
+                    heroTitle: '<span class="highlight">Declaración Inteligente.</span> Cumplimiento Garantizado.',
+                    heroSub: 'Declaración de impuestos 1099 simplificada. Sin conocimientos fiscales.',
+                    heroCta: 'Comenzar',
+                    inputPh: 'Ingrese detalles de declaración',
+                    t1: 'E-File Autorizado por IRS', t2: 'Cumplimiento Multi-Estatal', t3: 'Encriptación Segura',
+                    pricingTitle: 'Precios', pricingSub: 'Simple, transparente, sin cargos ocultos',
+                    annualName: 'Plan Anual', annualPeriod: 'por año',
+                    annualDesc: 'Declaraciones ilimitadas para individuos y pequeñas empresas',
+                    af1: 'Declaraciones 1099 ilimitadas (NEC / MISC)', af2: 'Detección automática de estado',
+                    af3: 'E-file IRS + entrega al destinatario', af4: 'Corrección incluida', af5: 'Soporte prioritario por email',
+                    annualBtn: 'Obtener Plan Anual',
+                    onetimeName: 'Declaración Única', onetimePeriod: 'por declaración',
+                    onetimeDesc: 'Perfecto para una sola declaración 1099',
+                    of1: 'Una declaración 1099 (NEC o MISC)', of2: 'Declaración federal + estatal',
+                    of3: 'E-file IRS incluido', of4: 'Copia al destinatario', of5: 'Soporte por email estándar',
+                    onetimeBtn: 'Declarar Ahora — $59.99'
                 }
             };
 
             const t = text[lang];
-            const h1 = document.querySelector('.hero h1');
-            h1.innerHTML = t.h1a + '<span class="line2">' + t.h1b + '</span>';
-            document.querySelector('.subheadline').textContent = t.sub;
-            document.querySelector('.btn-hero').textContent = t.cta;
-            document.querySelector('.input-row input').placeholder = t.placeholder;
-
-            const badges = document.querySelectorAll('.trust-badge span:last-child');
-            badges<a href="" class="citation-link" target="_blank" style="vertical-align: super; font-size: 0.8em; margin-left: 3px;">[0]</a>.textContent = t.t1;
-            badges<a href="" class="citation-link" target="_blank" style="vertical-align: super; font-size: 0.8em; margin-left: 3px;">[1]</a>.textContent = t.t2;
-            badges<a href="" class="citation-link" target="_blank" style="vertical-align: super; font-size: 0.8em; margin-left: 3px;">[2]</a>.textContent = t.t3;
+            document.getElementById('hero-title').innerHTML = t.heroTitle;
+            document.getElementById('hero-subtitle').textContent = t.heroSub;
+            document.getElementById('hero-cta').textContent = t.heroCta;
+            document.getElementById('filing-input').placeholder = t.inputPh;
+            document.getElementById('trust-1').textContent = t.t1;
+            document.getElementById('trust-2').textContent = t.t2;
+            document.getElementById('trust-3').textContent = t.t3;
+            document.getElementById('pricing-title').textContent = t.pricingTitle;
+            document.getElementById('pricing-subtitle').textContent = t.pricingSub;
+            document.getElementById('annual-name').textContent = t.annualName;
+            document.getElementById('annual-period').textContent = t.annualPeriod;
+            document.getElementById('annual-desc').textContent = t.annualDesc;
+            document.getElementById('annual-f1').textContent = t.af1;
+            document.getElementById('annual-f2').textContent = t.af2;
+            document.getElementById('annual-f3').textContent = t.af3;
+            document.getElementById('annual-f4').textContent = t.af4;
+            document.getElementById('annual-f5').textContent = t.af5;
+            document.getElementById('annual-btn').textContent = t.annualBtn;
+            document.getElementById('onetime-name').textContent = t.onetimeName;
+            document.getElementById('onetime-period').textContent = t.onetimePeriod;
+            document.getElementById('onetime-desc').textContent = t.onetimeDesc;
+            document.getElementById('onetime-f1').textContent = t.of1;
+            document.getElementById('onetime-f2').textContent = t.of2;
+            document.getElementById('onetime-f3').textContent = t.of3;
+            document.getElementById('onetime-f4').textContent = t.of4;
+            document.getElementById('onetime-f5').textContent = t.of5;
+            document.getElementById('onetime-btn').textContent = t.onetimeBtn;
         }
     </script>
-
 </body>
 </html>
-

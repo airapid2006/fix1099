@@ -3,347 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fix1099 - 1099 Tax Filing Made Simple</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.5; color: #1a1a1a; background: #f5f5f7; overflow-x: hidden; }
-
-        /* ── Header ── */
-        .header { background: white; border-bottom: 1px solid #e5e7eb; padding: 12px 0; position: sticky; top: 0; z-index: 100; }
-        .header-content { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
-        .logo .fix { color: #1a1a1a; }
-        .logo .num { color: #673de6; }
-
-        /* Language Switcher - Round */
-        .lang-switcher { display: flex; gap: 6px; }
-        .lang-switcher button {
-            background: white;
-            border: 2px solid #e5e7eb;
-            color: #6b7280;
-            width: 38px; height: 38px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 11px;
-            transition: all 0.3s;
-            display: flex; align-items: center; justify-content: center;
-            padding: 0;
-        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #1a1a1a; background: #ffffff; }
+        
+        /* Header */
+        .header { background: white; border-bottom: 1px solid #e5e7eb; padding: 20px 0; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 800; color: #673de6; }
+        
+        /* Language Switcher */
+        .lang-switcher button { background: white; border: 2px solid #e5e7eb; color: #6b7280; padding: 8px 16px; margin: 0 4px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
         .lang-switcher button:hover { border-color: #673de6; color: #673de6; }
         .lang-switcher button.active { background: #673de6; color: white; border-color: #673de6; }
-
-        /* ── Hero ── */
-        .hero { background: linear-gradient(135deg, #f0f4ff 0%, #e8ecf7 100%); padding: 32px 20px 24px; text-align: center; }
-        .hero h1 { font-size: clamp(24px, 3.8vw, 40px); font-weight: 800; color: #1a1a1a; margin-bottom: 8px; line-height: 1.25; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%); padding: 100px 20px 80px; text-align: center; }
+        .hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; color: #1a1a1a; margin-bottom: 20px; line-height: 1.2; }
         .hero h1 .highlight { color: #673de6; }
-        .hero .subtitle { font-size: clamp(13px, 1.6vw, 15px); color: #555; margin-bottom: 18px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
-        .btn-hero-outline {
-            display: inline-block;
-            padding: 12px 36px;
-            font-size: 14px;
-            font-weight: 700;
-            background: white;
-            color: #673de6;
-            border: 2px solid #673de6;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            margin-bottom: 18px;
-        }
-        .btn-hero-outline:hover { background: #673de6; color: white; }
-
-        .trust-badges { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-        .trust-badge { display: flex; align-items: center; gap: 6px; color: #444; font-size: 12px; font-weight: 600; }
-        .trust-badge .icon { font-size: 15px; }
-
-        /* ── Pricing ── */
-        .pricing-section { max-width: 820px; margin: 24px auto 0; padding: 0 20px; }
-        .pricing-header { text-align: center; margin-bottom: 20px; }
-        .pricing-header h2 { font-size: 26px; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
-        .pricing-header p { font-size: 13px; color: #555; line-height: 1.5; }
-
-        .pricing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
-        /* ── Card Base ── */
-        .pricing-card {
-            border-radius: 18px;
-            padding: 28px 24px 22px;
-            position: relative;
-            transition: all 0.3s;
-            overflow: hidden;
-        }
-        .pricing-card:hover { transform: translateY(-3px); }
-
-        /* ── Featured Card (Annual) - Dark ── */
-        .pricing-card.featured {
-            background: linear-gradient(145deg, #2d1b69 0%, #1a1145 100%);
-            color: white;
-            box-shadow: 0 8px 32px rgba(103,61,230,0.3);
-        }
-        .pricing-card.featured .plan-name { color: #ffffff; }
-        .pricing-card.featured .price { color: #ffffff; }
-        .pricing-card.featured .price-period { color: rgba(255,255,255,0.6); }
-        .pricing-card.featured .plan-description { color: rgba(255,255,255,0.7); border-bottom-color: rgba(255,255,255,0.15); }
-        .pricing-card.featured .features-list li { color: rgba(255,255,255,0.85); }
-        .pricing-card.featured .features-list li:before { color: #a78bfa; }
-
-        /* Diagonal Banner - MOST POPULAR */
-        .pricing-card.featured .ribbon {
-            position: absolute;
-            top: 18px;
-            left: -35px;
-            background: #673de6;
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            padding: 5px 40px;
-            transform: rotate(-45deg);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            z-index: 5;
-        }
-
-        /* BEST VALUE badge inside featured */
-        .pricing-card.featured .plan-badge {
-            background: rgba(255,255,255,0.15);
-            color: #c4b5fd;
-        }
-        .pricing-card.featured .btn-primary {
-            background: white;
-            color: #673de6;
-        }
-        .pricing-card.featured .btn-primary:hover {
-            background: #f0ecff;
-        }
-
-        /* ── Regular Card (One-Time) ── */
-        .pricing-card.regular {
-            background: white;
-            border: 2px solid #e5e7eb;
-        }
-        .pricing-card.regular:hover { border-color: #673de6; box-shadow: 0 8px 28px rgba(103,61,230,0.1); }
-
-        .plan-badge { display: inline-block; background: #ede9fe; color: #673de6; padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
-        .plan-name { font-size: 20px; font-weight: 800; color: #1a1a1a; margin-bottom: 4px; }
-        .price { font-size: 38px; font-weight: 800; color: #673de6; margin: 8px 0 2px; line-height: 1; }
-        .price-period { color: #888; font-size: 13px; margin-bottom: 14px; }
-
-        .plan-description { color: #555; font-size: 12px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid #eee; line-height: 1.5; }
-
-        .features-list { list-style: none; margin: 12px 0; }
-        .features-list li { padding: 5px 0; padding-left: 26px; position: relative; font-size: 13px; color: #374151; line-height: 1.5; }
-        .features-list li:before { content: "✓"; position: absolute; left: 0; color: #10b981; font-weight: bold; font-size: 16px; top: 5px; }
-
-        .btn-primary {
-            width: 100%; padding: 11px; font-size: 14px; font-weight: 700;
-            background: #673de6; color: white; border: none; border-radius: 10px;
-            cursor: pointer; transition: all 0.3s ease; text-decoration: none;
-            display: block; text-align: center; margin-top: 14px;
-        }
-        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(103,61,230,0.3); }
-
-        .btn-secondary {
-            width: 100%; padding: 11px; font-size: 14px; font-weight: 700;
-            background: white; color: #673de6; border: 2px solid #673de6; border-radius: 10px;
-            cursor: pointer; transition: all 0.3s ease; text-decoration: none;
-            display: block; text-align: center; margin-top: 14px;
-        }
+        .hero .subtitle { font-size: clamp(18px, 3vw, 24px); color: #6b7280; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .btn-hero { display: inline-block; padding: 18px 48px; font-size: 18px; font-weight: 700; background: #673de6; color: white; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; box-shadow: 0 4px 14px rgba(103,61,230,0.3); }
+        .btn-hero:hover { background: #5528d4; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(103,61,230,0.4); }
+        .trust-badges { margin-top: 40px; display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .trust-badge { display: flex; align-items: center; gap: 8px; color: #6b7280; font-size: 14px; font-weight: 600; }
+        .trust-badge .icon { font-size: 20px; }
+        
+        /* Pricing Section */
+        .pricing-section { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
+        .pricing-header { text-align: center; margin-bottom: 60px; }
+        .pricing-header h2 { font-size: 48px; font-weight: 800; color: #1a1a1a; margin-bottom: 16px; }
+        .pricing-header p { font-size: 20px; color: #6b7280; line-height: 1.6; }
+        
+        .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
+        
+        .pricing-card { background: white; border: 2px solid #e5e7eb; border-radius: 20px; padding: 48px 40px; position: relative; transition: all 0.3s; }
+        .pricing-card:hover { border-color: #673de6; box-shadow: 0 12px 40px rgba(103,61,230,0.15); transform: translateY(-4px); }
+        
+        .pricing-card.featured { border-color: #673de6; background: linear-gradient(135deg, #f9f7ff 0%, #f0f4ff 100%); box-shadow: 0 8px 30px rgba(103,61,230,0.2); }
+        .pricing-card.featured::before { content: "MOST POPULAR"; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #673de6; color: white; padding: 6px 24px; border-radius: 20px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
+        
+        .plan-badge { display: inline-block; background: #ede9fe; color: #673de6; padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+        .plan-name { font-size: 32px; font-weight: 800; color: #1a1a1a; margin-bottom: 16px; }
+        .price { font-size: 56px; font-weight: 800; color: #673de6; margin: 24px 0 8px; line-height: 1; }
+        .price-period { color: #9ca3af; font-size: 16px; margin-bottom: 32px; }
+        
+        .plan-description { color: #6b7280; font-size: 16px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 2px solid #f3f4f6; }
+        
+        .features-list { list-style: none; margin: 32px 0; }
+        .features-list li { padding: 14px 0; padding-left: 36px; position: relative; font-size: 16px; color: #374151; line-height: 1.6; }
+        .features-list li:before { content: "✓"; position: absolute; left: 0; color: #10b981; font-weight: bold; font-size: 22px; }
+        
+        .limitation-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 20px; margin: 32px 0; border-radius: 12px; }
+        .limitation-box strong { color: #92400e; display: block; margin-bottom: 8px; font-size: 15px; }
+        .limitation-box p { color: #78350f; font-size: 14px; line-height: 1.6; margin: 0; }
+        
+        .policy-text { background: #f9fafb; padding: 20px; margin: 32px 0; border-radius: 12px; font-size: 13px; color: #6b7280; line-height: 1.7; }
+        
+        .btn-primary { width: 100%; padding: 18px; font-size: 18px; font-weight: 700; background: #673de6; color: white; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: block; text-align: center; margin-top: 32px; }
+        .btn-primary:hover { background: #5528d4; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(103,61,230,0.3); }
+        
+        .btn-secondary { width: 100%; padding: 18px; font-size: 18px; font-weight: 700; background: white; color: #673de6; border: 2px solid #673de6; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: block; text-align: center; margin-top: 32px; }
         .btn-secondary:hover { background: #f9f7ff; }
-
-        /* ── Footer ── */
-        .footer { background: #1a1a1a; color: #888; padding: 14px 20px; text-align: center; font-size: 11px; margin-top: 24px; }
+        
+        /* Auto-detect Notice */
+        .auto-detect-notice { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 2px solid #93c5fd; border-radius: 20px; padding: 40px; margin: 80px auto; max-width: 900px; text-align: center; }
+        .auto-detect-notice h3 { color: #1e40af; font-size: 28px; font-weight: 800; margin-bottom: 16px; }
+        .auto-detect-notice p { color: #1e3a8a; font-size: 18px; line-height: 1.7; }
+        
+        /* Disclaimer */
+        .disclaimer-section { background: #f9fafb; border-top: 2px solid #e5e7eb; padding: 60px 20px; margin-top: 100px; }
+        .disclaimer-content { max-width: 1000px; margin: 0 auto; }
+        .disclaimer-content h3 { color: #1a1a1a; font-size: 24px; font-weight: 800; margin-bottom: 24px; }
+        .disclaimer-content ul { margin-left: 28px; color: #6b7280; font-size: 15px; line-height: 2; }
+        .cta-section { text-align: center; margin: 60px auto 0; }
+        .cta-section p { color: #6b7280; font-size: 18px; margin-bottom: 16px; }
+        .cta-section a { color: #673de6; text-decoration: none; font-weight: 700; }
+        .cta-section a:hover { text-decoration: underline; }
+        
+        /* Footer */
+        .footer { background: #1a1a1a; color: #9ca3af; padding: 60px 20px; text-align: center; }
         .footer strong { color: white; }
-
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
+        
+        @media (max-width: 768px) { 
+            .header-content { flex-direction: column; gap: 16px; }
+            .lang-switcher { margin-top: 12px; }
+            .trust-badges { flex-direction: column; gap: 20px; }
             .pricing-cards { grid-template-columns: 1fr; }
             .pricing-card.featured { order: -1; }
-            body { overflow-y: auto; }
-        }
-        @media (min-width: 769px) {
-            html, body { height: 100%; overflow: hidden; }
-            .page-wrapper { height: 100vh; display: flex; flex-direction: column; }
-            .header { flex-shrink: 0; }
-            .hero { flex-shrink: 0; }
-            .pricing-section { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
-            .footer { flex-shrink: 0; }
         }
     </style>
 </head>
 <body>
-    <div class="page-wrapper">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="logo"><span class="fix">Fix</span><span class="num">1099</span></div>
-                <div class="lang-switcher">
-                    <button onclick="setLang('en')" class="active" id="btn-en">EN</button>
-                    <button onclick="setLang('zh')" id="btn-zh">中文</button>
-                    <button onclick="setLang('es')" id="btn-es">ES</button>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">Fix1099</div>
+            <div class="lang-switcher">
+                <button onclick="setLang('en')" class="active" id="btn-en">EN</button>
+                <button onclick="setLang('zh')" id="btn-zh">中文</button>
+                <button onclick="setLang('es')" id="btn-es">ES</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 id="hero-title"><span class="highlight">$59.99</span> One Time, <span class="highlight">$199.99</span> Peace of Mind</h1>
+        <p class="subtitle" id="hero-subtitle">1099 tax filing made simple. No tax knowledge required.</p>
+        <a href="#pricing" class="btn-hero" id="hero-cta">Choose Your Plan</a>
+        <div class="trust-badges">
+            <div class="trust-badge"><span class="icon">✓</span><span id="trust-1">IRS Approved E-File</span></div>
+            <div class="trust-badge"><span class="icon">⚡</span><span id="trust-2">5 Minutes Average</span></div>
+            <div class="trust-badge"><span class="icon">🛡️</span><span id="trust-3">State Compliance</span></div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section" id="pricing">
+        <div class="pricing-header">
+            <h2 id="pricing-title">Pricing</h2>
+            <p id="pricing-subtitle">Simple, transparent, no hidden fees<br>Built to get your 1099 done right</p>
+        </div>
+
+        <div class="pricing-cards">
+            <!-- Annual Plan -->
+            <div class="pricing-card featured">
+                <span class="plan-badge">BEST VALUE</span>
+                <div class="plan-name" id="annual-name">Annual Plan</div>
+                <div class="price">$199.99</div>
+                <div class="price-period" id="annual-period">per year</div>
+                <div class="plan-description" id="annual-desc">Perfect for individuals and small businesses needing year-round peace of mind</div>
+                
+                <ul class="features-list">
+                    <li id="annual-f1">Unlimited 1099 filings (NEC / MISC)</li>
+                    <li id="annual-f2">W-9 auto-collection & management</li>
+                    <li id="annual-f3">Auto-match correct IRS tax form</li>
+                    <li id="annual-f4">Electronic IRS submission</li>
+                    <li id="annual-f5">Corrections included at no extra cost</li>
+                    <li id="annual-f6">Full-year filing record storage</li>
+                    <li id="annual-f7">State filing alerts (if applicable)</li>
+                </ul>
+
+                <div class="policy-text" id="annual-policy">
+                    Cancel anytime. Subscription remains active until the end of the billing period. No refunds for fees already paid.
                 </div>
-            </div>
-        </header>
 
-        <!-- Hero -->
-        <section class="hero">
-            <h1 id="hero-title"><span class="highlight">$59.99</span> One Time,<br><span class="highlight">$199.99</span> Peace of Mind</h1>
-            <p class="subtitle" id="hero-subtitle">1099 tax filing made simple.<br>No tax knowledge required.</p>
-            <a href="#pricing" class="btn-hero-outline" id="hero-cta">Choose Your Plan</a>
-            <div class="trust-badges">
-                <div class="trust-badge"><span class="icon">✅</span><span id="trust-1">IRS Approved E-File</span></div>
-                <div class="trust-badge"><span class="icon">⚡</span><span id="trust-2">5 Minutes Average</span></div>
-                <div class="trust-badge"><span class="icon">🛡️</span><span id="trust-3">State Compliance</span></div>
+                <a href="https://buy.stripe.com/test_28E28r5SF5bi0Fma4L8bS05" class="btn-primary" id="annual-cta">Get Started</a>
             </div>
-        </section>
 
-        <!-- Pricing -->
-        <section class="pricing-section" id="pricing">
-            <div class="pricing-header">
-                <h2 id="pricing-title">Pricing</h2>
-                <p id="pricing-subtitle">Simple, transparent, no hidden fees</p>
-            </div>
-            <div class="pricing-cards">
-                <!-- Annual Plan - Dark Featured -->
-                <div class="pricing-card featured">
-                    <div class="ribbon">MOST POPULAR</div>
-                    <span class="plan-badge">BEST VALUE</span>
-                    <div class="plan-name" id="annual-name">Annual Plan</div>
-                    <div class="price">$199.99</div>
-                    <div class="price-period" id="annual-period">per year</div>
-                    <div class="plan-description" id="annual-desc">Unlimited filings for individuals and small businesses</div>
-                    <ul class="features-list">
-                        <li id="annual-f1">Unlimited 1099 Filings</li>
-                        <li id="annual-f2">Secure Document Storage</li>
-                        <li id="annual-f3">Automated State Filing</li>
-                        <li id="annual-f4">Year-Round Support</li>
-                        <li id="annual-f5">Audit Protection</li>
-                        <li id="annual-f6">Easy Integration</li>
-                        <li id="annual-f7">Unlimited</li>
-                    </ul>
-                    <a href="#" class="btn-primary" id="annual-btn">Get Annual Plan</a>
+            <!-- Single Plan -->
+            <div class="pricing-card">
+                <span class="plan-badge">PAY ONCE</span>
+                <div class="plan-name" id="single-name">Single Filing</div>
+                <div class="price">$59.99</div>
+                <div class="price-period" id="single-period">one-time</div>
+                <div class="plan-description" id="single-desc">Perfect for one-time filers</div>
+                
+                <ul class="features-list">
+                    <li id="single-f1">Single 1099 filing</li>
+                    <li id="single-f2">W-9 collection (this filing)</li>
+                    <li id="single-f3">Auto-match correct IRS tax form</li>
+                    <li id="single-f4">Electronic IRS submission</li>
+                    <li id="single-f5">Recipient copy download</li>
+                    <li id="single-f6">Submission receipt</li>
+                </ul>
+
+                <div class="limitation-box">
+                    <strong id="single-limit-title">⚠️ Limited to one filing batch</strong>
+                    <p id="single-limit-desc">Corrections or additional filings require new payment</p>
                 </div>
 
-                <!-- One-Time Plan - Light -->
-                <div class="pricing-card regular">
-                    <span class="plan-badge">ONE-TIME</span>
-                    <div class="plan-name" id="onetime-name">One-Time Filing</div>
-                    <div class="price">$59.99</div>
-                    <div class="price-period" id="onetime-period">per filing</div>
-                    <div class="plan-description" id="onetime-desc">Perfect for a single 1099 filing need</div>
-                    <ul class="features-list">
-                        <li id="onetime-f1">Single 1099 Filing</li>
-                        <li id="onetime-f2">Secure Document Storage</li>
-                        <li id="onetime-f3">State Filing (Extra)</li>
-                        <li id="onetime-f4">Basic Support</li>
-                        <li id="onetime-f5">Audit Protection (Extra)</li>
-                    </ul>
-                    <a href="#" class="btn-secondary" id="onetime-btn">File Now — $59.99</a>
-                </div>
+                <a href="https://buy.stripe.com/test_3cIfZhftf9ryewcgt98bS03" class="btn-secondary" id="single-cta">File Once</a>
             </div>
-        </section>
+        </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p><strong>Fix1099</strong> — IRS-authorized e-file provider. © 2025 All rights reserved.</p>
+        <div class="auto-detect-notice">
+            <h3 id="auto-title">You don't need to know tax form numbers</h3>
+            <p id="auto-desc">We automatically match the correct IRS tax form based on your payment information</p>
+        </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer-section">
+        <div class="disclaimer-content">
+            <h3 id="disclaimer-title">Important Notice</h3>
+            <ul>
+                <li id="disclaimer-1">This is an information return filing service</li>
+                <li id="disclaimer-2">Does not provide personal tax filing, refunds, or tax advice</li>
+                <li id="disclaimer-3">Service is considered delivered once tax documents are generated or submitted</li>
+                <li id="disclaimer-4">All fees are non-refundable</li>
+            </ul>
+        </div>
+        
+        <div class="cta-section">
+            <p><strong id="cta-question">Still not sure?</strong></p>
+            <p id="cta-contact">If you have complex or business compliance needs, <a href="mailto:support@fix1099.com">contact us</a>.</p>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <p><strong>Disclaimer:</strong> <span id="footer-text">Fix1099 is a tax form preparation and electronic filing service. We are not a law firm, CPA firm, or substitute for professional tax advice.</span></p>
+        <p style="margin-top:20px;">© 2025 Fix1099. All rights reserved.</p>
+    </footer>
+
     <script>
+        const translations = {
+            en: {
+                'hero-title': '<span class="highlight">$59.99</span> One Time, <span class="highlight">$199.99</span> Peace of Mind',
+                'hero-subtitle': '1099 tax filing made simple. No tax knowledge required.',
+                'hero-cta': 'Choose Your Plan',
+                'trust-1': 'IRS Approved E-File',
+                'trust-2': '5 Minutes Average',
+                'trust-3': 'State Compliance',
+                'pricing-title': 'Pricing',
+                'pricing-subtitle': 'Simple, transparent, no hidden fees<br>Built to get your 1099 done right',
+                'annual-name': 'Annual Plan',
+                'annual-period': 'per year',
+                'annual-desc': 'Perfect for individuals and small businesses needing year-round peace of mind',
+                'annual-f1': 'Unlimited 1099 filings (NEC / MISC)',
+                'annual-f2': 'W-9 auto-collection & management',
+                'annual-f3': 'Auto-match correct IRS tax form',
+                'annual-f4': 'Electronic IRS submission',
+                'annual-f5': 'Corrections included at no extra cost',
+                'annual-f6': 'Full-year filing record storage',
+                'annual-f7': 'State filing alerts (if applicable)',
+                'annual-policy': 'Cancel anytime. Subscription remains active until the end of the billing period. No refunds for fees already paid.',
+                'annual-cta': 'Get Started',
+                'single-name': 'Single Filing',
+                'single-period': 'one-time',
+                'single-desc': 'Perfect for one-time filers',
+                'single-f1': 'Single 1099 filing',
+                'single-f2': 'W-9 collection (this filing)',
+                'single-f3': 'Auto-match correct IRS tax form',
+                'single-f4': 'Electronic IRS submission',
+                'single-f5': 'Recipient copy download',
+                'single-f6': 'Submission receipt',
+                'single-limit-title': '⚠️ Limited to one filing batch',
+                'single-limit-desc': 'Corrections or additional filings require new payment',
+                'single-cta': 'File Once',
+                'auto-title': 'You don\'t need to know tax form numbers',
+                'auto-desc': 'We automatically match the correct IRS tax form based on your payment information',
+                'disclaimer-title': 'Important Notice',
+                'disclaimer-1': 'This is an information return filing service',
+                'disclaimer-2': 'Does not provide personal tax filing, refunds, or tax advice',
+                'disclaimer-3': 'Service is considered delivered once tax documents are generated or submitted',
+                'disclaimer-4': 'All fees are non-refundable',
+                'cta-question': 'Still not sure?',
+                'cta-contact': 'If you have complex or business compliance needs, <a href="mailto:support@fix1099.com">contact us</a>.',
+                'footer-text': 'Fix1099 is a tax form preparation and electronic filing service. We are not a law firm, CPA firm, or substitute for professional tax advice.'
+            },
+            zh: {
+                'hero-title': '<span class="highlight">$59.99</span> 一次搞定，<span class="highlight">$199.99</span> 一年安心',
+                'hero-subtitle': '1099报税变简单，无需税务知识',
+                'hero-cta': '选择方案',
+                'trust-1': 'IRS 认证电子申报',
+                'trust-2': '平均5分钟完成',
+                'trust-3': '州级合规',
+                'pricing-title': '定价',
+                'pricing-subtitle': '简单、透明、没有隐藏费用<br>只为帮你把 1099 一次性做对',
+                'annual-name': '年费会员',
+                'annual-period': '每年',
+                'annual-desc': '适合需要全年安心的个人与小商家',
+                'annual-f1': '不限次数 1099 申报（NEC / MISC）',
+                'annual-f2': 'W-9 自动收集与管理',
+                'annual-f3': '自动匹配正确 IRS 税表',
+                'annual-f4': '电子提交 IRS',
+                'annual-f5': '更正 / 重提不额外收费',
+                'annual-f6': '提交回执全年保存',
+                'annual-f7': '州级申报需求提醒（如适用）',
+                'annual-policy': '随时取消。订阅在计费周期结束前保持有效。已付费用不退款。',
+                'annual-cta': '立即开始',
+                'single-name': '单次申报',
+                'single-period': '一次性',
+                'single-desc': '适合只需申报一次的用户',
+                'single-f1': '单次 1099 申报',
+                'single-f2': 'W-9 收集（本次）',
+                'single-f3': '自动匹配正确 IRS 税表',
+                'single-f4': '电子提交 IRS',
+                'single-f5': 'Recipient Copy 下载',
+                'single-f6': '提交回执',
+                'single-limit-title': '⚠️ 仅限一次申报批次',
+                'single-limit-desc': '更正或追加申报需再次付费',
+                'single-cta': '申报一次',
+                'auto-title': '你无需了解税表号码',
+                'auto-desc': '我们会根据你的付款情况自动匹配正确的 IRS 税表并提交',
+                'disclaimer-title': '重要说明',
+                'disclaimer-1': '本服务为信息申报服务（Information Return Filing）',
+                'disclaimer-2': '不提供个人报税、退税或税务建议',
+                'disclaimer-3': '税务文件一经生成或提交，即视为服务已履行',
+                'disclaimer-4': '所有费用均不可退款',
+                'cta-question': '还不确定？',
+                'cta-contact': '如有复杂或商业合规需求，<a href="mailto:support@fix1099.com">联系我们</a>。',
+                'footer-text': 'Fix1099 是税表准备和电子申报服务。我们不是律师事务所、会计师事务所，也不能替代专业税务建议。'
+            },
+            es: {
+                'hero-title': '<span class="highlight">$59.99</span> Una Vez, <span class="highlight">$199.99</span> Tranquilidad',
+                'hero-subtitle': 'Presentación de 1099 simplificada. No se requiere conocimiento fiscal.',
+                'hero-cta': 'Elige Tu Plan',
+                'trust-1': 'E-File Aprobado por IRS',
+                'trust-2': 'Promedio 5 Minutos',
+                'trust-3': 'Cumplimiento Estatal',
+                'pricing-title': 'Precios',
+                'pricing-subtitle': 'Simple, transparente, sin cargos ocultos<br>Diseñado para hacer tu 1099 correctamente',
+                'annual-name': 'Plan Anual',
+                'annual-period': 'por año',
+                'annual-desc': 'Perfecto para individuos y pequeñas empresas que necesitan tranquilidad todo el año',
+                'annual-f1': 'Presentaciones 1099 ilimitadas (NEC / MISC)',
+                'annual-f2': 'Recopilación y gestión automática de W-9',
+                'annual-f3': 'Coincidencia automática del formulario IRS correcto',
+                'annual-f4': 'Presentación electrónica al IRS',
+                'annual-f5': 'Correcciones incluidas sin costo adicional',
+                'annual-f6': 'Almacenamiento de registros de todo el año',
+                'annual-f7': 'Alertas de presentación estatal (si aplica)',
+                'annual-policy': 'Cancela en cualquier momento. La suscripción permanece activa hasta el final del período de facturación. No hay reembolsos por tarifas ya pagadas.',
+                'annual-cta': 'Comenzar',
+                'single-name': 'Presentación Única',
+                'single-period': 'una vez',
+                'single-desc': 'Perfecto para presentaciones únicas',
+                'single-f1': 'Presentación única de 1099',
+                'single-f2': 'Recopilación de W-9 (esta presentación)',
+                'single-f3': 'Coincidencia automática del formulario IRS correcto',
+                'single-f4': 'Presentación electrónica al IRS',
+                'single-f5': 'Descarga de copia del destinatario',
+                'single-f6': 'Recibo de presentación',
+                'single-limit-title': '⚠️ Limitado a un lote de presentación',
+                'single-limit-desc': 'Las correcciones o presentaciones adicionales requieren nuevo pago',
+                'single-cta': 'Presentar Una Vez',
+                'auto-title': 'No necesitas conocer los números de formularios fiscales',
+                'auto-desc': 'Hacemos coincidir automáticamente el formulario IRS correcto según tu información de pago',
+                'disclaimer-title': 'Aviso Importante',
+                'disclaimer-1': 'Este es un servicio de presentación de declaraciones informativas',
+                'disclaimer-2': 'No proporciona presentación de impuestos personales, reembolsos o asesoramiento fiscal',
+                'disclaimer-3': 'El servicio se considera entregado una vez que se generan o presentan los documentos fiscales',
+                'disclaimer-4': 'Todas las tarifas no son reembolsables',
+                'cta-question': '¿Aún no estás seguro?',
+                'cta-contact': 'Si tienes necesidades complejas o de cumplimiento empresarial, <a href="mailto:support@fix1099.com">contáctanos</a>.',
+                'footer-text': 'Fix1099 es un servicio de preparación y presentación electrónica de formularios fiscales. No somos un bufete de abogados, firma de CPA, ni un sustituto de asesoramiento fiscal profesional.'
+            }
+        };
+
         function setLang(lang) {
-            document.querySelectorAll('.lang-switcher button').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
             document.getElementById('btn-' + lang).classList.add('active');
-
-            const text = {
-                en: {
-                    heroTitle: '<span class="highlight">$59.99</span> One Time,<br><span class="highlight">$199.99</span> Peace of Mind',
-                    heroSub: '1099 tax filing made simple.<br>No tax knowledge required.',
-                    heroCta: 'Choose Your Plan',
-                    t1: 'IRS Approved E-File', t2: '5 Minutes Average', t3: 'State Compliance',
-                    pricingTitle: 'Pricing', pricingSub: 'Simple, transparent, no hidden fees',
-                    annualName: 'Annual Plan', annualPeriod: 'per year',
-                    annualDesc: 'Unlimited filings for individuals and small businesses',
-                    af1: 'Unlimited 1099 Filings', af2: 'Secure Document Storage',
-                    af3: 'Automated State Filing', af4: 'Year-Round Support',
-                    af5: 'Audit Protection', af6: 'Easy Integration', af7: 'Unlimited',
-                    annualBtn: 'Get Annual Plan',
-                    onetimeName: 'One-Time Filing', onetimePeriod: 'per filing',
-                    onetimeDesc: 'Perfect for a single 1099 filing need',
-                    of1: 'Single 1099 Filing', of2: 'Secure Document Storage',
-                    of3: 'State Filing (Extra)', of4: 'Basic Support', of5: 'Audit Protection (Extra)',
-                    onetimeBtn: 'File Now — $59.99'
-                },
-                zh: {
-                    heroTitle: '<span class="highlight">$59.99</span> 单次申报，<br><span class="highlight">$199.99</span> 安心无忧',
-                    heroSub: '1099 税表申报变得简单。<br>无需税务知识。',
-                    heroCta: '选择方案',
-                    t1: 'IRS 授权电子申报', t2: '平均5分钟', t3: '州级合规',
-                    pricingTitle: '价格方案', pricingSub: '简单透明，无隐藏费用',
-                    annualName: '年度方案', annualPeriod: '每年',
-                    annualDesc: '适合个人和小型企业的无限申报',
-                    af1: '无限 1099 申报', af2: '安全文档存储',
-                    af3: '自动州级申报', af4: '全年支持',
-                    af5: '审计保护', af6: '轻松集成', af7: '无限制',
-                    annualBtn: '获取年度方案',
-                    onetimeName: '单次申报', onetimePeriod: '每次',
-                    onetimeDesc: '适合单次 1099 申报需求',
-                    of1: '单次 1099 申报', of2: '安全文档存储',
-                    of3: '州级申报（额外）', of4: '基本支持', of5: '审计保护（额外）',
-                    onetimeBtn: '立即申报 — $59.99'
-                },
-                es: {
-                    heroTitle: '<span class="highlight">$59.99</span> Una Vez,<br><span class="highlight">$199.99</span> Tranquilidad',
-                    heroSub: 'Declaración 1099 simplificada.<br>Sin conocimientos fiscales.',
-                    heroCta: 'Elegir Plan',
-                    t1: 'E-File Autorizado IRS', t2: '5 Minutos Promedio', t3: 'Cumplimiento Estatal',
-                    pricingTitle: 'Precios', pricingSub: 'Simple, transparente, sin cargos ocultos',
-                    annualName: 'Plan Anual', annualPeriod: 'por año',
-                    annualDesc: 'Declaraciones ilimitadas para individuos y empresas',
-                    af1: 'Declaraciones 1099 Ilimitadas', af2: 'Almacenamiento Seguro',
-                    af3: 'Declaración Estatal Automática', af4: 'Soporte Todo el Año',
-                    af5: 'Protección de Auditoría', af6: 'Integración Fácil', af7: 'Ilimitado',
-                    annualBtn: 'Obtener Plan Anual',
-                    onetimeName: 'Declaración Única', onetimePeriod: 'por declaración',
-                    onetimeDesc: 'Perfecto para una sola declaración 1099',
-                    of1: 'Una Declaración 1099', of2: 'Almacenamiento Seguro',
-                    of3: 'Declaración Estatal (Extra)', of4: 'Soporte Básico', of5: 'Protección Auditoría (Extra)',
-                    onetimeBtn: 'Declarar — $59.99'
-                }
-            };
-
-            const t = text[lang];
-            document.getElementById('hero-title').innerHTML = t.heroTitle;
-            document.getElementById('hero-subtitle').innerHTML = t.heroSub;
-            document.getElementById('hero-cta').textContent = t.heroCta;
-            document.getElementById('trust-1').textContent = t.t1;
-            document.getElementById('trust-2').textContent = t.t2;
-            document.getElementById('trust-3').textContent = t.t3;
-            document.getElementById('pricing-title').textContent = t.pricingTitle;
-            document.getElementById('pricing-subtitle').textContent = t.pricingSub;
-            document.getElementById('annual-name').textContent = t.annualName;
-            document.getElementById('annual-period').textContent = t.annualPeriod;
-            document.getElementById('annual-desc').textContent = t.annualDesc;
-            document.getElementById('annual-f1').textContent = t.af1;
-            document.getElementById('annual-f2').textContent = t.af2;
-            document.getElementById('annual-f3').textContent = t.af3;
-            document.getElementById('annual-f4').textContent = t.af4;
-            document.getElementById('annual-f5').textContent = t.af5;
-            document.getElementById('annual-f6').textContent = t.af6;
-            document.getElementById('annual-f7').textContent = t.af7;
-            document.getElementById('annual-btn').textContent = t.annualBtn;
-            document.getElementById('onetime-name').textContent = t.onetimeName;
-            document.getElementById('onetime-period').textContent = t.onetimePeriod;
-            document.getElementById('onetime-desc').textContent = t.onetimeDesc;
-            document.getElementById('onetime-f1').textContent = t.of1;
-            document.getElementById('onetime-f2').textContent = t.of2;
-            document.getElementById('onetime-f3').textContent = t.of3;
-            document.getElementById('onetime-f4').textContent = t.of4;
-            document.getElementById('onetime-f5').textContent = t.of5;
-            document.getElementById('onetime-btn').textContent = t.onetimeBtn;
+            
+            const trans = translations[lang];
+            for (let key in trans) {
+                const el = document.getElementById(key);
+                if (el) el.innerHTML = trans[key];
+            }
+            
+            localStorage.setItem('lang', lang);
         }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('lang') || 'en';
+            setLang(savedLang);
+        };
     </script>
 </body>
 </html>
+
 

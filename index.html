@@ -2,416 +2,305 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Fix1099 - 1099 Tax Filing Made Simple</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fix1099</title>
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: #1a1a1a; background: #ffffff; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-    /* --- Overall Scale (90%) --- */
-    .page-scale {
-      transform: scale(0.9);
-      transform-origin: top center;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#111827;}
 
-    /* Header */
-    .header { background: white; border-bottom: 1px solid #e5e7eb; padding: 18px 0; position: sticky; top: 0; z-index: 100; }
-    .header-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+.page-scale{
+  transform:scale(0.9);
+  transform-origin:top center;
+}
 
-    /* Logo (Fix black, X arrow purple, 1099 purple) */
-    .logo { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 2px; }
-    .logo .fix { color: #111827; }
-    .logo .xwrap { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; }
-    .logo .xwrap .x { color: #673de6; font-weight: 900; font-size: 26px; line-height: 1; transform: translateY(-1px); }
-    .logo .xwrap::after{
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      border-top: 3px solid #673de6;
-      border-right: 3px solid #673de6;
-      transform: rotate(45deg);
-      top: -6px;
-      right: -8px;
-      border-radius: 1px;
-      opacity: 0.95;
-    }
-    .logo .n1099 { color: #673de6; margin-left: 2px; }
+/* HEADER */
+.header{
+  background:#fff;
+  padding:20px 0;
+  border-bottom:1px solid #eee;
+}
+.header-content{
+  max-width:1200px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    /* Language Switcher (circular light-purple gradient, active: deep purple border + light purple fill) */
-    .lang-switcher { display: flex; align-items: center; gap: 10px; }
-    .lang-switcher button {
-      width: 44px; height: 44px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: 800;
-      border: 2px solid rgba(103, 61, 230, 0.18);
-      background: linear-gradient(135deg, #f3efff 0%, #ebe6ff 55%, #f7f4ff 100%);
-      color: #5b5f6a;
-      transition: all 0.25s ease;
-      box-shadow: 0 6px 18px rgba(103,61,230,0.08);
-    }
-    .lang-switcher button:hover {
-      border-color: rgba(103, 61, 230, 0.55);
-      color: #673de6;
-      transform: translateY(-1px);
-    }
-    .lang-switcher button.active {
-      border-color: #673de6;
-      background: linear-gradient(135deg, #ede7ff 0%, #e5ddff 60%, #f3efff 100%);
-      color: #111827;
-      box-shadow: 0 10px 24px rgba(103,61,230,0.18);
-    }
+/* LOGO */
+.logo{
+  display:flex;
+  align-items:flex-end;
+  gap:0;
+  font-weight:900;
+  letter-spacing:-0.8px;
+}
+.logo .fixword{
+  color:#111827;
+  font-size:34px;
+}
+.logo .n1099{
+  color:#673de6;
+  font-size:34px;
+  margin-left:2px;
+}
+.logo .xwrap{
+  position:relative;
+  margin:0 -1px;
+}
+.logo .x{
+  color:#673de6;
+  font-size:34px;
+  font-weight:900;
+}
+.logo .xwrap::after{
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-top:3px solid #673de6;
+  border-right:3px solid #673de6;
+  transform:rotate(45deg);
+  top:-10px;
+  right:-10px;
+}
 
-    /* Hero (purple gradient like screenshot) */
-    .hero {
-      background: radial-gradient(1200px 500px at 50% 15%, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0.1) 55%, rgba(255,255,255,0) 75%),
-                  linear-gradient(180deg, #eae6ff 0%, #e7e3ff 45%, #f3f1ff 100%);
-      padding: 86px 20px 72px;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 46px !important; /* confirmed */
-      font-weight: 900;
-      color: #111827;
-      margin-bottom: 18px;
-      line-height: 1.05;
-      letter-spacing: -1px;
-    }
-    .hero h1 .line2 { display: block; margin-top: 8px; }
+/* HERO */
+.hero{
+  background:linear-gradient(180deg,#ebe7ff 0%,#f5f3ff 100%);
+  padding:90px 20px 70px;
+  text-align:center;
+}
+.hero h1{
+  font-size:46px;
+  font-weight:900;
+  margin-bottom:18px;
+}
+.hero .subtitle{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:30px;
+}
 
-    /* Subtitle: same level as old "1099 tax filing made simple." feeling */
-    .hero .subtitle {
-      font-size: 22px;
-      color: #111827;
-      font-weight: 600;
-      margin: 0 auto 34px;
-      max-width: 980px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 22px;
-      flex-wrap: wrap;
-      opacity: 0.96;
-    }
+/* White pill badges */
+.badge-pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 18px;
+  background:#fff;
+  border-radius:999px;
+  border:1px solid #e5e7eb;
+  font-weight:600;
+  font-size:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+.badge-pill .icon{
+  font-size:16px;
+}
+.badge-pill .check{color:#22c55e;}
+.badge-pill .bolt{color:#f59e0b;}
+.badge-pill .shield{color:#3b82f6;}
 
-    /* Green check filled badge */
-    .feature-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      white-space: nowrap;
-    }
-    .check-badge {
-      width: 26px;
-      height: 26px;
-      background: #22c55e;
-      color: #ffffff;
-      border-radius: 8px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 900;
-      box-shadow: 0 10px 22px rgba(34,197,94,0.18);
-      transform: translateY(-1px);
-    }
+/* Purple oval button */
+.btn-hero{
+  display:inline-block;
+  padding:18px 60px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#7c3aed,#6d28d9);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 12px 30px rgba(124,58,237,0.35);
+  transition:all .2s ease;
+}
+.btn-hero:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px rgba(124,58,237,0.45);
+}
 
-    /* Hero Button (purple with shadow) */
-    .btn-hero {
-      display: inline-block;
-      padding: 16px 52px;
-      font-size: 18px;
-      font-weight: 900;
-      background: linear-gradient(135deg, #6f46ff 0%, #673de6 45%, #5a2fe0 100%);
-      color: white;
-      border: none;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      box-shadow: 0 14px 28px rgba(103,61,230,0.35);
-    }
-    .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(103,61,230,0.42); }
+/* PRICING */
+.pricing-section{
+  max-width:1100px;
+  margin:70px auto;
+  padding:0 20px;
+}
+.pricing-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+.pricing-header h2{
+  font-size:48px;
+  font-weight:900;
+}
+.pricing-header p{
+  font-weight:600;
+  color:#6b7280;
+}
 
-    /* Pricing Section */
-    .pricing-section { max-width: 1200px; margin: 78px auto; padding: 0 20px; }
-    .pricing-header { text-align: center; margin-bottom: 44px; }
-    .pricing-header h2 { font-size: 48px; font-weight: 900; color: #111827; margin-bottom: 12px; letter-spacing: -0.6px; }
-    .pricing-header p { font-size: 18px; color: #6b7280; line-height: 1.6; font-weight: 700; }
+/* CARDS */
+.pricing-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+  gap:40px;
+}
 
-    .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; max-width: 980px; margin: 0 auto; }
+.pricing-card{
+  background:#fff;
+  border:2px solid rgba(103,61,230,.3);
+  border-radius:24px;
+  padding:30px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
 
-    .pricing-card {
-      background: white;
-      border: 2px solid rgba(103,61,230,0.22);
-      border-radius: 24px;
-      padding: 34px 30px 30px;
-      position: relative;
-      transition: all 0.25s ease;
-      box-shadow: 0 14px 40px rgba(17,24,39,0.06);
-    }
-    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 22px 54px rgba(103,61,230,0.12); border-color: rgba(103,61,230,0.45); }
+/* Ribbon */
+.ribbon{
+  position:absolute;
+  top:20px;
+  left:-55px;
+  transform:rotate(-45deg);
+  background:linear-gradient(135deg,#a21caf,#7c3aed,#ef5bb5);
+  color:#fff;
+  font-weight:900;
+  font-size:12px;
+  padding:10px 70px;
+  border-radius:8px;
+  box-shadow:0 14px 26px rgba(0,0,0,.22);
+}
+.ribbon::after{
+  content:"";
+  position:absolute;
+  right:18px;
+  bottom:-10px;
+  width:22px;
+  height:14px;
+  background:rgba(0,0,0,.2);
+  transform:skewX(-18deg);
+  border-radius:0 0 6px 6px;
+  opacity:.5;
+}
 
-    /* Featured (Annual) */
-    .pricing-card.featured {
-      border-color: rgba(103,61,230,0.55);
-      background: linear-gradient(180deg, #ffffff 0%, #fbfaff 100%);
-      box-shadow: 0 22px 62px rgba(103,61,230,0.16);
-      overflow: hidden;
-    }
+/* Best Value */
+.best-value-pill{
+  position:absolute;
+  top:-14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#22c55e;
+  color:#fff;
+  padding:8px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:900;
+  border:2px solid #fff;
+  box-shadow:0 8px 20px rgba(34,197,94,.25);
+}
 
-    /* Ribbon "Most Popular" (purple-magenta) */
-    .ribbon {
-      position: absolute;
-      top: 16px;
-      left: -48px;
-      transform: rotate(-45deg);
-      background: linear-gradient(135deg, #a21caf 0%, #7c3aed 55%, #ef5bb5 100%);
-      color: #ffffff;
-      font-weight: 900;
-      font-size: 12px;
-      letter-spacing: 0.6px;
-      padding: 10px 60px;
-      box-shadow: 0 10px 26px rgba(124,58,237,0.25);
-    }
+/* Price row */
+.price-row{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+}
+.price{
+  font-size:54px;
+  font-weight:900;
+  line-height:1;
+}
+.price-period{
+  font-size:16px;
+  font-weight:600;
+}
 
-    /* Green oval "Best Value" centered */
-    .best-value-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 18px;
-      border-radius: 999px;
-      background: #dcfce7;
-      border: 2px solid #22c55e;
-      color: #166534;
-      font-weight: 900;
-      font-size: 13px;
-      margin: 10px auto 18px;
-      box-shadow: 0 10px 22px rgba(34,197,94,0.18);
-    }
-
-    /* Inner top gradient panel like screenshot */
-    .plan-panel {
-      border-radius: 18px;
-      padding: 22px 22px 18px;
-      background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 45%, #a855f7 100%);
-      box-shadow: inset 0 0 0 2px rgba(255,255,255,0.16), 0 18px 40px rgba(124,58,237,0.22);
-      color: #fff;
-      text-align: left;
-      margin-bottom: 18px;
-    }
-    .plan-panel .plan-name {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.3px;
-      margin-bottom: 6px;
-      color: #ffffff;
-    }
-    .plan-panel .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .plan-panel .price {
-      font-size: 54px;
-      font-weight: 900;
-      line-height: 1;
-      margin: 6px 0 0;
-      color: #ffffff;
-    }
-    .plan-panel .price-period {
-      font-size: 16px;
-      color: rgba(255,255,255,0.78);
-      font-weight: 800;
-    }
-
-    /* Right card light-purple panel */
-    .light-panel {
-      border-radius: 18px;
-      padding: 22px 22px 18px;
-      background: linear-gradient(135deg, #f2edff 0%, #ece7ff 55%, #f7f4ff 100%);
-      box-shadow: inset 0 0 0 2px rgba(103,61,230,0.10), 0 16px 36px rgba(103,61,230,0.10);
-      margin-bottom: 18px;
-      text-align: left;
-    }
-    .light-panel .plan-name {
-      font-size: 28px;
-      font-weight: 900;
-      color: #111827;
-      letter-spacing: -0.3px;
-      margin-bottom: 6px;
-    }
-    .light-panel .price {
-      font-size: 54px;
-      font-weight: 900;
-      color: #111827;
-      line-height: 1;
-      margin: 6px 0 0;
-    }
-    .light-panel .price-period {
-      font-size: 16px;
-      font-weight: 800;
-      color: #6b7280;
-      margin-top: 4px;
-    }
-
-    .features-list { list-style: none; margin: 18px 0 22px; }
-    .features-list li {
-      padding: 12px 0;
-      padding-left: 34px;
-      position: relative;
-      font-size: 16px;
-      color: #111827;
-      line-height: 1.55;
-      font-weight: 700;
-      opacity: 0.96;
-    }
-    .features-list li:before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: #22c55e;
-      font-weight: 900;
-      font-size: 22px;
-      top: 8px;
-    }
-
-    .btn-primary, .btn-secondary {
-      width: 100%;
-      padding: 16px;
-      font-size: 18px;
-      font-weight: 900;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-      margin-top: 18px;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #6f46ff 0%, #673de6 45%, #5a2fe0 100%);
-      color: white;
-      border: none;
-      box-shadow: 0 14px 28px rgba(103,61,230,0.28);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(103,61,230,0.36); }
-    .btn-secondary {
-      background: #ffffff;
-      color: #673de6;
-      border: 2px solid rgba(103,61,230,0.55);
-      box-shadow: 0 12px 24px rgba(103,61,230,0.10);
-    }
-    .btn-secondary:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(103,61,230,0.14); }
-
-    @media (max-width: 768px) {
-      .header-content { flex-direction: column; gap: 14px; }
-      .lang-switcher { margin-top: 6px; }
-      .pricing-cards { grid-template-columns: 1fr; }
-      .hero .subtitle { font-size: 20px; }
-    }
-  </style>
+.btn-primary,.btn-secondary{
+  margin-top:auto;
+  padding:16px;
+  border-radius:999px;
+  text-align:center;
+  font-weight:700;
+  text-decoration:none;
+}
+.btn-primary{
+  background:linear-gradient(135deg,#7c3aed,#6d28d9);
+  color:#fff;
+}
+.btn-secondary{
+  border:2px solid #7c3aed;
+  color:#7c3aed;
+}
+</style>
 </head>
 
 <body>
-  <div class="page-scale">
+<div class="page-scale">
 
-    <!-- Header -->
-    <header class="header">
-      <div class="header-content">
-        <div class="logo" aria-label="Fix1099">
-          <span class="fix">Fi</span>
-          <span class="xwrap" aria-hidden="true"><span class="x">X</span></span>
-          <span class="fix">ix</span>
-          <span class="n1099">1099</span>
-        </div>
+<header class="header">
+<div class="header-content">
 
-        <div class="lang-switcher">
-          <button onclick="setLang('en')" class="active" id="btn-en">EN</button>
-          <button onclick="setLang('zh')" id="btn-zh">中文</button>
-          <button onclick="setLang('es')" id="btn-es">ES</button>
-        </div>
-      </div>
-    </header>
+<div class="logo">
+<span class="fixword">Fi</span>
+<span class="xwrap"><span class="x">X</span></span>
+<span class="fixword">ix</span>
+<span class="n1099">1099</span>
+</div>
 
-    <!-- Hero -->
-    <section class="hero">
-      <h1 id="hero-title">Smart Filing.<span class="line2">Built for Compliance</span></h1>
+<div class="lang-switcher">
+<button class="active">EN</button>
+<button>中文</button>
+<button>ES</button>
+</div>
 
-      <!-- one-line features with green check filled box -->
-      <div class="subtitle" id="hero-subtitle">
-        <span class="feature-item"><span class="check-badge">✓</span><span id="hero-b1">IRS-Authorized E-File</span></span>
-        <span class="feature-item"><span class="check-badge">✓</span><span id="hero-b2">Secure Data Encryption</span></span>
-        <span class="feature-item"><span class="check-badge">✓</span><span id="hero-b3">Multi-State Compliance</span></span>
-      </div>
+</div>
+</header>
 
-      Choose Your Plan
-    </section>
+<section class="hero">
+<h1>Smart Filing.<br>Built for Compliance</h1>
 
-    <!-- Pricing -->
-    <section class="pricing-section" id="pricing">
-      <div class="pricing-header">
-        <h2 id="pricing-title">Enter Your Filing</h2>
-        <p id="pricing-subtitle">IRS-Authorized E-file, AI Matched Form</p >
-      </div>
+<div class="subtitle">
+<div class="badge-pill"><span class="icon check">✓</span> IRS-Authorized E-File</div>
+<div class="badge-pill"><span class="icon bolt">⚡</span> 5 Minutes Average</div>
+<div class="badge-pill"><span class="icon shield">🛡</span> State Compliance</div>
+</div>
 
-      <div class="pricing-cards">
+Choose Your Plan
+</section>
 
-        <!-- Annual Plan -->
-        <div class="pricing-card featured">
-          <div class="ribbon" id="ribbon-most">MOST POPULAR</div>
+<section class="pricing-section" id="pricing">
 
-          <div style="text-align:center;">
-            <div class="best-value-pill" id="best-value">BEST VALUE</div>
-          </div>
+<div class="pricing-header">
+<h2>Enter Your Filing</h2>
+<p>IRS-Authorized E-file, AI Matched Form</p >
+</div>
 
-          <div class="plan-panel">
-            <div class="plan-name" id="annual-name">Annual Plan</div>
-            <div class="price-row">
-              <div class="price" id="annual-price">$199.99</div>
-              <div class="price-period" id="annual-period">per year</div>
-            </div>
-          </div>
+<div class="pricing-cards">
 
-          <ul class="features-list">
-            <li id="annual-f1">Unlimited 1099 filings (NEC / MISC)</li>
-            <li id="annual-f2">W-9 auto-collection & management</li>
-            <li id="annual-f3">Auto-match correct IRS tax form</li>
-            <li id="annual-f4">Electronic IRS submission</li>
-            <li id="annual-f5">Corrections included at no extra cost</li>
-            <li id="annual-f6">Full-year filing record storage</li>
-            <li id="annual-f7">State filing alerts (if applicable)</li>
-          </ul>
+<div class="pricing-card">
+<div class="ribbon">MOST POPULAR</div>
+<div class="best-value-pill">BEST VALUE</div>
 
-          
-        </div>
+<div class="price-row">
+<div class="price">$199.99</div>
+<div class="price-period">per year</div>
+</div>
 
-        <!-- One Time Filing -->
-        <div class="pricing-card">
-          <div class="light-panel">
-            <div class="plan-name" id="single-name">One Time Filing</div>
-            <div class="price" id="single-price">$59.99</div>
-            <div class="price-period" id="single-period">per filing</div>
-          </div>
+Get Started
+</div>
 
-          <ul class="features-list">
-            <li id="single-f1">Single 1099 filing</li>
-            <li id="single-f2">W-9 collection (this filing)</li>
-            <li id="single-f3">Auto-match correct IRS tax form</li>
-            <li id="single-f4">Electronic IRS submission</li>
-            <li id="single-f5">Recipient copy download</li>
-            <li id="single-f6">Submission receipt</li>
-          </ul>
+<div class="pricing-card">
+<div class="price-row">
+<div class="price">$59.99</div>
+<div class="price-period">per filing</div>
+</div>
 
-          
-        </div>
+File Once
+</div>
 
-      </div>
-    </section>
+</div>
+</section>

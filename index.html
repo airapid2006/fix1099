@@ -43,48 +43,30 @@
         
         .logo {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             gap: 0;
+            font-size: 58px;
             font-weight: 900;
-            letter-spacing: -0.8px;
+            letter-spacing: -2px;
             line-height: 1;
         }
         
-        .logo-fixword {
-            color: #1f2937;
-            font-size: 38px;
-            font-weight: 900;
+        /* Fi - Black */
+        .logo-fi {
+            color: #111827;
         }
         
-        .logo-xwrap {
-            position: relative;
-            margin: 0 -1px;
-        }
-        
+        /* X - Half Black, Half Purple */
         .logo-x {
-            color: #673de6;
-            font-size: 38px;
-            font-weight: 900;
+            background: linear-gradient(90deg, #111827 0%, #111827 50%, #764ba2 50%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        /* Arrow decoration on X - pointing up and right */
-        .logo-xwrap::after {
-            content: "";
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-top: 3px solid #673de6;
-            border-right: 3px solid #673de6;
-            transform: rotate(45deg);
-            top: -10px;
-            right: -10px;
-        }
-        
-        .logo-n1099 {
-            color: #673de6;
-            font-size: 38px;
-            font-weight: 900;
-            margin-left: 2px;
+        /* 1099 - Purple */
+        .logo-numbers {
+            color: #764ba2;
         }
         
         .phone-number {
@@ -114,18 +96,8 @@
                 padding: 20px 24px;
             }
             
-            .logo-fixword,
-            .logo-x,
-            .logo-n1099 {
-                font-size: 32px;
-            }
-            
-            .logo-xwrap::after {
-                width: 10px;
-                height: 10px;
-                border-width: 2.5px;
-                top: -8px;
-                right: -8px;
+            .logo {
+                font-size: 44px;
             }
         }
         
@@ -678,10 +650,7 @@
     <!-- Logo Section -->
     <section class="logo-container">
         <div class="logo">
-            <span class="logo-fixword">Fi</span>
-            <span class="logo-xwrap"><span class="logo-x">X</span></span>
-            <span class="logo-fixword">ix</span>
-            <span class="logo-n1099">1099</span>
+            <span class="logo-fi">Fi</span><span class="logo-x">x</span><span class="logo-numbers">1099</span>
         </div>
         <a href="tel:+18189255239" class="phone-number">
             <span class="phone-icon">📞</span>
@@ -934,6 +903,16 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <p>
+                &copy; 2024 1099 Compliance Setup. All rights reserved.<br>
+                This is a digital information product. Not legal or tax advice. Consult a professional for your specific situation.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
+">
             <p>
                 &copy; 2024 1099 Compliance Setup. All rights reserved.<br>
                 This is a digital information product. Not legal or tax advice. Consult a professional for your specific situation.

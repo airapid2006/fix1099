@@ -46,46 +46,42 @@
             align-items: flex-end;
             gap: 0;
             font-weight: 900;
-            letter-spacing: -1.5px;
+            letter-spacing: -0.8px;
             line-height: 1;
         }
         
-        .logo-fi {
+        .logo-fixword {
             color: #1f2937;
             font-size: 38px;
             font-weight: 900;
         }
         
-        .logo-x-wrapper {
+        .logo-xwrap {
             position: relative;
-            display: inline-block;
-            margin: 0 -2px;
+            margin: 0 -1px;
         }
         
         .logo-x {
-            color: #667eea;
+            color: #673de6;
             font-size: 38px;
             font-weight: 900;
-            position: relative;
-            z-index: 1;
         }
         
-        /* Arrow decoration on X */
-        .logo-x-wrapper::after {
+        /* Arrow decoration on X - pointing up and right */
+        .logo-xwrap::after {
             content: "";
             position: absolute;
-            width: 14px;
-            height: 14px;
-            border-top: 3px solid #667eea;
-            border-right: 3px solid #667eea;
+            width: 12px;
+            height: 12px;
+            border-top: 3px solid #673de6;
+            border-right: 3px solid #673de6;
             transform: rotate(45deg);
-            top: -8px;
-            right: -8px;
-            z-index: 2;
+            top: -10px;
+            right: -10px;
         }
         
-        .logo-1099 {
-            color: #667eea;
+        .logo-n1099 {
+            color: #673de6;
             font-size: 38px;
             font-weight: 900;
             margin-left: 2px;
@@ -118,18 +114,18 @@
                 padding: 20px 24px;
             }
             
-            .logo-fi,
+            .logo-fixword,
             .logo-x,
-            .logo-1099 {
+            .logo-n1099 {
                 font-size: 32px;
             }
             
-            .logo-x-wrapper::after {
-                width: 12px;
-                height: 12px;
+            .logo-xwrap::after {
+                width: 10px;
+                height: 10px;
                 border-width: 2.5px;
-                top: -6px;
-                right: -6px;
+                top: -8px;
+                right: -8px;
             }
         }
         
@@ -682,11 +678,10 @@
     <!-- Logo Section -->
     <section class="logo-container">
         <div class="logo">
-            <span class="logo-fi">Fi</span>
-            <span class="logo-x-wrapper">
-                <span class="logo-x">X</span>
-            </span>
-            <span class="logo-1099">1099</span>
+            <span class="logo-fixword">Fi</span>
+            <span class="logo-xwrap"><span class="logo-x">X</span></span>
+            <span class="logo-fixword">ix</span>
+            <span class="logo-n1099">1099</span>
         </div>
         <a href="tel:+18189255239" class="phone-number">
             <span class="phone-icon">📞</span>

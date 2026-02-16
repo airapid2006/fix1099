@@ -34,15 +34,61 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px;
+            padding: 24px 40px;
             background: #ffffff;
             max-width: 1200px;
             margin: 0 auto;
+            border-bottom: 1px solid #f3f4f6;
         }
         
         .logo {
-            max-width: 180px;
-            height: auto;
+            display: flex;
+            align-items: flex-end;
+            gap: 0;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            line-height: 1;
+        }
+        
+        .logo-fi {
+            color: #1f2937;
+            font-size: 38px;
+            font-weight: 900;
+        }
+        
+        .logo-x-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 0 -2px;
+        }
+        
+        .logo-x {
+            color: #667eea;
+            font-size: 38px;
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Arrow decoration on X */
+        .logo-x-wrapper::after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-top: 3px solid #667eea;
+            border-right: 3px solid #667eea;
+            transform: rotate(45deg);
+            top: -8px;
+            right: -8px;
+            z-index: 2;
+        }
+        
+        .logo-1099 {
+            color: #667eea;
+            font-size: 38px;
+            font-weight: 900;
+            margin-left: 2px;
         }
         
         .phone-number {
@@ -53,10 +99,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            transition: all 0.3s ease;
         }
         
         .phone-number:hover {
             color: #5568d3;
+            transform: translateY(-1px);
         }
         
         .phone-icon {
@@ -67,6 +115,21 @@
             .logo-container {
                 flex-direction: column;
                 gap: 16px;
+                padding: 20px 24px;
+            }
+            
+            .logo-fi,
+            .logo-x,
+            .logo-1099 {
+                font-size: 32px;
+            }
+            
+            .logo-x-wrapper::after {
+                width: 12px;
+                height: 12px;
+                border-width: 2.5px;
+                top: -6px;
+                right: -6px;
             }
         }
         
@@ -618,7 +681,13 @@
 
     <!-- Logo Section -->
     <section class="logo-container">
-        <img src="fix1099-logo.png" alt="Fix1099 Logo" class="logo">
+        <div class="logo">
+            <span class="logo-fi">Fi</span>
+            <span class="logo-x-wrapper">
+                <span class="logo-x">X</span>
+            </span>
+            <span class="logo-1099">1099</span>
+        </div>
         <a href="tel:+18189255239" class="phone-number">
             <span class="phone-icon">📞</span>
             <span>(818) 925-5239</span>

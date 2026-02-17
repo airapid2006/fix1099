@@ -610,29 +610,52 @@
             background: #f9fafb;
         }
         
+        .testimonials-wrapper {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
         .testimonials-scroll {
             display: flex;
             gap: 16px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
-            scrollbar-color: #667eea #e5e7eb;
+            scrollbar-width: none;
             padding-bottom: 12px;
+            padding-right: 60px;
         }
         
         .testimonials-scroll::-webkit-scrollbar {
-            height: 8px;
+            display: none;
         }
         
-        .testimonials-scroll::-webkit-scrollbar-track {
-            background: #e5e7eb;
-            border-radius: 10px;
+        .testimonials-wrapper::after {
+            content: '→';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(to left, #f9fafb 60%, transparent);
+            width: 60px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #667eea;
+            pointer-events: none;
+            font-weight: 900;
         }
         
-        .testimonials-scroll::-webkit-scrollbar-thumb {
-            background: #667eea;
-            border-radius: 10px;
+        .scroll-hint {
+            text-align: center;
+            color: #667eea;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 12px;
+            opacity: 0.8;
         }
         
         .testimonial-card {
@@ -904,9 +927,22 @@
                 padding: 30px 18px;
             }
             
+            .testimonials-scroll {
+                padding-right: 40px;
+            }
+            
+            .testimonials-wrapper::after {
+                width: 40px;
+                background: linear-gradient(to left, #f9fafb 50%, transparent);
+            }
+            
             .testimonial-card {
-                flex: 0 0 calc(50% - 8px);
-                min-width: calc(50% - 8px);
+                flex: 0 0 calc(85% - 8px);
+                min-width: calc(85% - 8px);
+            }
+            
+            .scroll-hint {
+                font-size: 12px;
             }
             
             .faq {
@@ -1052,61 +1088,64 @@
             <h2 class="section-title">What Early Users Say</h2>
             <p class="section-subtitle">Real feedback from small businesses</p>
             
-            <div class="testimonials-scroll">
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Finally everything in one place."</div>
-                    <p class="testimonial-text">This system helped us organize contractor payments before tax season. We stopped chasing W-9 forms at the last minute.</p>
-                    <div class="testimonial-author">— Small Business Owner</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Clear and structured."</div>
-                    <p class="testimonial-text">The $600 tracking alone saved us hours of spreadsheet work. Much easier than figuring it out in January.</p>
-                    <div class="testimonial-author">— Office Manager</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Worth it just for the checklist."</div>
-                    <p class="testimonial-text">The filing checklist gave us confidence we weren't missing steps. Simple and practical.</p>
-                    <div class="testimonial-author">— Bookkeeper</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Much better than guessing."</div>
-                    <p class="testimonial-text">We used to estimate who crossed the $600 threshold. Now it's clearly tracked throughout the year.</p>
-                    <div class="testimonial-author">— Service Business Owner</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Saved us cleanup fees."</div>
-                    <p class="testimonial-text">We organized everything before talking to our accountant. It made the conversation much smoother.</p>
-                    <div class="testimonial-author">— Small Agency Founder</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Simple and structured."</div>
-                    <p class="testimonial-text">The layout makes sense. Even someone without accounting experience can follow it step by step.</p>
-                    <div class="testimonial-author">— Operations Coordinator</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Reduced January stress."</div>
-                    <p class="testimonial-text">Instead of scrambling at the deadline, we were ready ahead of time. That alone made it worth it.</p>
-                    <div class="testimonial-author">— Property Management Team</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Clear filing checklist."</div>
-                    <p class="testimonial-text">The checklist helped ensure we didn't miss required forms or deadlines. Straightforward and practical.</p>
-                    <div class="testimonial-author">— Construction Business Owner</div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-quote">"Professional and organized."</div>
-                    <p class="testimonial-text">It feels like a system, not just a spreadsheet. Everything is centralized and easier to manage.</p>
-                    <div class="testimonial-author">— Bookkeeping Consultant</div>
+            <div class="testimonials-wrapper">
+                <div class="testimonials-scroll">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Finally everything in one place."</div>
+                        <p class="testimonial-text">This system helped us organize contractor payments before tax season. We stopped chasing W-9 forms at the last minute.</p>
+                        <div class="testimonial-author">— Small Business Owner</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Clear and structured."</div>
+                        <p class="testimonial-text">The $600 tracking alone saved us hours of spreadsheet work. Much easier than figuring it out in January.</p>
+                        <div class="testimonial-author">— Office Manager</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Worth it just for the checklist."</div>
+                        <p class="testimonial-text">The filing checklist gave us confidence we weren't missing steps. Simple and practical.</p>
+                        <div class="testimonial-author">— Bookkeeper</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Much better than guessing."</div>
+                        <p class="testimonial-text">We used to estimate who crossed the $600 threshold. Now it's clearly tracked throughout the year.</p>
+                        <div class="testimonial-author">— Service Business Owner</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Saved us cleanup fees."</div>
+                        <p class="testimonial-text">We organized everything before talking to our accountant. It made the conversation much smoother.</p>
+                        <div class="testimonial-author">— Small Agency Founder</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Simple and structured."</div>
+                        <p class="testimonial-text">The layout makes sense. Even someone without accounting experience can follow it step by step.</p>
+                        <div class="testimonial-author">— Operations Coordinator</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Reduced January stress."</div>
+                        <p class="testimonial-text">Instead of scrambling at the deadline, we were ready ahead of time. That alone made it worth it.</p>
+                        <div class="testimonial-author">— Property Management Team</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Clear filing checklist."</div>
+                        <p class="testimonial-text">The checklist helped ensure we didn't miss required forms or deadlines. Straightforward and practical.</p>
+                        <div class="testimonial-author">— Construction Business Owner</div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Professional and organized."</div>
+                        <p class="testimonial-text">It feels like a system, not just a spreadsheet. Everything is centralized and easier to manage.</p>
+                        <div class="testimonial-author">— Bookkeeping Consultant</div>
+                    </div>
                 </div>
             </div>
+            <div class="scroll-hint">← Swipe to see more →</div>
         </div>
     </section>
 

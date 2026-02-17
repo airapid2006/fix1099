@@ -62,6 +62,24 @@
             color: #764ba2;
         }
         
+        .home-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .home-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        }
+        
         /* Content */
         .content {
             max-width: 800px;
@@ -210,10 +228,19 @@
         @media (max-width: 768px) {
             .logo-container {
                 padding: 20px 24px;
+                flex-direction: column;
+                gap: 16px;
             }
             
             .logo {
                 font-size: 44px;
+            }
+            
+            .home-button {
+                width: 100%;
+                text-align: center;
+                padding: 10px 20px;
+                font-size: 15px;
             }
             
             .content {
@@ -244,9 +271,10 @@
 
     <!-- Logo Section -->
     <section class="logo-container">
-        <a href="index_v6_super_compact.html" class="logo">
+        <a href="index.html" class="logo">
             <span class="logo-fi">Fi</span><span class="logo-x">x</span><span class="logo-numbers">1099</span>
         </a>
+        <a href="index.html" class="home-button">← Home</a>
     </section>
 
     <!-- Content -->

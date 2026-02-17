@@ -604,6 +604,99 @@
             font-weight: 900;
         }
         
+        /* Testimonials Section */
+        .testimonials {
+            padding: 40px 24px;
+            background: #f9fafb;
+        }
+        
+        .testimonials-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #667eea #e5e7eb;
+            padding-bottom: 12px;
+        }
+        
+        .testimonials-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .testimonials-scroll::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        
+        .testimonials-scroll::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 10px;
+        }
+        
+        .testimonial-card {
+            flex: 0 0 280px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            scroll-snap-align: start;
+        }
+        
+        .testimonial-quote {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .testimonial-text {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        
+        .testimonial-author {
+            font-size: 13px;
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 40px 24px;
+            background: #ffffff;
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 24px;
+            padding: 20px;
+            background: #f9fafb;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+        }
+        
+        .faq-question {
+            font-size: 17px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        
+        .faq-answer {
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        
         /* Footer */
         .footer {
             background: #111827;
@@ -806,6 +899,32 @@
             .footer {
                 padding: 24px 18px 85px;
             }
+            
+            .testimonials {
+                padding: 30px 18px;
+            }
+            
+            .testimonial-card {
+                flex: 0 0 calc(50% - 8px);
+                min-width: calc(50% - 8px);
+            }
+            
+            .faq {
+                padding: 30px 18px;
+            }
+            
+            .faq-item {
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+            
+            .faq-question {
+                font-size: 15px;
+            }
+            
+            .faq-answer {
+                font-size: 14px;
+            }
         }
         
         /* Smooth Scroll */
@@ -923,6 +1042,105 @@
             <div style="margin-top: 30px; padding: 20px; background: #f3f0ff; border: 3px solid #764ba2; border-radius: 16px; text-align: center; box-shadow: 0 6px 20px rgba(118, 75, 162, 0.25);">
                 <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #111827;">Refund Policy (Digital Product)</h4>
                 <p style="font-size: 14px; color: #4b5563; line-height: 1.5;">All sales are final once access is delivered. If you experience technical access issues, contact us within 7 days for support.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Early Users Say</h2>
+            <p class="section-subtitle">Real feedback from small businesses</p>
+            
+            <div class="testimonials-scroll">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Finally everything in one place."</div>
+                    <p class="testimonial-text">This system helped us organize contractor payments before tax season. We stopped chasing W-9 forms at the last minute.</p>
+                    <div class="testimonial-author">— Small Business Owner</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Clear and structured."</div>
+                    <p class="testimonial-text">The $600 tracking alone saved us hours of spreadsheet work. Much easier than figuring it out in January.</p>
+                    <div class="testimonial-author">— Office Manager</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Worth it just for the checklist."</div>
+                    <p class="testimonial-text">The filing checklist gave us confidence we weren't missing steps. Simple and practical.</p>
+                    <div class="testimonial-author">— Bookkeeper</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Much better than guessing."</div>
+                    <p class="testimonial-text">We used to estimate who crossed the $600 threshold. Now it's clearly tracked throughout the year.</p>
+                    <div class="testimonial-author">— Service Business Owner</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Saved us cleanup fees."</div>
+                    <p class="testimonial-text">We organized everything before talking to our accountant. It made the conversation much smoother.</p>
+                    <div class="testimonial-author">— Small Agency Founder</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Simple and structured."</div>
+                    <p class="testimonial-text">The layout makes sense. Even someone without accounting experience can follow it step by step.</p>
+                    <div class="testimonial-author">— Operations Coordinator</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Reduced January stress."</div>
+                    <p class="testimonial-text">Instead of scrambling at the deadline, we were ready ahead of time. That alone made it worth it.</p>
+                    <div class="testimonial-author">— Property Management Team</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Clear filing checklist."</div>
+                    <p class="testimonial-text">The checklist helped ensure we didn't miss required forms or deadlines. Straightforward and practical.</p>
+                    <div class="testimonial-author">— Construction Business Owner</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"Professional and organized."</div>
+                    <p class="testimonial-text">It feels like a system, not just a spreadsheet. Everything is centralized and easier to manage.</p>
+                    <div class="testimonial-author">— Bookkeeping Consultant</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Common questions about 1099 compliance</p>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">1. Is this legal or tax advice?</div>
+                    <p class="faq-answer">No. This is an informational digital system designed to help organize 1099 compliance. For legal or tax advice, consult a qualified CPA or tax professional.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">2. Do I still need a CPA?</div>
+                    <p class="faq-answer">This system helps you organize and prepare correctly. Many small businesses use it to reduce CPA cleanup costs. Final filing decisions remain your responsibility.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">3. Is this a subscription?</div>
+                    <p class="faq-answer">No. Both plans are one-time payments. There are no recurring charges.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">4. How do I receive access?</div>
+                    <p class="faq-answer">After payment, you will receive a confirmation email. Access instructions are sent within 15 minutes. If you do not see it, check spam or text "1099" to (818) 925-5239.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">5. Is this refundable?</div>
+                    <p class="faq-answer">Due to the nature of digital products, all sales are final once access is delivered. If you experience technical issues, contact us within 7 days.</p>
+                </div>
             </div>
         </div>
     </section>

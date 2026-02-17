@@ -214,7 +214,7 @@
         .section-subtitle {
             text-align: center;
             font-size: 14px;
-            color: #6b7280;
+            color: #4b5563;
             margin-bottom: 30px;
             font-weight: 500;
             line-height: 1.3;
@@ -260,7 +260,7 @@
         }
         
         .pain-card p {
-            color: #4b5563;
+            color: #374151;
             font-size: 14px;
             line-height: 1.4;
         }
@@ -530,7 +530,7 @@
         .comparison-description {
             font-size: 14px;
             line-height: 1.4;
-            color: #d1d5db;
+            color: #9ca3af;
         }
         
         /* CTA Section */
@@ -611,14 +611,14 @@
         }
         
         .testimonials-wrapper {
-            position: relative;
             max-width: 1100px;
             margin: 0 auto;
         }
         
         .testimonials-scroll {
-            display: flex;
-            gap: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
@@ -632,13 +632,37 @@
         }
         
         .testimonial-card {
-            flex: 0 0 calc(100% - 16px);
-            background: #ffffff;
-            padding: 20px;
+            background: #f3f0ff;
+            padding: 24px;
             border-radius: 12px;
-            border: 2px solid #e5e7eb;
-            scroll-snap-align: center;
-            scroll-snap-stop: always;
+            border: 2px solid #c4b5fd;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            scroll-snap-align: start;
+        }
+        
+        .testimonial-quote {
+            font-size: 17px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .testimonial-text {
+            font-size: 15px;
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+        
+        .testimonial-author {
+            font-size: 14px;
+            color: #6b7280;
+            font-style: italic;
         }
         
         .scroll-nav {
@@ -646,7 +670,7 @@
             justify-content: center;
             align-items: center;
             gap: 16px;
-            margin-top: 20px;
+            margin-top: 24px;
         }
         
         .scroll-btn {
@@ -747,7 +771,7 @@
         
         .faq-answer {
             font-size: 15px;
-            color: #4b5563;
+            color: #374151;
             line-height: 1.6;
         }
         
@@ -958,9 +982,14 @@
                 padding: 30px 18px;
             }
             
+            .testimonials-scroll {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
             .testimonial-card {
-                flex: 0 0 calc(100% - 16px);
-                padding: 16px;
+                padding: 20px;
+                min-height: auto;
             }
             
             .scroll-btn {
@@ -1186,53 +1215,81 @@
         const dotsContainer = document.getElementById('scrollDots');
         
         const cards = scrollContainer.querySelectorAll('.testimonial-card');
-        let currentIndex = 0;
+        const totalCards = cards.length;
+        const isMobile = window.innerWidth <= 768;
+        const cardsPerPage = isMobile ? 1 : 3;
+        const totalPages = Math.ceil(totalCards / cardsPerPage);
         
-        // Create dots
-        cards.forEach((_, index) => {
+        let currentPage = 0;
+        
+        // Create dots based on pages
+        for (let i = 0; i < totalPages; i++) {
             const dot = document.createElement('div');
             dot.className = 'scroll-dot';
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => scrollToIndex(index));
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => scrollToPage(i));
             dotsContainer.appendChild(dot);
-        });
+        }
         
         function updateDots() {
             const dots = dotsContainer.querySelectorAll('.scroll-dot');
             dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
+                dot.classList.toggle('active', index === currentPage);
             });
         }
         
         function updateButtons() {
-            prevBtn.disabled = currentIndex === 0;
-            nextBtn.disabled = currentIndex === cards.length - 1;
+            prevBtn.disabled = currentPage === 0;
+            nextBtn.disabled = currentPage === totalPages - 1;
         }
         
-        function scrollToIndex(index) {
-            currentIndex = Math.max(0, Math.min(index, cards.length - 1));
-            const scrollLeft = cards[currentIndex].offsetLeft - scrollContainer.offsetLeft;
-            scrollContainer.scrollTo({
-                left: scrollLeft,
-                behavior: 'smooth'
-            });
+        function scrollToPage(page) {
+            currentPage = Math.max(0, Math.min(page, totalPages - 1));
+            
+            if (isMobile) {
+                const card = cards[currentPage];
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            } else {
+                const cardIndex = currentPage * cardsPerPage;
+                const card = cards[cardIndex];
+                if (card) {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                }
+            }
+            
             updateDots();
             updateButtons();
         }
         
-        prevBtn.addEventListener('click', () => scrollToIndex(currentIndex - 1));
-        nextBtn.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+        prevBtn.addEventListener('click', () => scrollToPage(currentPage - 1));
+        nextBtn.addEventListener('click', () => scrollToPage(currentPage + 1));
         
         // Update on scroll
+        let scrollTimeout;
         scrollContainer.addEventListener('scroll', () => {
-            const scrollLeft = scrollContainer.scrollLeft;
-            const cardWidth = cards[0].offsetWidth + 16;
-            const newIndex = Math.round(scrollLeft / cardWidth);
-            if (newIndex !== currentIndex) {
-                currentIndex = newIndex;
-                updateDots();
-                updateButtons();
-            }
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollLeft = scrollContainer.scrollLeft;
+                const containerWidth = scrollContainer.offsetWidth;
+                
+                if (isMobile) {
+                    const cardWidth = cards[0].offsetWidth + 16;
+                    const newPage = Math.round(scrollLeft / cardWidth);
+                    if (newPage !== currentPage) {
+                        currentPage = newPage;
+                        updateDots();
+                        updateButtons();
+                    }
+                } else {
+                    const scrollPercentage = scrollLeft / (scrollContainer.scrollWidth - containerWidth);
+                    const newPage = Math.round(scrollPercentage * (totalPages - 1));
+                    if (newPage !== currentPage) {
+                        currentPage = newPage;
+                        updateDots();
+                        updateButtons();
+                    }
+                }
+            }, 100);
         });
         
         updateButtons();

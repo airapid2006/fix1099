@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1099 Compliance Setup - Stop IRS Penalties & File With Confidence</title>
+    <meta name="description" content="Complete 1099 filing system for small businesses. Avoid IRS penalties, organize contractor data, and file correctly. $299 digital system or $499 with SMS guidance.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #ffffff;
+            color: #111827;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Logo - 保持原版大小 */
+        .logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            font-size: 58px;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+        
+        .logo-fi {
+            color: #111827;
+        }
+        
+        .logo-x {
+            background: linear-gradient(90deg, #111827 0%, #111827 50%, #764ba2 50%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-numbers {
+            color: #764ba2;
+        }
+        
+        .phone-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .phone-icon {
+            font-size: 20px;
+        }
+        
+        /* Hero - 緊湊設計 */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px 35px;
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+        
+        .hero-subheadline {
+            font-size: 17px;
+            font-weight: 400;
+            margin-bottom: 22px;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+        
+        .cta-primary {
+            display: inline-block;
+            background: #ffffff;
+            color: #667eea;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Pricing Section - 超緊湊 */
+        .pricing {
+            padding: 35px 16px 40px;
+            background: #f9fafb;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .urgency-text {
+            text-align: center;
+            color: #ef4444;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 22px 18px;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.25);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 18px;
+            background: #10b981;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .pricing-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        
+        .pricing-card .plan-description {
+            font-size: 13px;
+            margin-bottom: 14px;
+            opacity: 0.85;
+            line-height: 1.3;
+        }
+        
+        .price {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        
+        .price-note {
+            font-size: 13px;
+            margin-bottom: 16px;
+            opacity: 0.75;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 18px;
+        }
+        
+        .features-list li {
+            padding: 6px 0 6px 22px;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.3;
+        }
+        
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            color: #10b981;
+        }
+        
+        .pricing-card.featured .features-list li::before {
+            color: #ffffff;
+        }
+        
+        .btn-pricing {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-pricing-standard {
+            background: #667eea;
+            color: #ffffff;
+        }
+        
+        .btn-pricing-featured {
+            background: #ffffff;
+            color: #667eea;
+        }
+        
+        /* SMS CTA - 緊湊 */
+        .sms-cta-section {
+            background: #f3f4f6;
+            padding: 20px 16px;
+            text-align: center;
+        }
+        
+        .sms-cta-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .sms-cta-section p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+        
+        .sms-instruction {
+            background: #ffffff;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+            display: inline-block;
+        }
+        
+        .sms-instruction a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        /* Pain Points - 緊湊 */
+        .pain-points {
+            padding: 35px 16px;
+            background: #ffffff;
+        }
+        
+        .pain-points .section-title {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+        
+        .pain-points .section-subtitle {
+            margin-bottom: 24px;
+        }
+        
+        .pain-grid {
+            display: grid;
+            gap: 16px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .pain-card {
+            background: #f9fafb;
+            padding: 20px 18px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .pain-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #667eea;
+        }
+        
+        .pain-card p {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.4;
+        }
+        
+        /* Features Section - 緊湊 */
+        .features {
+            padding: 35px 16px;
+            background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+        }
+        
+        .features .section-title {
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+        
+        .features-grid {
+            display: grid;
+            gap: 14px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .feature-item {
+            background: #ffffff;
+            padding: 16px 18px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            gap: 12px;
+        }
+        
+        .feature-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .feature-content p {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.3;
+        }
+        
+        /* Comparison Table - 緊湊 */
+        .comparison {
+            padding: 35px 16px;
+            background: #ffffff;
+        }
+        
+        .comparison .section-title {
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+        
+        .comparison-table {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f9fafb;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 18px;
+        }
+        
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6b7280;
+        }
+        
+        .comparison-value {
+            font-size: 20px;
+            font-weight: 800;
+            color: #111827;
+            text-align: right;
+        }
+        
+        .comparison-value.highlight {
+            color: #10b981;
+        }
+        
+        .comparison-value.danger {
+            color: #ef4444;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 30px 16px;
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+        }
+        
+        .footer p {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .refund-policy {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #374151;
+        }
+        
+        .refund-policy h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        
+        .refund-policy p {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        
+        /* Mobile Sticky Bottom Bar */
+        .mobile-sticky-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            padding: 10px 16px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            gap: 10px;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .mobile-sticky-bar .btn-sticky {
+            padding: 12px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .btn-sticky-standard {
+            background: #667eea;
+            color: #ffffff;
+        }
+        
+        .btn-sticky-featured {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+        }
+        
+        /* Mobile Responsive - 手機友好 */
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                gap: 12px;
+                padding: 16px 18px;
+            }
+            
+            .logo {
+                font-size: 44px;
+            }
+            
+            .phone-number {
+                font-size: 16px;
+            }
+            
+            .phone-icon {
+                font-size: 18px;
+            }
+            
+            .hero {
+                padding: 30px 16px 28px;
+            }
+            
+            .hero h1 {
+                font-size: 26px;
+                margin-bottom: 10px;
+            }
+            
+            .hero-subheadline {
+                font-size: 14px;
+                margin-bottom: 18px;
+            }
+            
+            .cta-primary {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+            
+            .pricing {
+                padding: 28px 12px 80px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .section-subtitle {
+                font-size: 13px;
+            }
+            
+            .urgency-text {
+                font-size: 12px;
+            }
+            
+            .pricing-card {
+                padding: 18px 14px;
+            }
+            
+            .price {
+                font-size: 36px;
+            }
+            
+            .pain-points {
+                padding: 28px 12px;
+            }
+            
+            .pain-points .section-title {
+                font-size: 22px;
+            }
+            
+            .pain-card {
+                padding: 16px 14px;
+            }
+            
+            .pain-card h3 {
+                font-size: 16px;
+            }
+            
+            .pain-card p {
+                font-size: 13px;
+            }
+            
+            .features {
+                padding: 28px 12px;
+            }
+            
+            .features .section-title {
+                font-size: 22px;
+            }
+            
+            .feature-item {
+                padding: 14px 14px;
+            }
+            
+            .feature-icon {
+                font-size: 20px;
+            }
+            
+            .feature-content h4 {
+                font-size: 15px;
+            }
+            
+            .feature-content p {
+                font-size: 12px;
+            }
+            
+            .comparison {
+                padding: 28px 12px;
+            }
+            
+            .comparison .section-title {
+                font-size: 22px;
+            }
+            
+            .comparison-row {
+                padding: 14px 14px;
+            }
+            
+            .comparison-label {
+                font-size: 13px;
+            }
+            
+            .comparison-value {
+                font-size: 17px;
+            }
+            
+            .mobile-sticky-bar {
+                display: grid;
+            }
+            
+            .footer {
+                padding: 24px 14px 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo Section -->
+    <section class="logo-container">
+        <div class="logo">
+            <span class="logo-fi">Fi</span><span class="logo-x">x</span><span class="logo-numbers">1099</span>
+        </div>
+        <a href="tel:+18189255239" class="phone-number">
+            <span class="phone-icon">📞</span>
+            <span>(818) 925-5239</span>
+        </a>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">✓ Used by 2,500+ Small Businesses</div>
+            <h1>Stop IRS Penalties Before They Start</h1>
+            <p class="hero-subheadline">Get a complete system that organizes contractor data, prevents IRS penalties, and ensures you file correctly—even if you've never done it before.</p>
+            <a href="#pricing" class="cta-primary">Get Started Now →</a>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <h2 class="section-title">Choose Your Plan</h2>
+        <p class="section-subtitle">One-time payment. Lifetime access. No subscriptions.</p>
+        <p class="urgency-text">⚡ Limited Launch Price — First 20 Businesses Only</p>
+        
+        <div class="pricing-cards">
+            <!-- Standard Plan -->
+            <div class="pricing-card">
+                <h3>Digital System</h3>
+                <p class="plan-description">Everything you need to file correctly</p>
+                <div class="price">$299</div>
+                <p class="price-note">One-time payment</p>
+                
+                <ul class="features-list">
+                    <li>Step-by-step filing guide</li>
+                    <li>W-9 collection templates</li>
+                    <li>Contractor tracking spreadsheet</li>
+                    <li>IRS deadline reminders</li>
+                    <li>Penalty calculator</li>
+                    <li>Email support</li>
+                </ul>
+                
+                <a href="https://buy.stripe.com/test_bJe9ATdl7dHO73K90H8bS0a" class="btn-pricing btn-pricing-standard">Get Digital System</a>
+            </div>
+            
+            <!-- Featured Plan -->
+            <div class="pricing-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Digital + SMS Guidance</h3>
+                <p class="plan-description">Get personal help when you need it</p>
+                <div class="price">$499</div>
+                <p class="price-note">One-time payment</p>
+                
+                <ul class="features-list">
+                    <li>Everything in Digital System</li>
+                    <li>Direct SMS support line</li>
+                    <li>Priority email support</li>
+                    <li>Tax expert consultation</li>
+                    <li>Custom compliance review</li>
+                    <li>Peace of mind guarantee</li>
+                </ul>
+                
+                <a href="https://buy.stripe.com/test_fZu9AT80N7jq0Fmgt98bS09" class="btn-pricing btn-pricing-featured">Get SMS Guidance</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SMS CTA Section -->
+    <section class="sms-cta-section">
+        <h3>Have Questions First?</h3>
+        <p>Get instant answers before you buy</p>
+        <div class="sms-instruction">
+            <a href="sms:+18189255239&body=1099">Text "1099" Now → (818) 925-5239</a>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-points">
+        <h2 class="section-title">Filing 1099s Is a Nightmare</h2>
+        <p class="section-subtitle">One mistake = costly penalties</p>
+        
+        <div class="pain-grid">
+            <div class="pain-card">
+                <h3>Missing W-9 Forms</h3>
+                <p>You're scrambling to collect contractor info at the last minute—and half of it is wrong or incomplete.</p>
+            </div>
+            
+            <div class="pain-card">
+                <h3>The $600 Confusion</h3>
+                <p>Who gets a 1099? What's the threshold? Do LLCs count? One wrong decision = IRS penalties.</p>
+            </div>
+            
+            <div class="pain-card">
+                <h3>Late Filing Panic</h3>
+                <p>Deadline is January 31 for contractors, March 31 for IRS. Miss it? Penalties start immediately.</p>
+            </div>
+            
+            <div class="pain-card">
+                <h3>IRS Penalties Add Up</h3>
+                <p>$60–$330+ per form (varies by timing and year). With 10 contractors? That's up to $3,300+ in penalties.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Everything You Need in One System</h2>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">📋</div>
+                <div class="feature-content">
+                    <h4>W-9 Collection Templates</h4>
+                    <p>Pre-built forms to collect contractor info correctly the first time</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">📊</div>
+                <div class="feature-content">
+                    <h4>Contractor Tracking Spreadsheet</h4>
+                    <p>Organize all contractor data in one place with automatic calculations</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">📅</div>
+                <div class="feature-content">
+                    <h4>IRS Deadline Calendar</h4>
+                    <p>Automated reminders so you never miss a filing deadline</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">🧮</div>
+                <div class="feature-content">
+                    <h4>Penalty Risk Calculator</h4>
+                    <p>See your exact penalty risk before you file</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">✅</div>
+                <div class="feature-content">
+                    <h4>Step-by-Step Filing Guide</h4>
+                    <p>Plain English instructions—no tax jargon</p>
+                </div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">📞</div>
+                <div class="feature-content">
+                    <h4>Email & SMS Support</h4>
+                    <p>Get help from tax experts when you're stuck (SMS with $499 plan)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison">
+        <h2 class="section-title">What It Costs If You Don't Act</h2>
+        
+        <div class="comparison-table">
+            <div class="comparison-row">
+                <div class="comparison-label">Hiring a CPA</div>
+                <div class="comparison-value">$500-1,200</div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-label">Our System</div>
+                <div class="comparison-value highlight">$299-499</div>
+            </div>
+            
+            <div class="comparison-row">
+                <div class="comparison-label">IRS Penalties</div>
+                <div class="comparison-value danger">$60-330+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>© 2024 1099 Compliance Setup.</strong> All rights reserved.</p>
+            <p>This is a digital information product. Not legal or tax advice. Consult a professional.</p>
+            
+            <div class="refund-policy">
+                <h4>📜 Refund Policy</h4>
+                <p>Digital products are non-refundable. If you experience technical issues accessing your purchase within 7 days, contact us at (818) 925-5239 for support.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sticky Bottom Bar -->
+    <div class="mobile-sticky-bar">
+        <a href="https://buy.stripe.com/test_bJe9ATdl7dHO73K90H8bS0a" class="btn-sticky btn-sticky-standard">Get $299</a>
+        <a href="https://buy.stripe.com/test_fZu9AT80N7jq0Fmgt98bS09" class="btn-sticky btn-sticky-featured">Get $499</a>
+    </div>
+</body>
+</html>

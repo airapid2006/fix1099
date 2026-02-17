@@ -623,48 +623,79 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            scroll-behavior: smooth;
             padding-bottom: 12px;
-            padding-right: 60px;
         }
         
         .testimonials-scroll::-webkit-scrollbar {
             display: none;
         }
         
-        .testimonials-wrapper::after {
-            content: '→';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(to left, #f9fafb 60%, transparent);
-            width: 60px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #667eea;
-            pointer-events: none;
-            font-weight: 900;
-        }
-        
-        .scroll-hint {
-            text-align: center;
-            color: #667eea;
-            font-size: 13px;
-            font-weight: 600;
-            margin-top: 12px;
-            opacity: 0.8;
-        }
-        
         .testimonial-card {
-            flex: 0 0 280px;
+            flex: 0 0 calc(100% - 16px);
             background: #ffffff;
             padding: 20px;
             border-radius: 12px;
             border: 2px solid #e5e7eb;
-            scroll-snap-align: start;
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+        }
+        
+        .scroll-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .scroll-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #667eea;
+            color: #ffffff;
+            border: none;
+            font-size: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .scroll-btn:hover {
+            background: #5568d3;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        }
+        
+        .scroll-btn:disabled {
+            background: #d1d5db;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+        
+        .scroll-dots {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .scroll-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d1d5db;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .scroll-dot.active {
+            background: #667eea;
+            width: 24px;
+            border-radius: 4px;
         }
         
         .testimonial-quote {
@@ -927,22 +958,15 @@
                 padding: 30px 18px;
             }
             
-            .testimonials-scroll {
-                padding-right: 40px;
-            }
-            
-            .testimonials-wrapper::after {
-                width: 40px;
-                background: linear-gradient(to left, #f9fafb 50%, transparent);
-            }
-            
             .testimonial-card {
-                flex: 0 0 calc(85% - 8px);
-                min-width: calc(85% - 8px);
+                flex: 0 0 calc(100% - 16px);
+                padding: 16px;
             }
             
-            .scroll-hint {
-                font-size: 12px;
+            .scroll-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
             }
             
             .faq {
@@ -1089,7 +1113,7 @@
             <p class="section-subtitle">Real feedback from small businesses</p>
             
             <div class="testimonials-wrapper">
-                <div class="testimonials-scroll">
+                <div class="testimonials-scroll" id="testimonialsScroll">
                     <div class="testimonial-card">
                         <div class="testimonial-quote">"Finally everything in one place."</div>
                         <p class="testimonial-text">This system helped us organize contractor payments before tax season. We stopped chasing W-9 forms at the last minute.</p>
@@ -1145,9 +1169,74 @@
                     </div>
                 </div>
             </div>
-            <div class="scroll-hint">← Swipe to see more →</div>
+            
+            <div class="scroll-nav">
+                <button class="scroll-btn" id="scrollPrev" aria-label="Previous testimonial">‹</button>
+                <div class="scroll-dots" id="scrollDots"></div>
+                <button class="scroll-btn" id="scrollNext" aria-label="Next testimonial">›</button>
+            </div>
         </div>
     </section>
+    
+    <script>
+        // Testimonials scroll control
+        const scrollContainer = document.getElementById('testimonialsScroll');
+        const prevBtn = document.getElementById('scrollPrev');
+        const nextBtn = document.getElementById('scrollNext');
+        const dotsContainer = document.getElementById('scrollDots');
+        
+        const cards = scrollContainer.querySelectorAll('.testimonial-card');
+        let currentIndex = 0;
+        
+        // Create dots
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'scroll-dot';
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => scrollToIndex(index));
+            dotsContainer.appendChild(dot);
+        });
+        
+        function updateDots() {
+            const dots = dotsContainer.querySelectorAll('.scroll-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        function updateButtons() {
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === cards.length - 1;
+        }
+        
+        function scrollToIndex(index) {
+            currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+            const scrollLeft = cards[currentIndex].offsetLeft - scrollContainer.offsetLeft;
+            scrollContainer.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
+            });
+            updateDots();
+            updateButtons();
+        }
+        
+        prevBtn.addEventListener('click', () => scrollToIndex(currentIndex - 1));
+        nextBtn.addEventListener('click', () => scrollToIndex(currentIndex + 1));
+        
+        // Update on scroll
+        scrollContainer.addEventListener('scroll', () => {
+            const scrollLeft = scrollContainer.scrollLeft;
+            const cardWidth = cards[0].offsetWidth + 16;
+            const newIndex = Math.round(scrollLeft / cardWidth);
+            if (newIndex !== currentIndex) {
+                currentIndex = newIndex;
+                updateDots();
+                updateButtons();
+            }
+        });
+        
+        updateButtons();
+    </script>
 
     <!-- FAQ Section -->
     <section class="faq">

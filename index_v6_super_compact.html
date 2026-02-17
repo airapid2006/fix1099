@@ -221,10 +221,17 @@
         
         .pain-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 16px;
             max-width: 1100px;
             margin: 0 auto;
+        }
+        
+        .pain-grid .pain-card:nth-child(4) {
+            grid-column: 1 / -1;
+            max-width: 550px;
+            margin: 0 auto;
+            width: 100%;
         }
         
         .pain-card {
@@ -323,17 +330,22 @@
         }
         
         .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-wrap: wrap;
             gap: 16px;
             max-width: 900px;
             margin: 0 auto;
-            justify-items: center;
+            justify-content: center;
+            align-items: flex-start;
         }
         
         .pricing-card {
+            flex: 1 1 400px;
             max-width: 420px;
-            width: 100%;
+        }
+        
+        .pricing-card.featured {
+            order: -1;
         }
         
         .pricing-card {
@@ -616,21 +628,24 @@
             left: 0;
             right: 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 10px 14px;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+            padding: 8px 12px;
+            box-shadow: 0 -6px 25px rgba(102, 126, 234, 0.4), 0 -2px 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            gap: 10px;
+            gap: 8px;
             grid-template-columns: 1fr 1fr;
+            border-top: 3px solid #764ba2;
         }
         
         .mobile-sticky-bar .btn-sticky {
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 50px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             text-align: center;
             text-decoration: none;
             display: block;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
         
         .btn-sticky-standard {
@@ -706,10 +721,28 @@
             
             .pain-grid,
             .included-grid,
-            .pricing-cards,
             .comparison-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
+            }
+            
+            .pain-grid .pain-card:nth-child(4) {
+                grid-column: 1;
+                max-width: 100%;
+            }
+            
+            .pricing-cards {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .pricing-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+            
+            .pricing-card.featured {
+                order: 0;
             }
             
             .pain-card,
@@ -778,15 +811,15 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">✓ Used by 2,500+ Small Businesses</div>
-            <h1>Stop IRS Penalties Before They Start</h1>
-            <p class="hero-subheadline">
+            <h1 style="text-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);">Stop IRS Penalties Before They Start</h1>
+            <p class="hero-subheadline" style="font-weight: 400;">
                 A complete 1099 compliance system for small businesses working with contractors. Collect W-9s, track the $600 threshold, and file confidently.
             </p>
+            <div class="hero-badge" style="margin-top: 12px; margin-bottom: 20px;">✓ Used by 2,500+ Small Businesses</div>
             <div>
                 <a href="#pricing" class="cta-primary">Get Started Now →</a>
             </div>
-            <div style="margin-top: 16px; font-size: 14px; opacity: 0.9;">
+            <div style="margin-top: 16px; font-size: 18px; font-weight: 600; opacity: 0.95;">
                 Text "1099" to <a href="sms:+18189255239&body=1099" style="color: #ffffff; font-weight: 700; text-decoration: underline;">(818) 925-5239</a>
             </div>
         </div>
@@ -868,7 +901,7 @@
             </div>
             
             <!-- Refund Policy -->
-            <div style="margin-top: 30px; padding: 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px;">
+            <div style="margin-top: 30px; padding: 20px; background: #f3f0ff; border: 3px solid #764ba2; border-radius: 16px; text-align: center; box-shadow: 0 6px 20px rgba(118, 75, 162, 0.25);">
                 <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #111827;">Refund Policy (Digital Product)</h4>
                 <p style="font-size: 14px; color: #4b5563; line-height: 1.5;">All sales are final once access is delivered. If you experience technical access issues, contact us within 7 days for support.</p>
             </div>

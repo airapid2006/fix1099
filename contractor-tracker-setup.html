@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix1099 Contractor Control System - Setup Instructions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f9fafb;
+            color: #111827;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 36px;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 16px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #374151;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        
+        .step-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .step-box h3 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+        
+        .step-box p {
+            color: #ffffff;
+            opacity: 0.95;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: #ffffff;
+            color: #667eea;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 900;
+            margin-right: 8px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #667eea;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin: 8px 8px 8px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        
+        ul {
+            margin: 16px 0 16px 24px;
+            color: #4b5563;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #d63384;
+        }
+        
+        .formula-box {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+        }
+        
+        th {
+            background: #667eea;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        
+        .home-link {
+            display: inline-block;
+            margin-top: 32px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Fix1099 Contractor Control System</h1>
+        <p><strong>Google Sheets Template - Setup Instructions</strong></p>
+        
+        <div class="info-box">
+            <strong>📥 Quick Start:</strong> Download the templates below and follow the setup guide to create your own Google Sheets system in under 10 minutes.
+        </div>
+        
+        <h2>📥 Download Templates</h2>
+        
+        <a href="Fix1099_Contractor_Control_System_Setup_Guide.md" class="download-btn" download>📄 Setup Guide (MD)</a>
+        <a href="Fix1099_Contractor_Tracker_Template.csv" class="download-btn" download>📊 Contractor Tracker CSV</a>
+        <a href="Fix1099_Payment_Log_Template.csv" class="download-btn" download>📝 Payment Log CSV</a>
+        
+        <h2>🚀 Quick Setup (5 Steps)</h2>
+        
+        <div class="step-box">
+            <h3><span class="step-number">1</span> Create New Google Sheet</h3>
+            <p>Go to <a href="https://sheets.google.com" style="color: #ffffff; text-decoration: underline;">sheets.google.com</a> and click "Blank" to create a new spreadsheet.</p>
+        </div>
+        
+        <div class="step-box">
+            <h3><span class="step-number">2</span> Import CSV Templates</h3>
+            <p>File → Import → Upload → Select downloaded CSV files. This will create your initial structure.</p>
+        </div>
+        
+        <div class="step-box">
+            <h3><span class="step-number">3</span> Add Formulas</h3>
+            <p>In the Contractor Tracker tab, cell H2, add: <code style="background: rgba(255,255,255,0.2); color: #ffffff;">=IF(G2>=600,"YES","NO")</code> then drag down.</p>
+        </div>
+        
+        <div class="step-box">
+            <h3><span class="step-number">4</span> Create Dashboard Tab</h3>
+            <p>Add a new tab called "Dashboard" and create summary metrics using COUNTIF and SUM formulas (see detailed guide).</p>
+        </div>
+        
+        <div class="step-box">
+            <h3><span class="step-number">5</span> Format & Share</h3>
+            <p>Apply conditional formatting, freeze headers, add filters, and share with your team.</p>
+        </div>
+        
+        <h2>📋 What's Included</h2>
+        
+        <h3>TAB 1: Contractor Tracker</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Purpose</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Contractor Name</td>
+                    <td>Individual or business contact name</td>
+                </tr>
+                <tr>
+                    <td>Business Name</td>
+                    <td>Legal business entity (if applicable)</td>
+                </tr>
+                <tr>
+                    <td>EIN/SSN</td>
+                    <td>Tax identification number</td>
+                </tr>
+                <tr>
+                    <td>YTD Paid</td>
+                    <td>Year-to-date total payments</td>
+                </tr>
+                <tr>
+                    <td>1099 Required?</td>
+                    <td><strong>Auto-calculated:</strong> YES if ≥$600</td>
+                </tr>
+                <tr>
+                    <td>W-9 Received?</td>
+                    <td>Dropdown: Yes/No</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h3>TAB 2: Payment Log</h3>
+        <p>Track every payment with date, amount, category, and notes. Links to Contractor Tracker for automatic YTD calculations.</p>
+        
+        <h3>TAB 3: Dashboard</h3>
+        <p>Real-time metrics:</p>
+        <ul>
+            <li>Total contractors</li>
+            <li>Total YTD paid</li>
+            <li>1099s required count</li>
+            <li>Missing W-9s alert</li>
+        </ul>
+        
+        <h2>✨ Key Features</h2>
+        
+        <ul>
+            <li><strong>Automatic 1099 Detection:</strong> Formula auto-marks contractors over $600</li>
+            <li><strong>Conditional Formatting:</strong> Highlights contractors requiring 1099s</li>
+            <li><strong>Dropdown Menus:</strong> Fast data entry with validation</li>
+            <li><strong>Real-Time Dashboard:</strong> Instant compliance overview</li>
+            <li><strong>Mobile-Friendly:</strong> Access and edit from any device</li>
+            <li><strong>No Scripts Required:</strong> Simple formulas only</li>
+        </ul>
+        
+        <h2>📱 Mobile Access</h2>
+        
+        <div class="info-box">
+            <strong>💡 Pro Tip:</strong> Download the Google Sheets mobile app (iOS/Android) for easy contractor tracking on the go. All formulas and formatting work perfectly on mobile.
+        </div>
+        
+        <h2>🔐 Privacy & Security</h2>
+        
+        <p>This template runs entirely in your own Google account. Your data is:</p>
+        <ul>
+            <li>Stored in your Google Drive</li>
+            <li>Controlled by your sharing settings</li>
+            <li>Not accessible to Fix1099.com</li>
+            <li>Backed up automatically by Google</li>
+        </ul>
+        
+        <h2>💡 Usage Tips</h2>
+        
+        <h3>Best Practices:</h3>
+        <ul>
+            <li><strong>Update regularly:</strong> Log payments as they happen</li>
+            <li><strong>Collect W-9s early:</strong> Don't wait until January</li>
+            <li><strong>Review quarterly:</strong> Check Dashboard metrics every 3 months</li>
+            <li><strong>Back up data:</strong> File → Download → Excel (monthly backup)</li>
+        </ul>
+        
+        <div class="warning-box">
+            <strong>⚠️ Important:</strong> This is a tracking tool only. For actual 1099 filing, you'll need to use IRS-approved software or hire a CPA. This template helps you stay organized and prepared.
+        </div>
+        
+        <h2>📞 Need Help?</h2>
+        
+        <p>For questions about this template or 1099 compliance:</p>
+        <ul>
+            <li><strong>Email:</strong> airapi2006@gmail.com</li>
+            <li><strong>Phone:</strong> (818) 925-5239</li>
+            <li><strong>SMS:</strong> Text "1099" to (818) 925-5239</li>
+        </ul>
+        
+        <h2>🎓 Full Digital System Available</h2>
+        
+        <p>Want the complete Fix1099 system with step-by-step filing guides, video tutorials, and SMS support?</p>
+        
+        <p><strong>Visit:</strong> <a href="index.html">Fix1099.com</a></p>
+        <ul>
+            <li><strong>$299:</strong> Complete digital system</li>
+            <li><strong>$499:</strong> Digital system + SMS guidance</li>
+        </ul>
+        
+        <h2>📄 Legal Disclaimer</h2>
+        
+        <p><em>This template is provided for organizational purposes only. Not legal or tax advice. Consult a qualified CPA or tax professional for filing requirements and compliance questions.</em></p>
+        
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #e5e7eb;">
+        
+        <p style="text-align: center; color: #6b7280; font-size: 14px;">
+            <strong>Fix1099 Contractor Control System v1.0</strong><br>
+            Created by <a href="index.html" style="color: #667eea;">Fix1099.com</a><br>
+            © 2024 JCJ HOLDINGS, LLC
+        </p>
+        
+        <p style="text-align: center;">
+            <a href="index.html" class="home-link">← Back to Fix1099.com</a>
+        </p>
+    </div>
+</body>
+</html>

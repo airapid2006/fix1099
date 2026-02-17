@@ -1,0 +1,5 @@
+Contractor Name,Business Name,EIN/SSN,Address,Email,Phone,YTD Paid,1099 Required?,W-9 Received?,Preferred Delivery,Notes
+John Smith,Smith Consulting LLC,12-3456789,"123 Main St, City, ST 12345",john@example.com,(555) 123-4567,5000,YES,Yes,Email,Regular contractor
+Jane Doe,Doe Services Inc,98-7654321,"456 Oak Ave, Town, ST 67890",jane@example.com,(555) 987-6543,450,NO,No,Mail,One-time project
+Mike Johnson,Johnson Designs,45-6789123,"789 Pine Rd, Village, ST 11111",mike@example.com,(555) 456-7890,12000,YES,Yes,Email,Monthly retainer
+Sarah Williams,,123-45-6789,"321 Elm St, City, ST 22222",sarah@example.com,(555) 321-0987,800,YES,No,Email,Need to follow up for W-9

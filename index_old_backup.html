@@ -49,7 +49,6 @@
             font-weight: 900;
             letter-spacing: -2px;
             line-height: 1;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
         
         /* Fi - Black */
@@ -105,7 +104,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px 24px 50px;
+            padding: 80px 24px 100px;
             text-align: center;
             color: #ffffff;
             position: relative;
@@ -134,28 +133,28 @@
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
-            padding: 6px 16px;
+            padding: 8px 20px;
             border-radius: 50px;
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .hero h1 {
-            font-size: 39px;
+            font-size: 56px;
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
             letter-spacing: -0.02em;
         }
         
         .hero-subheadline {
-            font-size: 17px;
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             opacity: 0.95;
-            line-height: 1.3;
+            line-height: 1.4;
         }
         
         .cta-primary {
@@ -198,83 +197,77 @@
         
         /* Pain Points Section */
         .pain-points {
-            padding: 40px 24px;
+            padding: 80px 24px;
             background: #f9fafb;
         }
         
         .section-title {
-            font-size: 29px;
+            font-size: 42px;
             font-weight: 900;
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
             letter-spacing: -0.02em;
-            line-height: 1.2;
         }
         
         .section-subtitle {
             text-align: center;
-            font-size: 14px;
+            font-size: 20px;
             color: #6b7280;
-            margin-bottom: 30px;
+            margin-bottom: 60px;
             font-weight: 500;
-            line-height: 1.3;
         }
         
         .pain-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
             max-width: 1100px;
             margin: 0 auto;
         }
         
-        .pain-grid .pain-card:nth-child(4) {
-            grid-column: 2 / 3;
-            grid-row: 2;
-        }
-        
         .pain-card {
-            background: #f3f0ff;
-            padding: 16px;
+            background: #ffffff;
+            padding: 32px;
             border-radius: 16px;
             border: 2px solid #e5e7eb;
             transition: all 0.3s ease;
         }
         
         .pain-card:hover {
-            border-color: #d1d5db;
-            transform: translateY(-2px);
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+            transform: translateY(-4px);
         }
         
         .pain-icon {
-            font-size: 34px;
-            margin-bottom: 8px;
+            font-size: 48px;
+            margin-bottom: 16px;
             display: block;
         }
         
         .pain-card h3 {
-            font-size: 15px;
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 12px;
             color: #111827;
         }
         
         .pain-card p {
             color: #4b5563;
-            font-size: 14px;
-            line-height: 1.4;
+            font-size: 16px;
+            line-height: 1.6;
         }
         
         /* What's Included Section */
         .whats-included {
-            padding: 40px 24px;
+            padding: 80px 24px;
             background: #ffffff;
         }
         
         .included-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 12px;
+            gap: 24px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -282,8 +275,8 @@
         .included-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            padding: 12px;
+            gap: 16px;
+            padding: 24px;
             background: #f9fafb;
             border-radius: 12px;
             border-left: 4px solid #667eea;
@@ -291,8 +284,8 @@
         
         .included-check {
             flex-shrink: 0;
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             background: #10b981;
             border-radius: 50%;
             display: flex;
@@ -300,7 +293,7 @@
             justify-content: center;
             color: #ffffff;
             font-weight: 900;
-            font-size: 14px;
+            font-size: 18px;
         }
         
         .included-text {
@@ -308,90 +301,77 @@
         }
         
         .included-text h4 {
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             color: #111827;
         }
         
         .included-text p {
-            font-size: 14px;
+            font-size: 15px;
             color: #6b7280;
-            line-height: 1.4;
+            line-height: 1.5;
         }
         
         /* Pricing Section */
         .pricing {
-            padding: 40px 24px;
+            padding: 80px 24px;
             background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
         }
         
         .pricing-cards {
-            display: flex;
-            gap: 16px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
             max-width: 900px;
             margin: 0 auto;
-            justify-content: center;
-            align-items: stretch;
         }
         
         .pricing-card {
-            flex: 1;
-            max-width: 420px;
-            min-width: 0;
-        }
-        
-        .pricing-card.featured {
-            order: 1;
-        }
-        
-        .pricing-card {
-            background: #f3f0ff;
-            border: 3px solid #764ba2;
+            background: #ffffff;
+            border: 3px solid #e5e7eb;
             border-radius: 20px;
-            padding: 20px;
+            padding: 40px;
             position: relative;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.4), 0 4px 12px rgba(118, 75, 162, 0.3);
         }
         
         .pricing-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(118, 75, 162, 0.5), 0 6px 16px rgba(118, 75, 162, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
         }
         
         .pricing-card.featured {
-            border: 6px solid #667eea;
+            border-color: #667eea;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #ffffff;
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.45), 0 6px 16px rgba(102, 126, 234, 0.35);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
         }
         
         .popular-badge {
             position: absolute;
-            top: -12px;
-            right: 20px;
+            top: -16px;
+            right: 24px;
             background: #10b981;
             color: #ffffff;
-            padding: 4px 12px;
+            padding: 6px 16px;
             border-radius: 50px;
-            font-size: 11px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
         .pricing-card h3 {
-            font-size: 20px;
+            font-size: 28px;
             font-weight: 800;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
         
         .pricing-card .plan-description {
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 16px;
+            margin-bottom: 24px;
             opacity: 0.9;
-            line-height: 1.3;
         }
         
         .pricing-card.featured .plan-description {
@@ -399,32 +379,31 @@
         }
         
         .price {
-            font-size: 39px;
+            font-size: 56px;
             font-weight: 900;
             line-height: 1;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
         
         .price-note {
-            font-size: 13px;
-            margin-bottom: 16px;
+            font-size: 16px;
+            margin-bottom: 32px;
             opacity: 0.8;
             font-weight: 500;
         }
         
         .features-list {
             list-style: none;
-            margin-bottom: 16px;
+            margin-bottom: 32px;
         }
         
         .features-list li {
-            padding: 6px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(229, 231, 235, 0.5);
-            font-size: 14px;
+            font-size: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            line-height: 1.3;
+            gap: 12px;
         }
         
         .pricing-card.featured .features-list li {
@@ -481,7 +460,7 @@
         
         /* Comparison Section */
         .comparison {
-            padding: 40px 24px;
+            padding: 80px 24px;
             background: #111827;
             color: #ffffff;
         }
@@ -494,7 +473,7 @@
         .comparison-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
+            gap: 32px;
             max-width: 1100px;
             margin: 0 auto;
         }
@@ -503,23 +482,23 @@
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            padding: 16px;
+            padding: 32px;
             text-align: center;
         }
         
         .comparison-label {
-            font-size: 12px;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
             color: #9ca3af;
         }
         
         .comparison-price {
-            font-size: 34px;
+            font-size: 48px;
             font-weight: 900;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
             color: #ffffff;
         }
         
@@ -528,43 +507,41 @@
         }
         
         .comparison-description {
-            font-size: 14px;
-            line-height: 1.4;
+            font-size: 16px;
+            line-height: 1.6;
             color: #d1d5db;
         }
         
         /* CTA Section */
         .final-cta {
-            padding: 50px 24px;
+            padding: 100px 24px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             text-align: center;
             color: #ffffff;
         }
         
         .final-cta h2 {
-            font-size: 34px;
+            font-size: 48px;
             font-weight: 900;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
             letter-spacing: -0.02em;
-            line-height: 1.2;
         }
         
         .final-cta p {
-            font-size: 15px;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 40px;
             opacity: 0.95;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.4;
         }
         
         .cta-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 30px;
+            gap: 16px;
+            margin-bottom: 60px;
         }
         
         /* SMS CTA */
@@ -573,13 +550,13 @@
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 16px;
-            padding: 16px;
+            padding: 32px;
             max-width: 600px;
             margin: 0 auto;
         }
         
         .sms-cta h3 {
-            font-size: 17px;
+            font-size: 24px;
             font-weight: 700;
             margin-bottom: 12px;
         }
@@ -608,203 +585,57 @@
         .footer {
             background: #111827;
             color: #9ca3af;
-            padding: 30px 20px;
+            padding: 40px 24px;
             text-align: center;
         }
         
         .footer p {
-            font-size: 13px;
-            line-height: 1.5;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #9ca3af;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: #ffffff;
-        }
-        
-        /* Mobile Sticky Bottom Bar */
-        .mobile-sticky-bar {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 6px 10px;
-            box-shadow: 0 -6px 25px rgba(102, 126, 234, 0.4), 0 -2px 10px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            gap: 8px;
-            grid-template-columns: 1fr 1fr;
-            border-top: 3px solid #764ba2;
-        }
-        
-        .mobile-sticky-bar .btn-sticky {
-            padding: 8px 12px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 700;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn-sticky-standard {
-            background: #ffffff;
-            color: #667eea;
-        }
-        
-        .btn-sticky-featured {
-            background: #10b981;
-            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.8;
         }
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .logo-container {
-                padding: 14px 18px;
-            }
-            
-            .logo {
-                font-size: 38px;
-            }
-            
-            .hero {
-                padding: 30px 18px 35px;
-            }
-            
-            .hero-badge {
-                font-size: 11px;
-                padding: 4px 12px;
-                margin-bottom: 10px;
-            }
-            
             .hero h1 {
-                font-size: 25px;
-                margin-bottom: 10px;
-                line-height: 1.15;
+                font-size: 36px;
             }
             
             .hero-subheadline {
-                font-size: 14px;
-                margin-bottom: 16px;
-                line-height: 1.3;
+                font-size: 18px;
             }
             
             .cta-primary,
             .cta-secondary {
                 display: block;
                 width: 100%;
-                margin: 6px 0;
-                padding: 14px 30px;
-                font-size: 15px;
-            }
-            
-            .pain-points,
-            .whats-included,
-            .pricing,
-            .comparison,
-            .final-cta {
-                padding: 30px 18px;
+                margin: 8px 0;
             }
             
             .section-title {
-                font-size: 22px;
-                margin-bottom: 6px;
-                line-height: 1.2;
-            }
-            
-            .section-subtitle {
-                font-size: 13px;
-                margin-bottom: 20px;
-                line-height: 1.3;
-            }
-            
-            .pain-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .pain-grid .pain-card:nth-child(4) {
-                grid-column: 1;
-                grid-row: auto;
-            }
-            
-            .included-grid,
-            .comparison-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            
-            .pricing-cards {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .pricing-card {
-                max-width: 100%;
-            }
-            
-            .pricing-card.featured {
-                order: 0;
-            }
-            
-            .pain-card,
-            .included-item {
-                padding: 12px;
-            }
-            
-            .pricing-card {
-                padding: 16px;
-            }
-            
-            .price {
                 font-size: 32px;
             }
             
-            .comparison-price {
-                font-size: 28px;
+            .section-subtitle {
+                font-size: 16px;
+            }
+            
+            .pain-grid,
+            .included-grid,
+            .pricing-cards,
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .price {
+                font-size: 42px;
             }
             
             .final-cta h2 {
-                font-size: 24px;
-                margin-bottom: 10px;
+                font-size: 32px;
             }
             
             .final-cta p {
-                font-size: 13px;
-                margin-bottom: 16px;
-            }
-            
-            .sms-cta {
-                padding: 12px;
-            }
-            
-            .sms-cta h3 {
-                font-size: 15px;
-            }
-            
-            .mobile-sticky-bar {
-                display: grid;
-            }
-            
-            .footer {
-                padding: 24px 18px 85px;
+                font-size: 18px;
             }
         }
         
@@ -830,16 +661,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 style="text-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);">Stop IRS Penalties Before They Start</h1>
-            <p class="hero-subheadline" style="font-weight: 400;">
-                A complete 1099 compliance system for small businesses working with contractors. Collect W-9s, track the $600 threshold, and file confidently.
+            <div class="hero-badge">✓ Used by 2,500+ Small Businesses</div>
+            <h1>Stop IRS Penalties Before They Start</h1>
+            <p class="hero-subheadline">
+                Get a complete system that organizes contractor data, prevents IRS penalties, 
+                and ensures you file correctly—even if you've never done it before.
             </p>
-            <div class="hero-badge" style="margin-top: 12px; margin-bottom: 20px;">✓ Used by 2,500+ Small Businesses</div>
             <div>
                 <a href="#pricing" class="cta-primary">Get Started Now →</a>
-            </div>
-            <div style="margin-top: 16px; font-size: 18px; font-weight: 600; opacity: 0.95;">
-                Text "1099" to <a href="sms:+18189255239&body=1099" style="color: #ffffff; font-weight: 700; text-decoration: underline;">(818) 925-5239</a>
             </div>
         </div>
     </section>
@@ -847,28 +676,114 @@
     <!-- Pain Points Section -->
     <section class="pain-points">
         <div class="container">
-            <h2 class="section-title">Why this matters</h2>
-            <p class="section-subtitle">Common 1099 compliance challenges</p>
+            <h2 class="section-title">Filing 1099s Is a Nightmare</h2>
+            <p class="section-subtitle">These mistakes cost small businesses thousands every year</p>
             
             <div class="pain-grid">
                 <div class="pain-card">
+                    <span class="pain-icon">📄</span>
                     <h3>Missing W-9 Forms</h3>
                     <p>Scrambling to collect contractor information at the last minute, only to find out key details are missing or incorrect.</p>
                 </div>
                 
                 <div class="pain-card">
+                    <span class="pain-icon">❓</span>
                     <h3>The $600 Confusion</h3>
                     <p>Not sure who gets a 1099? Confused about thresholds, exemptions, and which payments count? You're not alone.</p>
                 </div>
                 
                 <div class="pain-card">
-                    <h3>IRS Penalties Add Up</h3>
-                    <p>$60–$330+ per form (depending on timing and IRS rules).</p>
+                    <span class="pain-icon">⏰</span>
+                    <h3>Late Filing Panic</h3>
+                    <p>Deadlines sneak up fast. January 31st for contractors, March 31st for the IRS. Miss them and penalties start immediately.</p>
                 </div>
                 
                 <div class="pain-card">
-                    <h3>Late Filing Panic</h3>
-                    <p>Deadlines sneak up fast. January 31st for contractors, March 31st for the IRS. Miss them and penalties start immediately.</p>
+                    <span class="pain-icon">💸</span>
+                    <h3>IRS Penalties Add Up</h3>
+                    <p>$60 to $310 per form for late or incorrect filings. With multiple contractors, that's thousands in preventable penalties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="whats-included">
+        <div class="container">
+            <h2 class="section-title">Everything You Need in One System</h2>
+            <p class="section-subtitle">A complete 1099 compliance system designed for business owners, not accountants</p>
+            
+            <div class="included-grid">
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>W-9 Collection Templates</h4>
+                        <p>Professional forms to collect contractor info correctly the first time</p>
+                    </div>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>Contractor Database System</h4>
+                        <p>Organize all your contractor payments and information in one place</p>
+                    </div>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>$600 Threshold Calculator</h4>
+                        <p>Know exactly who needs a 1099 based on actual IRS rules</p>
+                    </div>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>1099-NEC & 1099-MISC Forms</h4>
+                        <p>Pre-filled templates ready to print or e-file</p>
+                    </div>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>Step-by-Step Filing Guide</h4>
+                        <p>Plain-English instructions that walk you through every step</p>
+                    </div>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>Deadline Calendar & Reminders</h4>
+                        <p>Never miss another filing deadline with automated alerts</p>
+                    </div>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>IRS Compliance Checklist</h4>
+                        <p>Verify everything is correct before you file</p>
+                    </div>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>State Filing Requirements</h4>
+                        <p>Know which states require additional forms (not all do)</p>
+                    </div>
+                </div>
+                
+                <div class="included-item">
+                    <div class="included-check">✓</div>
+                    <div class="included-text">
+                        <h4>Lifetime Updates</h4>
+                        <p>Stay current with changing IRS rules and form updates</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -890,17 +805,18 @@
                     <p class="price-note">One-time payment</p>
                     
                     <ul class="features-list">
-                        <li><span class="feature-check">✓</span> Contractor Payment Tracker</li>
-                        <li><span class="feature-check">✓</span> $600 Threshold Auto-Detection</li>
-                        <li><span class="feature-check">✓</span> W-9 Collection Toolkit</li>
-                        <li><span class="feature-check">✓</span> 1099 Filing Checklist</li>
-                        <li><span class="feature-check">✓</span> Compliance Checklist</li>
+                        <li><span class="feature-check">✓</span> All templates & forms</li>
+                        <li><span class="feature-check">✓</span> Contractor database</li>
+                        <li><span class="feature-check">✓</span> Threshold calculator</li>
+                        <li><span class="feature-check">✓</span> Filing instructions</li>
+                        <li><span class="feature-check">✓</span> Deadline calendar</li>
+                        <li><span class="feature-check">✓</span> Lifetime updates</li>
                     </ul>
                     
-                    <a href="https://buy.stripe.com/7sY14n2GtcDK2Nu1yf8bS07" class="btn-pricing btn-pricing-standard">Get Digital System – $299</a>
+                    <a href="https://buy.stripe.com/test_bJe9ATdl7dHO73K90H8bS0a" class="btn-pricing btn-pricing-standard">Get Digital System</a>
                 </div>
                 
-                <!-- Digital + SMS (Most Popular - Middle) -->
+                <!-- Digital + SMS -->
                 <div class="pricing-card featured">
                     <div class="popular-badge">Most Popular</div>
                     <h3>Digital + SMS Guidance</h3>
@@ -910,19 +826,15 @@
                     
                     <ul class="features-list">
                         <li><span class="feature-check">✓</span> Everything in Digital</li>
-                        <li><span class="feature-check">✓</span> SMS Setup Guidance</li>
-                        <li><span class="feature-check">✓</span> Contractor Scenario Review</li>
-                        <li><span class="feature-check">✓</span> Filing Clarification Support</li>
+                        <li><span class="feature-check">✓</span> SMS expert support</li>
+                        <li><span class="feature-check">✓</span> Ask questions anytime</li>
+                        <li><span class="feature-check">✓</span> Form review assistance</li>
+                        <li><span class="feature-check">✓</span> Priority help during tax season</li>
+                        <li><span class="feature-check">✓</span> Peace of mind guarantee</li>
                     </ul>
                     
-                    <a href="https://buy.stripe.com/fZu9AT80N7jq0Fmgt98bS09" class="btn-pricing btn-pricing-featured">Get Digital + SMS – $499</a>
+                    <a href="https://buy.stripe.com/test_fZu9AT80N7jq0Fmgt98bS09" class="btn-pricing btn-pricing-featured">Get SMS Guidance</a>
                 </div>
-            </div>
-            
-            <!-- Refund Policy -->
-            <div style="margin-top: 30px; padding: 20px; background: #f3f0ff; border: 3px solid #764ba2; border-radius: 16px; text-align: center; box-shadow: 0 6px 20px rgba(118, 75, 162, 0.25);">
-                <h4 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #111827;">Refund Policy (Digital Product)</h4>
-                <p style="font-size: 14px; color: #4b5563; line-height: 1.5;">All sales are final once access is delivered. If you experience technical access issues, contact us within 7 days for support.</p>
             </div>
         </div>
     </section>
@@ -936,26 +848,54 @@
             <div class="comparison-grid">
                 <div class="comparison-card">
                     <div class="comparison-label">Hiring a CPA</div>
-                    <div class="comparison-price">$500–$1,200+</div>
+                    <div class="comparison-price">$500-1,200</div>
                     <p class="comparison-description">
-                        Per year, recurring costs
+                        Per year, recurring. And you still need to organize everything yourself first.
                     </p>
                 </div>
                 
                 <div class="comparison-card">
                     <div class="comparison-label">Our System</div>
-                    <div class="comparison-price">$299–$499</div>
+                    <div class="comparison-price">$299-499</div>
                     <p class="comparison-description">
-                        One-time payment
+                        One-time. Use it forever. File yourself with confidence and save thousands.
                     </p>
                 </div>
                 
                 <div class="comparison-card">
                     <div class="comparison-label">IRS Penalties</div>
-                    <div class="comparison-price">$60–$330+</div>
+                    <div class="comparison-price">$60-310</div>
                     <p class="comparison-description">
-                        Per form (depending on timing and IRS rules)
+                        Per form if you file late or incorrectly. With 10 contractors, that's up to $3,100 in penalties.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Get Compliant in Under 2 Hours</h2>
+            <p>
+                Stop stressing about 1099s. Get organized, file correctly, and avoid penalties. 
+                Lifetime access starts today.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="https://buy.stripe.com/test_bJe9ATdl7dHO73K90H8bS0a" class="cta-primary">
+                    Get Digital System - $299
+                </a>
+                <a href="https://buy.stripe.com/test_fZu9AT80N7jq0Fmgt98bS09" class="cta-primary">
+                    Get SMS Guidance - $499
+                </a>
+            </div>
+            
+            <div class="sms-cta">
+                <h3>Have Questions First?</h3>
+                <p>Text "1099" Now → <a href="sms:+18189255239&body=1099" style="color: #fbbf24; font-weight: 900; text-decoration: none;">(818) 925-5239</a></p>
+                <div class="sms-instruction">
+                    Text <span class="sms-code">"1099"</span> to get instant answers
                 </div>
             </div>
         </div>
@@ -964,25 +904,12 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <a href="legal.html">Privacy</a>
-                <span style="color: #4b5563;">|</span>
-                <a href="legal.html">Terms</a>
-                <span style="color: #4b5563;">|</span>
-                <a href="legal.html">Refund</a>
-            </div>
             <p>
                 &copy; 2024 1099 Compliance Setup. All rights reserved.<br>
-                This is a digital informational product. Not legal or tax advice.
+                This is a digital information product. Not legal or tax advice. Consult a professional for your specific situation.
             </p>
         </div>
     </footer>
-
-    <!-- Mobile Sticky Bottom Bar -->
-    <div class="mobile-sticky-bar">
-        <a href="https://buy.stripe.com/7sY14n2GtcDK2Nu1yf8bS07" class="btn-sticky btn-sticky-standard">Get $299</a>
-        <a href="https://buy.stripe.com/fZu9AT80N7jq0Fmgt98bS09" class="btn-sticky btn-sticky-featured">Get $499</a>
-    </div>
 
 </body>
 </html>

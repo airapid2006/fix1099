@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Fix1099</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+        
+        .logo-fi { color: #111827; }
+        .logo-x { color: #667eea; }
+        .logo-numbers { color: #764ba2; }
+        
+        h1 {
+            font-size: 32px;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 40px;
+        }
+        
+        .product-card {
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .product-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 15px;
+        }
+        
+        .features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 900;
+            color: #667eea;
+            margin: 20px 0;
+        }
+        
+        .price-sub {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-bottom: 30px;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 18px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .secure {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #9ca3af;
+        }
+        
+        .secure::before {
+            content: "🔒";
+        }
+        
+        .guarantee {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #78350f;
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 30px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .price {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <span class="logo-fi">Fi</span><span class="logo-x">×</span><span class="logo-numbers">1099</span>
+        </div>
+        
+        <!-- Title -->
+        <h1>Complete Your Order</h1>
+        <p class="subtitle">One-time payment. Lifetime access.</p>
+        
+        <!-- Product Card -->
+        <div class="product-card">
+            <div class="product-name">Fix1099 Contractor Tracker</div>
+            
+            <ul class="features">
+                <li>Auto 1099 calculation (≥$600)</li>
+                <li>Filing status tracking</li>
+                <li>Risk assessment system</li>
+                <li>W-9 & contract management</li>
+                <li>Live dashboard statistics</li>
+                <li>200 contractor rows</li>
+                <li>Protected formulas</li>
+            </ul>
+            
+            <div class="price">$299</div>
+            <div class="price-sub">One-time payment • No subscription</div>
+            
+            <!-- Checkout Button - REPLACE WITH YOUR STRIPE PAYMENT LINK -->
+            <a href="YOUR_STRIPE_PAYMENT_LINK_HERE" class="checkout-btn">
+                Proceed to Secure Checkout
+            </a>
+            
+            <div class="secure">
+                Secure payment powered by Stripe
+            </div>
+        </div>
+        
+        <!-- Guarantee -->
+        <div class="guarantee">
+            <strong>💡 Digital Product Notice:</strong><br>
+            Instant access after payment. No refunds once delivered. Not legal or tax advice.
+        </div>
+    </div>
+</body>
+</html>

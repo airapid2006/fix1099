@@ -1,0 +1,263 @@
+========================================
+如何更新 Google Sheet 主模板为英文版本
+Update Your Google Sheet Master Template to English
+========================================
+
+问题：
+Google Sheet 顶部菜单显示中文 "🔒 保护公式"
+
+解决方案：
+重新运行英文版的 Apps Script
+
+========================================
+操作步骤（5分钟）
+========================================
+
+第 1 步：打开你的主模板
+-----------------------
+URL: https://docs.google.com/spreadsheets/d/1PBlSCW0sdagwacC8QeFQFkE5rX0zzq0pcqFCRLGbkkU/edit
+
+第 2 步：打开 Apps Script 编辑器
+-----------------------
+点击顶部菜单：Extensions → Apps Script
+（或 扩展功能 → Apps Script）
+
+第 3 步：删除旧代码
+-----------------------
+1. 选中编辑器中的所有代码
+2. 按 Delete 或 Backspace
+3. 确保编辑器完全空白
+
+第 4 步：粘贴新的英文脚本
+-----------------------
+方法A：从文件复制
+下载这个文件：
+https://fix1099.com/Fix1099_Protection_Script.gs
+
+用记事本打开，复制所有内容，粘贴到 Apps Script 编辑器
+
+方法B：从下面直接复制
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+复制下面所有代码（从 /** 到最后的 }）
+
+/**
+ * Fix1099 Contractor Tracker - Formula Protection
+ * 
+ * WHAT THIS DOES:
+ * Protects columns H, J, K from accidental editing
+ * These columns contain auto-calculation formulas
+ * 
+ * HOW TO USE:
+ * 1. Extensions → Apps Script
+ * 2. Paste this code
+ * 3. Save (disk icon)
+ * 4. Run (play button) → Select "protectFormulaColumns"
+ * 5. Authorize when prompted
+ * 6. Done!
+ * 
+ * NOTE: You can still view formulas and edit other columns (A-G, I)
+ */
+
+function protectFormulaColumns() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('Contractor Tracker');
+  
+  if (!sheet) {
+    SpreadsheetApp.getUi().alert(
+      'Error',
+      'Sheet "Contractor Tracker" not found.\n\nMake sure you\'re using the Fix1099 template.',
+      SpreadsheetApp.getUi().ButtonSet.OK
+    );
+    return;
+  }
+  
+  // Remove any existing protections first
+  const existingProtections = sheet.getProtections(SpreadsheetApp.ProtectionType.RANGE);
+  existingProtections.forEach(protection => protection.remove());
+  
+  // Protect Column H: 1099 Required?
+  const rangeH = sheet.getRange('H7:H2000');
+  const protectionH = rangeH.protect().setDescription('Formula: 1099 Required (Auto)');
+  protectionH.setWarningOnly(true);
+  
+  // Protect Column J: Filing Status
+  const rangeJ = sheet.getRange('J7:J2000');
+  const protectionJ = rangeJ.protect().setDescription('Formula: Filing Status (Auto)');
+  protectionJ.setWarningOnly(true);
+  
+  // Protect Column K: Risk Level
+  const rangeK = sheet.getRange('K7:K2000');
+  const protectionK = rangeK.protect().setDescription('Formula: Risk Level (Auto)');
+  protectionK.setWarningOnly(true);
+  
+  // Success message
+  SpreadsheetApp.getUi().alert(
+    'Protection Applied',
+    'Formula columns are now protected:\n\n' +
+    '✓ Column H (1099 Required)\n' +
+    '✓ Column J (Filing Status)\n' +
+    '✓ Column K (Risk Level)\n\n' +
+    'If you try to edit these columns, you\'ll see a warning.\n' +
+    'You can still edit columns A-G and I normally.',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+/**
+ * Creates custom menu when spreadsheet opens
+ */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('Fix1099')
+    .addItem('Protect Formulas', 'protectFormulaColumns')
+    .addItem('Remove Protection', 'removeProtection')
+    .addSeparator()
+    .addItem('Help', 'showHelp')
+    .addToUi();
+}
+
+/**
+ * Removes all protections
+ */
+function removeProtection() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Contractor Tracker');
+  const protections = sheet.getProtections(SpreadsheetApp.ProtectionType.RANGE);
+  protections.forEach(p => p.remove());
+  
+  SpreadsheetApp.getUi().alert(
+    'Protection Removed',
+    'All formula protections have been removed.\n\nYou can now edit all columns freely.',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+/**
+ * Help dialog
+ */
+function showHelp() {
+  SpreadsheetApp.getUi().alert(
+    'Fix1099 Help',
+    'FORMULA COLUMNS (Auto-calculated):\n' +
+    '• H: 1099 Required? (YES if paid ≥$600)\n' +
+    '• J: Filing Status (Ready/Pending/Not Needed)\n' +
+    '• K: Risk Level (High/Medium/Low)\n\n' +
+    'DATA ENTRY COLUMNS (You fill these):\n' +
+    '• A-G: Contractor info and payment\n' +
+    '• I: W-9 Received? (YES/NO)\n\n' +
+    'COLOR CODING:\n' +
+    '• Red = High risk (missing info)\n' +
+    '• Yellow = Medium risk (pending)\n' +
+    '• Green = Ready to file\n\n' +
+    'Questions? Email: ai.rapid2006@gmail.com',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+复制到这里（包括最后的 }）
+
+第 5 步：保存
+-----------------------
+点击 💾 保存按钮（或按 Ctrl+S / Cmd+S）
+
+第 6 步：运行脚本
+-----------------------
+1. 在顶部下拉菜单选择：protectFormulaColumns
+2. 点击 ▶️ 运行按钮
+3. 授权（如果需要）
+4. 等待成功消息："Protection Applied"
+
+第 7 步：验证
+-----------------------
+1. 关闭 Apps Script 编辑器
+2. 回到 Google Sheet
+3. 刷新页面（F5）
+4. 查看顶部菜单栏
+
+✅ 现在应该看到：Fix1099（英文菜单）
+❌ 不应该看到：🔒 保护公式（中文菜单）
+
+第 8 步：测试菜单
+-----------------------
+点击顶部的 "Fix1099" 菜单，应该看到：
+- Protect Formulas
+- Remove Protection
+- Help
+
+========================================
+新菜单功能说明
+========================================
+
+Fix1099 菜单包含：
+
+1. Protect Formulas（保护公式）
+   - 一键保护 H, J, K 列
+   - 防止误删公式
+
+2. Remove Protection（移除保护）
+   - 移除所有保护
+   - 允许编辑所有列
+
+3. Help（帮助）
+   - 显示使用说明
+   - 列说明和颜色编码
+
+========================================
+客户看到的菜单
+========================================
+
+当客户制作副本后，会自动看到：
+
+顶部菜单栏：
+┌────────────────────────────────────┐
+│ File Edit View ... Fix1099         │  ← 新菜单
+└────────────────────────────────────┘
+
+点击 Fix1099 后：
+┌─────────────────────────┐
+│ Protect Formulas        │
+│ Remove Protection       │
+│ ────────────            │
+│ Help                    │
+└─────────────────────────┘
+
+========================================
+重要提示
+========================================
+
+✅ DO（要做）：
+- 在主模板中运行一次
+- 确认菜单显示英文
+- 测试制作副本，验证菜单保留
+
+❌ DON'T（不要做）：
+- 不要在每个客户副本中重新运行
+- 不要修改函数名称
+- 不要删除 onOpen() 函数
+
+========================================
+验证清单
+========================================
+
+[ ] Apps Script 代码已更新为英文版
+[ ] 运行 protectFormulaColumns 成功
+[ ] 顶部菜单显示 "Fix1099"（英文）
+[ ] 菜单项全部是英文
+[ ] 点击 Help 显示英文帮助
+[ ] 制作副本，验证菜单保留
+[ ] 客户看到的是英文界面
+
+========================================
+完成！
+========================================
+
+现在你的 Google Sheet 主模板已经是纯英文版本！
+
+客户制作副本后，会自动获得：
+✓ 英文菜单
+✓ 英文提示信息
+✓ 英文帮助文档
+
+如有问题，请联系：
+📧 ai.rapid2006@gmail.com
+📱 (818) 925-5239

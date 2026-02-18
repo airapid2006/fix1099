@@ -1,0 +1,236 @@
+========================================
+Fix1099 - 如何保护 Google Sheets 公式列
+防止客户误删 H, J, K 列的自动公式
+========================================
+
+问题：
+Google Sheets 模板的公式列（H, J, K）很容易被客户误删或覆盖，导致自动计算失效。
+
+解决方案：
+使用 "保护范围" 功能锁定公式列，只允许查看，不允许编辑。
+
+========================================
+方法 1：手动保护（最简单）
+========================================
+
+步骤：
+1. 打开你的 Google Sheet
+2. 选中列 H 的数据区域（H7:H2000）
+   - 点击 H7
+   - 按住 Shift
+   - 滚动到底部
+   - 点击 H2000
+3. 右键点击 → 选择 "保护范围和工作表"
+4. 在右侧面板：
+   - 描述：输入 "🔒 公式：1099 Required"
+   - 点击 "设置权限"
+   - 选择 "显示警告"（推荐）
+   - 点击 "完成"
+5. 重复步骤 2-4，保护 J 列（J7:J2000）和 K 列（K7:K2000）
+6. 完成！
+
+效果：
+- 用户尝试编辑时会看到警告
+- 可以点 "确定" 继续编辑（防止误操作）
+- 或点 "取消" 放弃编辑
+
+========================================
+方法 2：Apps Script 自动保护（推荐）
+========================================
+
+优势：
+- 一键完成，省时省力
+- 不会遗漏任何列
+- 支持两种保护模式
+- 可重复运行
+
+步骤：
+1. 打开 Google Sheet
+2. 点击 "扩展功能" → "Apps Script"
+3. 删除所有现有代码
+4. 复制下面的完整脚本（从 /** 开始到最后的 }）
+5. 粘贴到编辑器
+6. 点击 "保存"
+7. 点击 "运行" → 选择 protectFormulaColumns
+8. 授权（首次运行）
+9. 看到成功消息：✅ Protection Applied!
+10. 完成！
+
+========================================
+完整 Apps Script 代码（复制下面所有内容）
+========================================
+
+/**
+ * Fix1099 公式列保护脚本
+ * 自动保护 H, J, K 列，防止误删
+ */
+
+function protectFormulaColumns() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('Contractor Tracker');
+  
+  if (!sheet) {
+    SpreadsheetApp.getUi().alert('错误：找不到 "Contractor Tracker" 工作表');
+    return;
+  }
+  
+  // 删除旧的保护（避免冲突）
+  const protections = sheet.getProtections(SpreadsheetApp.ProtectionType.RANGE);
+  protections.forEach(protection => protection.remove());
+  
+  // 保护 H 列：1099 Required?
+  const rangeH = sheet.getRange('H7:H2000');
+  const protectionH = rangeH.protect().setDescription('🔒 公式：1099 Required');
+  protectionH.setWarningOnly(true);
+  
+  // 保护 J 列：Filing Status
+  const rangeJ = sheet.getRange('J7:J2000');
+  const protectionJ = rangeJ.protect().setDescription('🔒 公式：Filing Status');
+  protectionJ.setWarningOnly(true);
+  
+  // 保护 K 列：Risk Level
+  const rangeK = sheet.getRange('K7:K2000');
+  const protectionK = rangeK.protect().setDescription('🔒 公式：Risk Level');
+  protectionK.setWarningOnly(true);
+  
+  // 成功消息
+  SpreadsheetApp.getUi().alert(
+    '✅ 保护已应用！',
+    '公式列已受保护：\n\n' +
+    '🔒 H 列（1099 Required?）\n' +
+    '🔒 J 列（Filing Status）\n' +
+    '🔒 K 列（Risk Level）\n\n' +
+    '用户尝试编辑时会看到警告。',
+    SpreadsheetApp.getUi().ButtonSet.OK
+  );
+}
+
+// 可选：添加自定义菜单
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('🔒 保护公式')
+    .addItem('✅ 应用保护', 'protectFormulaColumns')
+    .addItem('🔓 移除保护', 'removeProtections')
+    .addToUi();
+}
+
+// 移除所有保护
+function removeProtections() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet()
+    .getSheetByName('Contractor Tracker');
+  const protections = sheet.getProtections(SpreadsheetApp.ProtectionType.RANGE);
+  protections.forEach(p => p.remove());
+  SpreadsheetApp.getUi().alert('✅ 所有保护已移除');
+}
+
+========================================
+脚本代码结束（复制到这里）
+========================================
+
+使用说明：
+1. 全选上面的代码（从 /** 开始到最后的 }）
+2. 复制（Ctrl+C 或 Cmd+C）
+3. 在 Google Sheets 中打开 Apps Script
+4. 粘贴（Ctrl+V 或 Cmd+V）
+5. 保存并运行
+
+========================================
+方法 3：预设保护交付
+========================================
+
+适合：你在交付给客户前预先设置好保护
+
+步骤：
+1. 在主模板中运行方法 2 的脚本
+2. 验证保护：数据 → 受保护的工作表和范围
+3. 分享设置：知道链接的所有人 → 查看者
+4. 客户制作副本时，保护自动继承
+5. 客户无需任何操作，公式已受保护
+
+========================================
+保护效果
+========================================
+
+警告模式（推荐）：
+- 用户点击受保护单元格
+- 弹出警告："⚠️ 此范围已受保护"
+- 显示："🔒 公式：1099 Required"
+- 用户可以点 "确定" 继续编辑（高级用户）
+- 或点 "取消" 放弃编辑
+
+严格模式：
+- 完全锁定，无法编辑
+- 只有所有者可以修改
+- 适合多人协作场景
+
+========================================
+如何解除保护
+========================================
+
+方法 1：通过 UI
+1. 点击 "数据" → "受保护的工作表和范围"
+2. 找到要删除的保护
+3. 点击 🗑️ 垃圾桶图标
+4. 确认删除
+
+方法 2：通过脚本
+运行上面的 removeProtections() 函数
+
+========================================
+常见问题
+========================================
+
+Q: 保护会影响公式计算吗？
+A: 不会！公式仍然正常计算。保护只防止手动编辑。
+
+Q: 客户制作副本后，保护会继承吗？
+A: 是的！主模板的保护会自动复制到副本。
+
+Q: 误删公式怎么办？
+A: 1) Ctrl+Z 撤销
+   2) 文件 → 版本历史 → 恢复
+   3) 重新制作副本
+
+Q: 可以查看公式吗？
+A: 可以！点击单元格，在顶部公式栏查看。
+
+========================================
+推荐工作流程
+========================================
+
+1. 上传 Excel 到 Google Drive
+2. 转换为 Google Sheets
+3. 运行保护脚本（方法 2）
+4. 测试保护效果
+5. 制作测试副本，验证保护继承
+6. 设置分享：查看者权限
+7. 复制分享链接
+8. 交付给客户（附使用说明）
+9. 客户制作副本 → 自动受保护
+
+========================================
+客户使用说明（可直接发给客户）
+========================================
+
+感谢购买 Fix1099 Contractor Tracker！
+
+如何使用：
+1. 点击模板链接
+2. 点击 "文件" → "制作副本"
+3. 开始输入你的承包商信息
+
+注意事项：
+• H, J, K 列是自动公式，已受保护
+• 如果误触，会显示警告
+• 只需填写 A-G 和 I 列
+• Dashboard 会自动更新统计
+
+需要帮助？
+📧 airapi2006@gmail.com
+📱 +1 (818) 925-5239
+
+========================================
+文档结束
+========================================
+
+建议：使用方法 2（Apps Script），最快最可靠！

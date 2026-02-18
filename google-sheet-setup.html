@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix1099 Google Sheet 自動設置教程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .logo-fi { color: #ffffff; }
+        .logo-x { color: #fbbf24; }
+        .logo-numbers { color: #ffffff; }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .step-container {
+            margin-bottom: 40px;
+        }
+        
+        .step {
+            background: #f9fafb;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+        
+        .step-description {
+            color: #4b5563;
+            font-size: 15px;
+            line-height: 1.7;
+            margin-left: 44px;
+        }
+        
+        .code-block {
+            background: #1f2937;
+            color: #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: "Monaco", "Courier New", monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #f3f0ff 0%, #ede9fe 100%);
+            border: 2px solid #c4b5fd;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .download-btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+        }
+        
+        .features {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .features h3 {
+            color: #92400e;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .features li {
+            color: #78350f;
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+        
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .warning {
+            background: #fce8e6;
+            border-left: 4px solid #dc2626;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #7f1d1d;
+        }
+        
+        .warning strong {
+            color: #dc2626;
+        }
+        
+        .success {
+            background: #d9ead3;
+            border-left: 4px solid #16a34a;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #14532d;
+        }
+        
+        .success strong {
+            color: #16a34a;
+        }
+        
+        .screenshot {
+            background: #f3f4f6;
+            border: 2px solid #d1d5db;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .logo {
+                font-size: 28px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .download-btn {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <span class="logo-fi">Fi</span><span class="logo-x">×</span><span class="logo-numbers">1099</span>
+            </div>
+            <h1>Google Sheet 自動設置教程</h1>
+            <p>30 秒完成 Contractor Control System 設置</p>
+        </div>
+        
+        <div class="content">
+            <!-- Download Section -->
+            <div class="download-section">
+                <h2 style="margin-bottom: 20px; color: #667eea;">📥 下載腳本文件</h2>
+                <a href="Fix1099_Setup_Script.gs" download class="download-btn">
+                    ⬇️ 下載 Apps Script
+                </a>
+                <p style="margin-top: 15px; color: #6b7280; font-size: 14px;">
+                    下載後在記事本或任何文字編輯器中打開，複製所有內容
+                </p>
+            </div>
+            
+            <!-- Features -->
+            <div class="features">
+                <h3>🎯 自動設置功能清單</h3>
+                <ul>
+                    <li>10 個欄位標題（深紫色背景 #667eea）</li>
+                    <li>儀表板統計區（總承包商、需要1099、待處理、已完成）</li>
+                    <li>自動公式：1099 Required = IF(總付款 ≥ $600, "YES", "NO")</li>
+                    <li>自動公式：Filing Status = IF(需要1099, IF(已提交, "Completed", "Pending"), "Not Required")</li>
+                    <li>下拉選單：W-9 Received (YES/NO)</li>
+                    <li>下拉選單：Payment Method (ACH, Check, Wire, Zelle, Cash, Other)</li>
+                    <li>下拉選單：1099 Filed (YES/NO)</li>
+                    <li>條件格式：淺紅色 = 需要1099但未提交</li>
+                    <li>條件格式：淺綠色 = 已提交1099</li>
+                    <li>貨幣格式：Total Paid 2026 欄位</li>
+                    <li>凍結標題行（前 6 行）</li>
+                    <li>4 筆範例數據（方便測試）</li>
+                </ul>
+            </div>
+            
+            <!-- Steps -->
+            <div class="step-container">
+                <h2 style="margin-bottom: 30px; color: #111827; font-size: 26px;">📋 操作步驟（只需 5 步）</h2>
+                
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">1</span>
+                        創建空白 Google Sheet
+                    </div>
+                    <div class="step-description">
+                        前往 <a href="https://sheets.google.com" target="_blank" style="color: #667eea; font-weight: 600;">sheets.google.com</a>，
+                        點擊 <strong>"+ Blank"</strong> 創建一個新的空白試算表。
+                    </div>
+                    <div class="screenshot">
+                        🖼️ 截圖位置：Google Sheets 首頁 → 空白試算表按鈕
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">2</span>
+                        打開 Apps Script 編輯器
+                    </div>
+                    <div class="step-description">
+                        在你的 Google Sheet 中，點擊頂部選單：<br>
+                        <strong>Extensions（擴充功能）→ Apps Script</strong>
+                    </div>
+                    <div class="screenshot">
+                        🖼️ 截圖位置：頂部選單列 → Extensions → Apps Script
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">3</span>
+                        貼上腳本代碼
+                    </div>
+                    <div class="step-description">
+                        1. 刪除編輯器中所有現有代碼（如果有的話）<br>
+                        2. 從下載的 <code>Fix1099_Setup_Script.gs</code> 文件中複製所有內容<br>
+                        3. 貼到 Apps Script 編輯器中<br>
+                        4. 點擊 <strong>💾 Save（儲存）</strong> 按鈕
+                    </div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyScript()">📋 複製腳本</button>
+                        <div id="script-preview">
+// 腳本預覽（請從下載的文件中複製完整代碼）
+function setupFix1099Sheet() {
+  // 自動設置 Fix1099 表格
+  // 包含所有公式、格式、下拉選單
+  ...
+}
+                        </div>
+                    </div>
+                    <div class="warning">
+                        <strong>⚠️ 注意：</strong> 請確保複製完整的腳本代碼（約 200 行），不要只複製預覽片段。
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">4</span>
+                        運行腳本並授權
+                    </div>
+                    <div class="step-description">
+                        1. 在 Apps Script 編輯器頂部，確認已選擇 <strong>setupFix1099Sheet</strong> 函數<br>
+                        2. 點擊 <strong>▶️ Run（執行）</strong> 按鈕<br>
+                        3. <strong>首次運行時</strong>：會彈出授權請求<br>
+                        &nbsp;&nbsp;&nbsp;→ 點擊 <strong>"Review permissions"</strong><br>
+                        &nbsp;&nbsp;&nbsp;→ 選擇你的 Google 帳號<br>
+                        &nbsp;&nbsp;&nbsp;→ 點擊 <strong>"Advanced"</strong> → <strong>"Go to ... (unsafe)"</strong><br>
+                        &nbsp;&nbsp;&nbsp;→ 點擊 <strong>"Allow"</strong> 授權<br>
+                        4. 再次點擊 <strong>▶️ Run</strong> 執行腳本
+                    </div>
+                    <div class="warning">
+                        <strong>🔒 為什麼需要授權？</strong><br>
+                        腳本需要權限來編輯你的 Google Sheet（添加公式、格式、下拉選單等）。
+                        這是標準的 Google Apps Script 安全流程。
+                    </div>
+                    <div class="screenshot">
+                        🖼️ 截圖位置：Apps Script 編輯器頂部 → 函數選單 → Run 按鈕
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title">
+                        <span class="step-number">5</span>
+                        完成！返回試算表
+                    </div>
+                    <div class="step-description">
+                        等待 10-20 秒，腳本運行完成後會彈出成功訊息：<br>
+                        <strong>"✅ Setup Complete!"</strong><br><br>
+                        點擊 <strong>OK</strong>，然後關閉 Apps Script 編輯器視窗，返回你的 Google Sheet。<br>
+                        你會看到完整的 Fix1099 Contractor Control System 已經設置好了！
+                    </div>
+                    <div class="success">
+                        <strong>✅ 設置完成！</strong> 你的表格現在包含：<br>
+                        • 儀表板統計（第 1-5 行）<br>
+                        • 專業標題行（深紫色背景）<br>
+                        • 200 行數據區（第 7-206 行）<br>
+                        • 自動計算公式（1099 Required、Filing Status）<br>
+                        • 下拉選單（W-9、付款方式、1099 Filed）<br>
+                        • 條件格式（紅色/綠色高亮）<br>
+                        • 4 筆範例數據（可直接刪除或覆蓋）
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Usage Tips -->
+            <div class="features" style="background: #dbeafe; border-left-color: #3b82f6;">
+                <h3 style="color: #1e3a8a;">💡 使用提示</h3>
+                <ul>
+                    <li><strong>添加承包商：</strong> 從第 7 行開始輸入新數據</li>
+                    <li><strong>刪除範例數據：</strong> 選擇第 7-10 行，右鍵 → 刪除行</li>
+                    <li><strong>查看統計：</strong> 第 3-6 行會自動更新統計數據</li>
+                    <li><strong>篩選數據：</strong> 點擊標題行的篩選圖標</li>
+                    <li><strong>排序數據：</strong> 選擇數據範圍 → 右鍵 → 排序範圍</li>
+                    <li><strong>手機查看：</strong> 下載 Google Sheets App，登入後即可編輯</li>
+                </ul>
+            </div>
+            
+            <!-- Sharing Settings -->
+            <div class="step" style="border-left-color: #16a34a; background: #f0fdf4;">
+                <div class="step-title" style="color: #14532d;">
+                    <span class="step-number" style="background: #16a34a;">📤</span>
+                    分享設置（可選）
+                </div>
+                <div class="step-description" style="color: #15803d;">
+                    如果需要分享給團隊查看：<br>
+                    1. 點擊右上角 <strong>"Share"</strong> 按鈕<br>
+                    2. 在 "General access" 中選擇 <strong>"Anyone with the link"</strong><br>
+                    3. 權限設為 <strong>"Viewer"</strong>（只能查看）或 <strong>"Editor"</strong>（可編輯）<br>
+                    4. 點擊 <strong>"Copy link"</strong> 複製分享連結
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div style="margin-top: 50px;">
+                <h2 style="margin-bottom: 20px; color: #111827;">❓ 常見問題</h2>
+                
+                <div class="step">
+                    <div class="step-title" style="font-size: 16px;">
+                        Q1: 腳本運行失敗怎麼辦？
+                    </div>
+                    <div class="step-description">
+                        確認：<br>
+                        • 是否完整複製了腳本代碼（約 200 行）<br>
+                        • 是否已授權腳本權限<br>
+                        • 網絡連接是否正常<br>
+                        如果仍然失敗，刷新頁面重試，或創建新的空白試算表再試一次。
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title" style="font-size: 16px;">
+                        Q2: 可以修改欄位名稱嗎？
+                    </div>
+                    <div class="step-description">
+                        可以！但建議先運行腳本完成初始設置，然後再手動修改標題文字。<br>
+                        <strong>⚠️ 不要刪除或移動欄位</strong>，否則公式會失效。
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title" style="font-size: 16px;">
+                        Q3: 範例數據可以刪除嗎？
+                    </div>
+                    <div class="step-description">
+                        當然可以！選擇第 7-10 行（範例數據行），右鍵點擊 → <strong>"Delete rows 7-10"</strong>。<br>
+                        公式和格式會自動保留在剩餘的空白行中。
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title" style="font-size: 16px;">
+                        Q4: 能否在同一個 Google Sheet 添加更多頁籤？
+                    </div>
+                    <div class="step-description">
+                        完全可以！這個腳本只會設置當前活動的工作表。<br>
+                        你可以添加其他頁籤（如 "Payment Log"、"Tax Documents" 等）。
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-title" style="font-size: 16px;">
+                        Q5: 需要每年重新運行腳本嗎？
+                    </div>
+                    <div class="step-description">
+                        不需要！設置一次後可以持續使用。<br>
+                        如果需要創建 2027 年的新表格，可以：<br>
+                        • 複製整個 Google Sheet（File → Make a copy）<br>
+                        • 或在同一個 Sheet 中添加新頁籤，再次運行腳本
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Support -->
+            <div style="margin-top: 50px; padding: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white; text-align: center;">
+                <h2 style="margin-bottom: 15px; color: white;">📞 需要幫助？</h2>
+                <p style="margin-bottom: 20px; font-size: 16px; opacity: 0.95;">
+                    如果在設置過程中遇到任何問題，請聯繫我們：
+                </p>
+                <p style="font-size: 18px; font-weight: 600;">
+                    📧 Email: <a href="mailto:airapi2006@gmail.com" style="color: #fbbf24; text-decoration: none;">airapi2006@gmail.com</a><br>
+                    📱 Phone: <a href="tel:+18189255239" style="color: #fbbf24; text-decoration: none;">+1 (818) 925-5239</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyScript() {
+            alert('請從下載的 Fix1099_Setup_Script.gs 文件中複製完整腳本代碼！\n\n點擊上方 "⬇️ 下載 Apps Script" 按鈕下載文件。');
+        }
+    </script>
+</body>
+</html>

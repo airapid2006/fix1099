@@ -67,15 +67,18 @@ function protectFormulaColumns() {
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('Fix1099')
-    .addItem('Protect Formulas', 'protectFormulaColumns')
-    .addItem('Remove Protection', 'removeProtection')
-    .addSeparator()
     .addItem('Help', 'showHelp')
     .addToUi();
 }
 
 /**
- * Removes all protections
+ * NOTE: Remove Protection function is intentionally not included in the menu
+ * to prevent customers from accidentally disabling formula protection.
+ * 
+ * If you (the template owner) need to remove protection:
+ * 1. Go to Data → Protected sheets and ranges
+ * 2. Click the trash icon next to each protection
+ * 3. Or run this function manually from the script editor
  */
 function removeProtection() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Contractor Tracker');
@@ -99,6 +102,8 @@ function showHelp() {
     '• H: 1099 Required? (YES if paid ≥$600)\n' +
     '• J: Filing Status (Ready/Pending/Not Needed)\n' +
     '• K: Risk Level (High/Medium/Low)\n\n' +
+    'These columns are PROTECTED to prevent accidental changes.\n' +
+    'You will see a warning if you try to edit them.\n\n' +
     'DATA ENTRY COLUMNS (You fill these):\n' +
     '• A-G: Contractor info and payment\n' +
     '• I: W-9 Received? (YES/NO)\n\n' +

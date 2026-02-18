@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Your Tracker Ready...</title>
+    <title>One More Click - Your Tracker is Ready! 🎉</title>
     <style>
         * {
             margin: 0;
@@ -22,274 +22,314 @@
         }
         
         .container {
-            max-width: 650px;
+            max-width: 600px;
             width: 100%;
             background: white;
-            border-radius: 20px;
+            border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 50px 40px;
+            padding: 60px 50px;
             text-align: center;
-            animation: fadeIn 0.5s ease-out;
+            animation: slideUp 0.6s ease-out;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .icon {
-            font-size: 80px;
-            margin-bottom: 25px;
-            animation: bounce 2s infinite;
+        .party-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+            animation: bounce 1s ease infinite;
         }
         
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-20px); }
-            60% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
         
         h1 {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 800;
-            color: #111827;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
         .subtitle {
-            font-size: 20px;
-            color: #6b7280;
+            font-size: 22px;
+            color: #4b5563;
             margin-bottom: 40px;
-            line-height: 1.6;
+            font-weight: 500;
+            line-height: 1.5;
         }
         
-        .info-box {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid #0ea5e9;
-            border-radius: 16px;
-            padding: 30px;
-            margin-bottom: 30px;
-            text-align: left;
+        .happy-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 35px;
+            border: 3px solid #10b981;
         }
         
-        .info-title {
-            font-size: 20px;
+        .happy-title {
+            font-size: 24px;
             font-weight: 700;
-            color: #0369a1;
+            color: #065f46;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
         }
         
-        .info-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
+        .step {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
             margin-bottom: 15px;
-            font-size: 16px;
-            color: #374151;
-            line-height: 1.6;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
         }
         
-        .info-step:last-child {
+        .step:last-child {
             margin-bottom: 0;
         }
         
-        .check-icon {
-            color: #10b981;
-            font-size: 20px;
-            font-weight: bold;
+        .step-icon {
+            font-size: 40px;
             flex-shrink: 0;
         }
         
-        .screenshot-preview {
-            background: #f9fafb;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 20px;
+        .step-text {
+            text-align: left;
+            color: #065f46;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        
+        .step-text strong {
+            color: #047857;
+            font-size: 19px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            text-decoration: none;
+            padding: 25px 60px;
+            border-radius: 16px;
+            font-size: 24px;
+            font-weight: 800;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            margin-bottom: 25px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+        
+        .reassurance {
+            font-size: 16px;
+            color: #6b7280;
+            font-style: italic;
             margin-bottom: 30px;
         }
         
-        .screenshot-title {
-            font-size: 14px;
+        .preview-box {
+            background: #f0fdf4;
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 2px dashed #86efac;
+        }
+        
+        .preview-title {
+            font-size: 15px;
+            color: #065f46;
             font-weight: 600;
-            color: #6b7280;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
-        .mock-dialog {
+        .google-mockup {
             background: white;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 25px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: left;
         }
         
-        .mock-dialog-title {
+        .google-title {
             font-size: 18px;
             font-weight: 600;
             color: #111827;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
-        .mock-dialog-text {
+        .google-text {
             font-size: 14px;
             color: #6b7280;
             margin-bottom: 20px;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         
-        .mock-buttons {
+        .google-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: flex-end;
         }
         
-        .mock-button {
-            padding: 8px 20px;
-            border-radius: 6px;
-            font-size: 14px;
+        .google-btn {
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-size: 15px;
             font-weight: 600;
-            cursor: default;
         }
         
-        .mock-button-primary {
+        .google-btn-cancel {
+            background: white;
+            color: #6b7280;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .google-btn-copy {
             background: #1a73e8;
             color: white;
+            border: none;
             position: relative;
+            animation: pulse 2s ease infinite;
         }
         
-        .mock-button-primary::after {
-            content: '← Click this one!';
-            position: absolute;
-            left: 120%;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #fbbf24;
-            color: #78350f;
-            padding: 5px 12px;
-            border-radius: 6px;
-            white-space: nowrap;
-            font-size: 13px;
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(26, 115, 232, 0); }
+        }
+        
+        .arrow-hint {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            color: #059669;
             font-weight: 700;
-            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.4);
         }
         
-        .mock-button-secondary {
-            background: white;
-            color: #5f6368;
-            border: 1px solid #dadce0;
-        }
-        
-        .cta-button {
+        .arrow-hint span {
+            font-size: 24px;
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            padding: 20px 50px;
-            border-radius: 12px;
-            font-size: 20px;
-            font-weight: 700;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: point 1s ease infinite;
         }
         
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
-        }
-        
-        .note {
-            margin-top: 25px;
-            font-size: 15px;
-            color: #6b7280;
-            font-style: italic;
+        @keyframes point {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
         }
         
         @media (max-width: 768px) {
             .container {
-                padding: 40px 25px;
+                padding: 40px 30px;
             }
             
             h1 {
-                font-size: 28px;
+                font-size: 32px;
             }
             
             .subtitle {
                 font-size: 18px;
             }
             
-            .mock-button-primary::after {
-                display: none;
+            .cta-button {
+                padding: 20px 40px;
+                font-size: 20px;
+                width: 100%;
             }
             
-            .cta-button {
-                width: 100%;
-                padding: 18px 30px;
+            .happy-box {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="icon">📋</div>
+        <div class="party-icon">🎊</div>
         
-        <h1>Almost There!</h1>
+        <h1>One Click Away!</h1>
         
         <p class="subtitle">
-            When you click the button below, Google will show you a simple popup. 
-            <strong>This is normal and expected!</strong> Here's what you'll see:
+            Your Fix1099 Tracker is ready and waiting for you 🎉
         </p>
         
-        <div class="screenshot-preview">
-            <div class="screenshot-title">⬇️ Google will show you this popup:</div>
-            <div class="mock-dialog">
-                <div class="mock-dialog-title">Copy document</div>
-                <div class="mock-dialog-text">
-                    Would you like to make a copy of Fix1099?<br>
-                    <span style="font-size: 13px;">The attached Apps Script file and functionality will also be copied</span>
+        <div class="happy-box">
+            <div class="happy-title">
+                <span>✨</span>
+                <span>Here's What Happens Next:</span>
+            </div>
+            
+            <div class="step">
+                <div class="step-icon">👆</div>
+                <div class="step-text">
+                    Click the green button below
                 </div>
-                <div class="mock-buttons">
-                    <div class="mock-button mock-button-secondary">Cancel</div>
-                    <div class="mock-button mock-button-primary">Make a copy</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-icon">📋</div>
+                <div class="step-text">
+                    Google asks: <strong>"Make a copy?"</strong><br>
+                    (This saves your personal copy)
                 </div>
             </div>
-        </div>
-        
-        <div class="info-box">
-            <div class="info-title">
-                <span>✅</span>
-                <span>What to do next:</span>
-            </div>
             
-            <div class="info-step">
-                <span class="check-icon">1️⃣</span>
-                <span>Click the button below to open Google Sheets</span>
-            </div>
-            
-            <div class="info-step">
-                <span class="check-icon">2️⃣</span>
-                <span>When the popup appears, click <strong>"Make a copy"</strong></span>
-            </div>
-            
-            <div class="info-step">
-                <span class="check-icon">3️⃣</span>
-                <span>Your personal tracker will open instantly - ready to use! 🎉</span>
+            <div class="step">
+                <div class="step-icon">🚀</div>
+                <div class="step-text">
+                    Your tracker opens instantly - Start using it!
+                </div>
             </div>
         </div>
         
         <a href="https://docs.google.com/spreadsheets/d/1PBlSCW0sdagwacC8QeFQFkE5rX0zzq0pcqFCRLGbkkU/copy" target="_blank" class="cta-button">
-            🚀 Continue to Google Sheets
+            ✨ Open My Tracker Now ✨
         </a>
         
-        <p class="note">
-            💡 Your copy will be saved to your Google Drive automatically
+        <p class="reassurance">
+            Takes 3 seconds • Saves to your Google Drive automatically
         </p>
+        
+        <div class="preview-box">
+            <div class="preview-title">👀 Quick Preview - This is what you'll see:</div>
+            <div class="google-mockup">
+                <div class="google-title">Make a copy of Fix1099?</div>
+                <div class="google-text">
+                    A copy will be created and saved to your Google Drive
+                </div>
+                <div class="google-buttons">
+                    <div class="google-btn google-btn-cancel">Cancel</div>
+                    <div class="google-btn google-btn-copy">Make a copy</div>
+                </div>
+            </div>
+            <div class="arrow-hint">
+                <span>👆</span> Just click "Make a copy" and you're done!
+            </div>
+        </div>
     </div>
 </body>
 </html>

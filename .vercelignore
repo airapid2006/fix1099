@@ -1,4 +1,5 @@
-node_modules
-.git
+public/
+node_modules/
+_old_html/
 *.md
-!public/**
+.git/

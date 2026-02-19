@@ -1,12 +1,4 @@
 node_modules
 .git
 *.md
-!README.md
-Code.gs
-*.py
-*.xlsx
-*.csv
-*.txt
-保*.md
-緊*.md
-最*.md
+!public/**

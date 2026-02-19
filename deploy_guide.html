@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix1099 重新部署指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .step {
+            background: #f9fafb;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        .step h2 {
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .step p {
+            color: #374151;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        .step ul {
+            margin-left: 20px;
+            color: #374151;
+            line-height: 1.8;
+        }
+        
+        .step ul li {
+            margin-bottom: 8px;
+        }
+        
+        .code-block {
+            background: #1f2937;
+            color: #10b981;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .warning {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .warning strong {
+            color: #dc2626;
+        }
+        
+        .success {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .success strong {
+            color: #059669;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px 10px 10px 0;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .option {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+        
+        .option h3 {
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        .badge.fast {
+            background: #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Fix1099 重新部署指南</h1>
+            <p>5 個舊項目都是錯誤版本 - 需要重新部署正確版本</p>
+        </div>
+        
+        <div class="content">
+            <div class="warning">
+                <strong>⚠️ 問題診斷：</strong> 所有 5 個 Vercel 項目都在部署舊版本（29KB），正確版本是 45KB。
+            </div>
+            
+            <h2 style="margin-bottom: 30px; color: #111827;">選擇部署方式：</h2>
+            
+            <!-- Option 1 -->
+            <div class="option">
+                <h3>
+                    方案 1：手動上傳 ZIP 文件
+                    <span class="badge fast">最快 5 分鐘</span>
+                </h3>
+                <p><strong>最簡單！無需刪除舊項目。</strong></p>
+                
+                <div class="step">
+                    <h2><span class="step-number">1</span> 下載部署包</h2>
+                    <p>從 GitHub 下載正確版本的 ZIP 文件：</p>
+                    <a href="https://github.com/airapid2006/fix1099/raw/main/fix1099-correct-design.zip" class="btn" download>
+                        📥 下載 fix1099-correct-design.zip
+                    </a>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">2</span> 訪問 Vercel</h2>
+                    <p>打開 Vercel 新建項目頁面：</p>
+                    <a href="https://vercel.com/new" target="_blank" class="btn">🌐 打開 Vercel New Project</a>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">3</span> 拖拽上傳</h2>
+                    <p>將下載的 <span class="highlight">fix1099-correct-design.zip</span> 拖拽到頁面上，或點擊 "Browse" 選擇文件。</p>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">4</span> 部署</h2>
+                    <p>Vercel 會自動解壓並部署，等待 2-3 分鐘。</p>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">5</span> 驗證</h2>
+                    <p>打開新的 Vercel URL，檢查：</p>
+                    <ul>
+                        <li>✅ 頁面有淺紫色卡片</li>
+                        <li>✅ H1 標題有立體陰影</li>
+                        <li>✅ 卡片有紫色邊條</li>
+                        <li>✅ 字體緊湊不過大</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Option 2 -->
+            <div class="option">
+                <h3>
+                    方案 2：刪除舊項目後重新創建
+                    <span class="badge">最徹底</span>
+                </h3>
+                <p><strong>清除所有舊配置，確保沒有干擾。</strong></p>
+                
+                <div class="step">
+                    <h2><span class="step-number">1</span> 刪除舊項目</h2>
+                    <p>訪問您的 Vercel Dashboard：</p>
+                    <a href="https://vercel.com/jennifers-projects-1a57d39b" target="_blank" class="btn">🌐 打開 Vercel Dashboard</a>
+                    <p style="margin-top: 10px;">依次刪除這些項目（Settings → General → Delete Project）：</p>
+                    <ul>
+                        <li>fix1099</li>
+                        <li>fix1099-bvp5</li>
+                        <li>fix1099-18ny</li>
+                        <li>fix1099-56ij</li>
+                        <li>airapid2006-fix1099</li>
+                    </ul>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">2</span> 創建新項目</h2>
+                    <p>訪問 Vercel 新建項目：</p>
+                    <a href="https://vercel.com/new" target="_blank" class="btn">🌐 Vercel New Project</a>
+                    <p style="margin-top: 10px;">選擇 <strong>Import Git Repository</strong> → 選擇 <span class="highlight">airapid2006/fix1099</span></p>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">3</span> 配置設置</h2>
+                    <p>使用以下設置：</p>
+                    <div class="code-block">
+Project Name: fix1099
+Framework Preset: Other
+Root Directory: ./
+Build Command: (留空)
+Output Directory: ./
+Install Command: (留空)
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">4</span> 部署並驗證</h2>
+                    <p>點擊 Deploy，等待完成後驗證新 URL。</p>
+                </div>
+            </div>
+            
+            <!-- Option 3 -->
+            <div class="option">
+                <h3>方案 3：重新連接 GitHub（保留項目名）</h3>
+                <p><strong>保留現有項目名，重新連接 GitHub。</strong></p>
+                
+                <div class="step">
+                    <h2><span class="step-number">1</span> 選擇一個項目</h2>
+                    <p>進入其中一個項目（例如 fix1099）：</p>
+                    <a href="https://vercel.com/jennifers-projects-1a57d39b/fix1099" target="_blank" class="btn">🌐 打開 fix1099 項目</a>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">2</span> 斷開 Git</h2>
+                    <p>Settings → Git → 點擊 <strong>Disconnect</strong></p>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">3</span> 重新連接</h2>
+                    <p>點擊 <strong>Connect Git Repository</strong> → 選擇 <span class="highlight">airapid2006/fix1099</span> → Branch: <strong>main</strong></p>
+                </div>
+                
+                <div class="step">
+                    <h2><span class="step-number">4</span> 強制重新部署</h2>
+                    <p>Deployments → 最新部署 → ⋯ → <strong>Redeploy</strong></p>
+                </div>
+            </div>
+            
+            <div class="success">
+                <strong>✅ 驗證清單：</strong> 部署後確認以下內容
+                <ul style="margin-top: 10px;">
+                    <li>文件大小約 45KB（不是 29KB）</li>
+                    <li>H1 標題 "Stop IRS Penalties Before They Start" 有立體陰影</li>
+                    <li>卡片背景是淺紫色 (#f3f0ff)</li>
+                    <li>卡片有紫色邊條（4px 或 6px）</li>
+                    <li>字體緊湊、整體設計專業</li>
+                </ul>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 30px; background: #f9fafb; border-radius: 12px; text-align: center;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">📦 相關資源</h3>
+                <a href="https://github.com/airapid2006/fix1099" target="_blank" class="btn">GitHub 倉庫</a>
+                <a href="https://8000-iwacxqnbuu7np9tbjjevk-583b4d74.sandbox.novita.ai/" target="_blank" class="btn">正確版本預覽</a>
+                <a href="https://github.com/airapid2006/fix1099/raw/main/fix1099-correct-design.zip" class="btn" download>下載部署包</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

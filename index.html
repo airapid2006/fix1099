@@ -43,34 +43,30 @@
         
         .logo {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             gap: 0;
+            font-size: 58px;
             font-weight: 900;
-            letter-spacing: -0.8px;
+            letter-spacing: -2px;
             line-height: 1;
         }
         
-        .logo-fixword {
-            color: #1f2937;
-            font-size: 38px;
-            font-weight: 900;
-            text-shadow: 
-                2px 2px 0px rgba(103, 61, 230, 0.2),
-                4px 4px 0px rgba(103, 61, 230, 0.15),
-                6px 6px 0px rgba(103, 61, 230, 0.1),
-                8px 8px 15px rgba(0, 0, 0, 0.2);
+        /* Fi - Black */
+        .logo-fi {
+            color: #111827;
         }
         
-        .logo-n1099 {
-            color: #673de6;
-            font-size: 38px;
-            font-weight: 900;
-            margin-left: 2px;
-            text-shadow: 
-                2px 2px 0px rgba(118, 75, 162, 0.3),
-                4px 4px 0px rgba(118, 75, 162, 0.2),
-                6px 6px 0px rgba(118, 75, 162, 0.1),
-                8px 8px 15px rgba(0, 0, 0, 0.3);
+        /* X - Half Black, Half Purple */
+        .logo-x {
+            background: linear-gradient(90deg, #111827 0%, #111827 50%, #764ba2 50%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* 1099 - Purple */
+        .logo-numbers {
+            color: #764ba2;
         }
         
         .phone-number {
@@ -100,18 +96,8 @@
                 padding: 20px 24px;
             }
             
-            .logo-fixword,
-            .logo-x,
-            .logo-n1099 {
-                font-size: 32px;
-            }
-            
-            .logo-xwrap::after {
-                width: 10px;
-                height: 10px;
-                border-width: 2.5px;
-                top: -8px;
-                right: -8px;
+            .logo {
+                font-size: 44px;
             }
         }
         
@@ -664,8 +650,7 @@
     <!-- Logo Section -->
     <section class="logo-container">
         <div class="logo">
-            <span class="logo-fixword">Fix</span>
-            <span class="logo-n1099">1099</span>
+            <span class="logo-fi">Fi</span><span class="logo-x">x</span><span class="logo-numbers">1099</span>
         </div>
         <a href="tel:+18189255239" class="phone-number">
             <span class="phone-icon">📞</span>
@@ -677,7 +662,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">✓ Used by 2,500+ Small Businesses</div>
-            <h1>Stop Losing Sleep Over 1099 Filing</h1>
+            <h1>Stop IRS Penalties Before They Start</h1>
             <p class="hero-subheadline">
                 Get a complete system that organizes contractor data, prevents IRS penalties, 
                 and ensures you file correctly—even if you've never done it before.
@@ -808,6 +793,7 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title">Choose Your Plan</h2>
+            <p class="section-subtitle" style="color: #ef4444; font-weight: 700; font-size: 18px; margin-bottom: 12px;">⚡ Limited Launch Price — First 20 Businesses Only</p>
             <p class="section-subtitle">One-time payment. Lifetime access. No subscriptions.</p>
             
             <div class="pricing-cards">
@@ -827,7 +813,7 @@
                         <li><span class="feature-check">✓</span> Lifetime updates</li>
                     </ul>
                     
-                    <a href="https://buy.stripe.com/fZu9AT80N7jq0Fmgt98bS09" class="btn-pricing btn-pricing-standard">Get Digital System</a>
+                    <a href="https://buy.stripe.com/test_bJe9ATdl7dHO73K90H8bS0a" class="btn-pricing btn-pricing-standard">Get Digital System</a>
                 </div>
                 
                 <!-- Digital + SMS -->
@@ -847,7 +833,7 @@
                         <li><span class="feature-check">✓</span> Peace of mind guarantee</li>
                     </ul>
                     
-                    <a href="https://buy.stripe.com/eVqaEX6WJavC87OdgX8bS06" class="btn-pricing btn-pricing-featured">Get SMS Guidance</a>
+                    <a href="https://buy.stripe.com/test_fZu9AT80N7jq0Fmgt98bS09" class="btn-pricing btn-pricing-featured">Get SMS Guidance</a>
                 </div>
             </div>
         </div>
@@ -897,19 +883,19 @@
             </p>
             
             <div class="cta-buttons">
-                <a href="https://buy.stripe.com/fZu9AT80N7jq0Fmgt98bS09" class="cta-primary">
+                <a href="https://buy.stripe.com/test_bJe9ATdl7dHO73K90H8bS0a" class="cta-primary">
                     Get Digital System - $299
                 </a>
-                <a href="https://buy.stripe.com/eVqaEX6WJavC87OdgX8bS06" class="cta-primary">
+                <a href="https://buy.stripe.com/test_fZu9AT80N7jq0Fmgt98bS09" class="cta-primary">
                     Get SMS Guidance - $499
                 </a>
             </div>
             
             <div class="sms-cta">
                 <h3>Have Questions First?</h3>
-                <p>Text us to learn more before you buy</p>
+                <p>Text "1099" Now → <a href="sms:+18189255239&body=1099" style="color: #fbbf24; font-weight: 900; text-decoration: none;">(818) 925-5239</a></p>
                 <div class="sms-instruction">
-                    Text <span class="sms-code">"1099"</span> to (818) 925-5239
+                    Text <span class="sms-code">"1099"</span> to get instant answers
                 </div>
             </div>
         </div>
@@ -918,6 +904,16 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
+            <p>
+                &copy; 2024 1099 Compliance Setup. All rights reserved.<br>
+                This is a digital information product. Not legal or tax advice. Consult a professional for your specific situation.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
+">
             <p>
                 &copy; 2024 1099 Compliance Setup. All rights reserved.<br>
                 This is a digital information product. Not legal or tax advice. Consult a professional for your specific situation.
